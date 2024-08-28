@@ -9,7 +9,7 @@ router.get("/product/:id", getProduct);
 
 //rutas admin
 router.post("/addProduct", [isAdmin], uploadProduct.single("image"), addProduct);
-router.put("/updateProduct", [isAdmin], updateProduct);
-router.delete("/deleteProduct", [isAdmin], deleteProduct);
+router.put("/updateProduct/:id", [isAdmin], updateProduct);
+router.delete("/deleteProduct/:id", [isAdmin], deleteProduct);
 
 module.exports = router

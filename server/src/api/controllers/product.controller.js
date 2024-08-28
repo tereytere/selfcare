@@ -1,5 +1,5 @@
-const Routine = require('../models/routine.model');
 const Product = require('../models/product.model');
+const { deleteFile } = require("../../utils/deleteCloudiFile")
 
 const getAllProducts = async (req, res) => {
     try {
