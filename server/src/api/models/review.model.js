@@ -19,6 +19,7 @@ const userSchema = new Schema({
             5,
         ],
     },
+    author: { type: Schema.Types.ObjectId, ref: "user", require: true }
 }, {
     collection: "review",
     timestamps: true
