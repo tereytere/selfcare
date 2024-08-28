@@ -46,7 +46,7 @@ const login = async (req, res) => {
 const getUserById = async (req, res) => {
     const { id } = req.params;
     try {
-        const findUser = await User.findById(id).populate("plants");
+        const findUser = await User.findById(id).populate("reviews").populate("routines");
         if (!findUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
@@ -59,11 +59,36 @@ const getUserById = async (req, res) => {
 
 const getUsers = async (req, res) => {
     try {
-        const findUsers = await User.find().populate("plants");
-        if (!findUser) {
+        let pag = parseInt(req.query.pag);
+        let limit = parseInt(req.query.limit);
+
+        pag = !isNaN(pag) ? pag : 1;
+        limit = !isNaN(limit) ? limit : 20;
+        limit = limit > 20 ? 20 : limit < 10 ? 10 : limit;
+
+        const numUser = await User.countDocuments()
+
+        let numPage = Math.ceil(numUser / limit)
+
+        if (pag > numPage) {
+            pag = numPage;
+        }
+
+        if (pag < 1) {
+            pag = 1;
+        }
+
+
+        const findUsers = await User.find().skip((pag - 1) * limit).limit(limit).populate("reviews").populate("routines");
+        if (!findUsers) {
             return res.status(404).json({ message: "No existen usuarios" });
         } else {
-            return res.status(200).json({ message: "Usuarios encontrados", data: findUsers });
+            return res.status(200).json({
+                previousPage: pag === 1 ? null : pag - 1,
+                nextPage: numPage >= pag + 1 ? pag + 1 : null,
+                quantityPage: findUsers.length,
+                message: "Usuarios encontrados", data: findUsers
+            });
         }
     } catch (error) {
         console.log(error);
