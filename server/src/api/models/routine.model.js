@@ -19,4 +19,5 @@ const userSchema = new Schema({
 })
 
 const Routine = mongoose.model("routine", userSchema)
+
 module.exports = Routine;
