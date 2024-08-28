@@ -9,8 +9,8 @@ const addUser = async (req, res) => {
         const newUser = new User(req.body);
         const findUser = await User.find({ email: newUser.email })
         if (findUser.length === 0) {
-            if (req.file.path) {
-                newUser.image = req.file.path;
+            if (req.file) {
+                newUser.image = req.file;
             }
             newUser.password = bcrypt.hashSync(newUser.password, 10);
             const createdUser = await newUser.save();
@@ -114,32 +114,47 @@ const addRoutineToUser = async (req, res) => {
 
     const { idU, idR } = req.params;
     try {
-        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { routines: idR } }, { new: true });
-        if (!modifyUser) {
-            return res.status(404).json({ message: "El usuario no existe" });
+        const findUser = await User.findById(idU);
+        const routines = findUser.routines.includes(idR);
+        if (!routines) {
+            const modifyUser = await User.findByIdAndUpdate(idU, { $push: { routines: idR } }, { new: true });
+            if (!modifyUser) {
+                return res.status(404).json({ message: "El usuario no existe" });
+            } else {
+                return res.status(200).json({ message: "Usuario modificado", data: modifyUser });
+            }
         } else {
-            return res.status(200).json(modifyUser);
+            return res.status(409).json({ message: "La rutina ya existe" });
         }
     } catch (error) {
         console.log(error);
     }
 }
 
-const addReviewToUser = async (req, res) => {
+/* const addReviewToUser = async (req, res) => {
 
     const { idU, idRe } = req.params;
     try {
-        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { reviews: idRe } }, { new: true });
-        if (!modifyUser) {
-            return res.status(404).json({ message: "El usuario no existe" });
+        const findUser = await User.findById(idU);
+        const reviews = findUser.reviews.includes(idR);
+        if (!reviews) {
+            const findUser = await User.find({ reviews: findUser.reviews })
+            if (findUser.length === 0) {
+                const modifyUser = await User.findByIdAndUpdate(idU, { $push: { reviews: idRe } }, { new: true });
+                if (!modifyUser) {
+                    return res.status(404).json({ message: "El usuario no existe" });
+                } else {
+                    return res.status(200).json({ message: "Usuario modificado", data: modifyUser });
+                }
+            }
         } else {
-            return res.status(200).json(modifyUser);
+            return res.status(409).json({ message: "La review ya existe" });
         }
     } catch (error) {
         console.log(error);
     }
 }
-
+ */
 const deleteRoutinefromUser = async (req, res) => {
 
     const { idU, idR } = req.params;
@@ -148,14 +163,14 @@ const deleteRoutinefromUser = async (req, res) => {
         if (!modifyUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
-            return res.status(200).json(modifyUser);
+            return res.status(200).json({ message: "Usuario modificado", data: modifyUser });
         }
     } catch (error) {
         console.log(error);
     }
 }
 
-const deleteReviewfromUser = async (req, res) => {
+/* const deleteReviewfromUser = async (req, res) => {
 
     const { idU, idRe } = req.params;
     try {
@@ -163,13 +178,13 @@ const deleteReviewfromUser = async (req, res) => {
         if (!modifyUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
-            return res.status(200).json(modifyUser);
+            return res.status(200).json({ message: "Usuario modificado", data: modifyUser });
         }
     } catch (error) {
         console.log(error);
     }
 }
-
+ */
 const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
