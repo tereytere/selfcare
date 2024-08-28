@@ -9,10 +9,11 @@ const userSchema = new Schema({
     password: { type: String, require: true },
     role: { type: String, require: true, enum: ["admin", "user"], default: "user" },
     image: { type: String },
-    plants: [{
-        id: { type: Schema.Types.ObjectId, ref: "plant" },
-        size: { type: String, require: true, enum: ["mini", "medium", "maxi"], default: "mini" },
-        status: { type: String, require: true, enum: ["good", "plague", "dead", "wish"], default: "good" },
+    routines: [{
+        id: { type: Schema.Types.ObjectId, ref: "routine" }
+    }],
+    reviews: [{
+        id: { type: Schema.Types.ObjectId, ref: "review" }
     }]
 }, {
     collection: "user",
