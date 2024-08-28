@@ -6,10 +6,10 @@ const Product = require('../models/product.model');
 const addRoutine = async (req, res) => {
     try {
 
-        const newRoutine = new Routine = req.body;
+        const newRoutine = new Routine(req.body);
         const createdRoutine = await newRoutine.save();
 
-        return res.status(201).json({ message: "Routine creada", data: createdRoutine })
+        return res.status(201).json({ message: "Routine created", data: createdRoutine })
     } catch (error) {
         console.log(error);
 
@@ -26,10 +26,10 @@ const getAllRoutine = async (req, res) => {
 
         const numRoutines = await Routine.countDocuments();
 
-        // Validar y ajustar los valores de pag y limit
-        limit = limit >= 10 ? 20 : limit <= 0 ? 10 : limit; // Limitar a un máximo de 10 y mínimo de 5
-        pag = !isNaN(pag) ? pag : 1; // Si pag no es un número válido, establecer en 1
-        limit = !isNaN(limit) ? limit : 10; // Si limit no es un número válido, establecer en 5
+
+        limit = limit >= 10 ? 20 : limit <= 0 ? 10 : limit;
+        pag = !isNaN(pag) ? pag : 1;
+        limit = !isNaN(limit) ? limit : 10;
 
 
         const numPage = Math.ceil(numRoutines / limit);
@@ -55,7 +55,7 @@ const getAllRoutine = async (req, res) => {
             data: allRoutines
         });
     } catch (error) {
-        console.error("Error al obtener las rutinas:", error.message);
+        console.error("Error to get routines:", error.message);
         res.status(404).json({ message: "Error al obtener las rutinas", error: error.message });
     }
 };
@@ -69,16 +69,16 @@ const deleteRoutine = async (req, res) => {
 
 
         if (!deletedRoutine) {
-            return res.status(404).json({ message: "Routine no encontrada" });
+            return res.status(404).json({ message: "Routine not find" });
         }
 
 
-        return res.status(201).json({ message: "Routine eliminada", data: deletedRoutine });
+        return res.status(201).json({ message: "Routine eliminated", data: deletedRoutine });
     } catch (error) {
-        console.error("Error al eliminar la rutina:", error.message);
+        console.error("Error to eliminate routine:", error.message);
 
 
-        return res.status(500).json({ message: "Error al eliminar la rutina", error: error.message });
+        return res.status(500).json({ message: "Error to eliminate routine", error: error.message });
     }
 }
 
@@ -93,16 +93,16 @@ const getRoutine = async (req, res) => {
 
 
         if (!routine) {
-            return res.status(404).json({ message: "Routine no encontrada" });
+            return res.status(404).json({ message: "Routine not find" });
         }
 
 
-        return res.status(201).json({ message: "Routine encontrada", data: routine });
+        return res.status(201).json({ message: "Routine ok", data: routine });
     } catch (error) {
-        console.error("Error al obtener la rutina:", error.message);
+        console.error("Error to get routine:", error.message);
 
 
-        return res.status(404).json({ message: "Error al obtener la rutina", error: error.message });
+        return res.status(404).json({ message: "Error to get routine", error: error.message });
     }
 }
 
@@ -120,53 +120,91 @@ const updateRoutine = async (req, res) => {
 
 
         if (!updatedRoutine) {
-            return res.status(404).json({ message: "Routine no encontrada" });
+            return res.status(404).json({ message: "Don't find routine" });
         }
 
 
-        return res.status(200).json({ message: "Routine actualizada", data: updatedRoutine });
+        return res.status(200).json({ message: "Update routine", data: updatedRoutine });
     } catch (error) {
-        console.error("Error al actualizar la rutina:", error.message);
+        console.error("Update error routine", error.message);
 
 
-        return res.status(500).json({ message: "Error al actualizar la rutina", error: error.message });
+        return res.status(500).json({ message: "Update error", error: error.message });
     }
 }
 const addProductRoutine = async (req, res) => {
 
     const { idP, idR } = req.params;
     try {
-        const modifyRoutine = await Routine.findByIdAndUpdate(idR, { $push: { reviews: id = idP } }, { new: true });
-        if (!modifyRoutine) {
-            return res.status(404).json({ message: "La Routine no existe" });
+        const findRoutine = await Routine.findById(idR);
+        const products = findRoutine.products.includes(idP);
+
+        if (!products) {
+            const modifyRoutine = await Routine.findByIdAndUpdate(idR, { $push: { products: idP } }, { new: true });
+            if (!modifyRoutine) {
+                return res.status(404).json({ message: "Routine does not exist" });
+            } else {
+                return res.status(200).json({ message: "Routine update", data: modifyRoutine });
+            }
         } else {
-            return res.status(200).json(modifyRoutine);
+            return res.status(500).json({ message: "Product does not find" })
         }
     } catch (error) {
         console.log(error);
     }
+
 }
 
 const deleteProductRoutine = async (req, res) => {
 
     const { idR, idP } = req.params;
     try {
-        const modifyProduct = await Routine.findByIdAndUpdate(idR, { $pull: { routines: id = idP } }, { new: true });
+        const modifyProduct = await Routine.findByIdAndUpdate(idR, { $pull: { routines: idP } }, { new: true });
         if (!modifyProduct) {
-            return res.status(404).json({ message: "La Routine no existe" });
+            return res.status(404).json({ message: "Routine does not exist" });
         } else {
-            return res.status(200).json(modifyProduct);
+            return res.status(200).json({ message: "Routine updated", data: modifyProduct });
         }
     } catch (error) {
         console.log(error);
     }
 }
 
+/* const addReviewRoutine = async (req, res) => {
+
+    const { idRe, idRo } = req.params;
+    try {
+        const modifyRoutine = await Routine.findByIdAndUpdate(idRo, { $push: { reviews: idRe } }, { new: true });
+        if (!modifyRoutine) {
+            return res.status(404).json({ message: "La Routine no existe" });
+        } else {
+            return res.status(200).json({ message: "Routine actualizada", data: modifyRoutine });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+} */
+
+/* const deleteReviewRoutine = async (req, res) => {
+
+    const { idRe, idRo } = req.params;
+    try {
+        const modifyRoutine = await Routine.findByIdAndUpdate(idRo, { $pull: { routines: idRe } }, { new: true });
+        if (!modifyProduct) {
+            return res.status(404).json({ message: "La Routine no existe" });
+        } else {
+            return res.status(200).json({ message: "Routine actualizada", data: modifyRoutine });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+} */
 
 
 
 
 
-module.exports = { addRoutine, getAllRoutine, deleteRoutine, getRoutine, updateRoutine, addProductRoutine, deleteProductRoutine }
+
+module.exports = { addRoutine, getAllRoutine, deleteRoutine, getRoutine, updateRoutine, addProductRoutine, deleteProductRoutine } /* addReviewRoutine, deleteReviewRoutine */
 
 

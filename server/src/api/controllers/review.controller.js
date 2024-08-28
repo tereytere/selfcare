@@ -5,14 +5,14 @@ const getReview = async (req, res) => {
 
 }
 
-const getAllReviews
+/* const getAllReviews */
 
 
 
 
 
 
-const updateReviewHidden
+/* const updateReviewHidden */
 
 
 

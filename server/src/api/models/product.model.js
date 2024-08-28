@@ -6,7 +6,6 @@ const userSchema = new Schema({
     category: { type: String, require: true, enum: ["face", "body", "mouth", "hair", "hands", "feet"] },
     properties: { type: String, require: true },
     image: { type: String, require: true },
-    reviews: [{ type: Schema.Types.ObjectId, ref: "review" }],
     shoplink: { type: String, require: true }
 }, {
     collection: "product",

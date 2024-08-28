@@ -7,20 +7,20 @@ const { isAuth, isAdmin } = require("../../middleware/auth");
 
 
 //una o todas
-router.get("/getreview", getReview);
-router.get("/getallreviews", getAllReviews);
+/* router.get("/getreview", getReview); */
+/* router.get("/getallreviews", getAllReviews); */
 
 // por id y por nombre
-router.get("/getbyid/:id", getRecipeById);
-router.get("/getbyname/:name", getRecipeName);
+//.get("/getbyid/:id", getRecipeById);
+//router.get("/getbyname/:name", getRecipeName);
 
 
 //borrar review
-router.delete("/deletereview/:id", deleteReview);
+//router.delete("/deletereview/:id", deleteReview);
 
 //updatar review
-router.put("/updatereview", updateReview);
-router.put("/reviewhidden", [isAdmin], updateReviewHidden);
+/* router.put("/updatereview", updateReview); */
+//router.put("/reviewhidden", [isAdmin], updateReviewHidden);
 
 
 module.exports = router
