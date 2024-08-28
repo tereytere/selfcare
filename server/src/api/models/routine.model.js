@@ -7,14 +7,14 @@ const userSchema = new Schema({
     applyschedule: { type: String, require: true, enum: ["morning", "afternoon", "night", "other"] },
     repeat: [{ type: String, require: true }],
     products: [{ type: Schema.Types.ObjectId, ref: "product" }],
-    usesteps: { type: String },
-    description: { type: String }
-
-
+    usesteps: [{ type: String }],
+    description: { type: String },
+    reviews: [{ type: Schema.Types.ObjectId, ref: "review" }],
 }, {
     collection: "routine",
     timestamps: true
 })
 
 const Routine = mongoose.model("routine", userSchema)
+
 module.exports = Routine;
