@@ -31,9 +31,9 @@ const login = async (req, res) => {
             if (bcrypt.compareSync(user.password, userByEmail[0].password)) {
                 const data = { id: userByEmail[0]._id, email: userByEmail[0].email, role: userByEmail[0].role };
                 const token = generateToken(data);
-                return res.status(200).json({ token: token });
+                return res.status(202).json({ message: "Token creado", token: token });
             } else {
-                return res.status(200).json({ message: "La contraseña no es correcta" });
+                return res.status(403).json({ message: "La contraseña no es correcta" });
             }
         } else {
             return res.status(404).json({ message: "El email no existe" });
@@ -50,7 +50,7 @@ const getUserById = async (req, res) => {
         if (!findUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
-            return res.status(200).json({ findUser });
+            return res.status(200).json({ message: "Usuario encontrado", data: findUser });
         }
     } catch (error) {
         console.log(error);
@@ -63,7 +63,7 @@ const getUsers = async (req, res) => {
         if (!findUser) {
             return res.status(404).json({ message: "No existen usuarios" });
         } else {
-            return res.status(200).json(findUsers);
+            return res.status(200).json({ message: "Usuarios encontrados", data: findUsers });
         }
     } catch (error) {
         console.log(error);
@@ -78,19 +78,63 @@ const updateUser = async (req, res) => {
         if (!findUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
-            return res.status(200).json(findUser);
+            return res.status(200).json({ message: "Usuario modificado", data: findUser });
         }
     } catch (error) {
         console.log(error);
     }
 }
 
-const addPlantToUser = async (req, res) => {
+const addRoutineToUser = async (req, res) => {
 
-    const { idU } = req.params;
-    const { id, status, size } = req.body;
+    const { idU, idR } = req.params;
     try {
-        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { plants: id, status, size } }, { new: true });
+        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { routines: id = idR } }, { new: true });
+        if (!modifyUser) {
+            return res.status(404).json({ message: "El usuario no existe" });
+        } else {
+            return res.status(200).json(modifyUser);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const addReviewToUser = async (req, res) => {
+
+    const { idU, idRe } = req.params;
+    try {
+        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { reviews: id = idRe } }, { new: true });
+        if (!modifyUser) {
+            return res.status(404).json({ message: "El usuario no existe" });
+        } else {
+            return res.status(200).json(modifyUser);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const deleteRoutinefromUser = async (req, res) => {
+
+    const { idU, idR } = req.params;
+    try {
+        const modifyUser = await User.findByIdAndUpdate(idU, { $pull: { routines: id = idR } }, { new: true });
+        if (!modifyUser) {
+            return res.status(404).json({ message: "El usuario no existe" });
+        } else {
+            return res.status(200).json(modifyUser);
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+const deleteReviewfromUser = async (req, res) => {
+
+    const { idU, idRe } = req.params;
+    try {
+        const modifyUser = await User.findByIdAndUpdate(idU, { $pull: { reviews: id = idRe } }, { new: true });
         if (!modifyUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
@@ -118,4 +162,4 @@ const deleteUser = async (req, res) => {
 
 }
 
-module.exports = { addUser, login, getUserById, getUsers, deleteUser, updateUser, addPlantToUser }
+module.exports = { addUser, login, getUserById, getUsers, deleteUser, updateUser, addRoutineToUser, addReviewToUser, deleteRoutinefromUser, deleteReviewfromUser }
