@@ -3,10 +3,10 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
     name: { type: String, require: true },
-    surname: { type: String, require: true },
-    username: { type: String, require: true, unique: true },
     email: { type: String, require: true, unique: true },
+    about: { type: String, require: true },
     password: { type: String, require: true },
+    location: { type: String, require: true },
     role: { type: String, require: true, enum: ["admin", "user"], default: "user" },
     image: { type: String },
     routines: [{
