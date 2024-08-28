@@ -9,8 +9,7 @@ const userSchema = new Schema({
     location: { type: String, require: true },
     role: { type: String, require: true, enum: ["admin", "user"], default: "user" },
     image: { type: String },
-    routines: [{ type: Schema.Types.ObjectId, ref: "routine" }],
-    reviews: [{ type: Schema.Types.ObjectId, ref: "review" }]
+    routines: [{ type: Schema.Types.ObjectId, ref: "routine" }]
 }, {
     collection: "user",
     timestamps: true

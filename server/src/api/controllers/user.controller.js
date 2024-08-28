@@ -46,7 +46,7 @@ const login = async (req, res) => {
 const getUserById = async (req, res) => {
     const { id } = req.params;
     try {
-        const findUser = await User.findById(id).populate("reviews").populate("routines");
+        const findUser = await User.findById(id).populate("routines");
         if (!findUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
@@ -79,7 +79,7 @@ const getUsers = async (req, res) => {
         }
 
 
-        const findUsers = await User.find().skip((pag - 1) * limit).limit(limit).populate("reviews").populate("routines");
+        const findUsers = await User.find().skip((pag - 1) * limit).limit(limit).populate("routines");
         if (!findUsers) {
             return res.status(404).json({ message: "No existen usuarios" });
         } else {
@@ -202,4 +202,4 @@ const deleteUser = async (req, res) => {
 
 }
 
-module.exports = { addUser, login, getUserById, getUsers, deleteUser, updateUser, addRoutineToUser, addReviewToUser, deleteRoutinefromUser, deleteReviewfromUser }
+module.exports = { addUser, login, getUserById, getUsers, deleteUser, updateUser, addRoutineToUser, deleteRoutinefromUser }
