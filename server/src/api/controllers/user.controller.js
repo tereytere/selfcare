@@ -114,7 +114,7 @@ const addRoutineToUser = async (req, res) => {
 
     const { idU, idR } = req.params;
     try {
-        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { routines: id = idR } }, { new: true });
+        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { routines: idR } }, { new: true });
         if (!modifyUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
@@ -129,7 +129,7 @@ const addReviewToUser = async (req, res) => {
 
     const { idU, idRe } = req.params;
     try {
-        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { reviews: id = idRe } }, { new: true });
+        const modifyUser = await User.findByIdAndUpdate(idU, { $push: { reviews: idRe } }, { new: true });
         if (!modifyUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
@@ -144,7 +144,7 @@ const deleteRoutinefromUser = async (req, res) => {
 
     const { idU, idR } = req.params;
     try {
-        const modifyUser = await User.findByIdAndUpdate(idU, { $pull: { routines: id = idR } }, { new: true });
+        const modifyUser = await User.findByIdAndUpdate(idU, { $pull: { routines: idR } }, { new: true });
         if (!modifyUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
@@ -159,7 +159,7 @@ const deleteReviewfromUser = async (req, res) => {
 
     const { idU, idRe } = req.params;
     try {
-        const modifyUser = await User.findByIdAndUpdate(idU, { $pull: { reviews: id = idRe } }, { new: true });
+        const modifyUser = await User.findByIdAndUpdate(idU, { $pull: { reviews: idRe } }, { new: true });
         if (!modifyUser) {
             return res.status(404).json({ message: "El usuario no existe" });
         } else {
