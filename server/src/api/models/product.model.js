@@ -2,6 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
+    name: { type: String, require: true },
+    category: { type: String, require: true, enum: ["face", "body", "mouth", "hair", "hands", "feet"] },
+    properties: { type: String, require: true },
+    image: { type: String, require: true },
+    reviews: [{ type: Schema.Types.ObjectId, ref: "review" }],
+    shoplink: { type: String, require: true }
 }, {
     collection: "product",
     timestamps: true
