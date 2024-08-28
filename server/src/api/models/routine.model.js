@@ -6,9 +6,7 @@ const userSchema = new Schema({
     category: { type: String, require: true, enum: ["face", "body", "mouth", "hair", "hands", "feet"] },
     applyschedule: { type: String, require: true, enum: ["morning", "afternoon", "night", "other"] },
     repeat: [{ type: String, require: true }],
-    products: [{
-        id: { type: Schema.Types.ObjectId, ref: "product" }
-    }],
+    products: [{ type: Schema.Types.ObjectId, ref: "product" }],
     usesteps: { type: String },
     description: { type: String }
 
