@@ -11,8 +11,6 @@ const isAuth = async (req, res, next) => {
         return res.status(407).json({ message: "No hay token" })
     }
     const tokenVerify = verifyToken(token);
-    console.log(token)
-    console.log(tokenVerify)
     if (!tokenVerify.id) {
         return res.status(404).json({ message: "No existe este ID" })
     }
