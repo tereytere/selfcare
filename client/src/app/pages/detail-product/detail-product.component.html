@@ -1,1 +1,15 @@
-<p>detail-product works!</p>
+@if(product){
+<h1>{{product.name}} </h1>
+<h5>{{product.category}} </h5>
+
+
+<img src="{{product.image}}" alt="{{product.name}}" width="300" height="300">
+
+<p>{{product.properties}} </p>
+
+<a href="{{product.shoplink}}" target="_blank">Comprar</a>
+<p>Fecha de creación: {{product.createdAt}} </p>
+<p>Fecha de actualización: {{product.updatedAt}} </p>
+
+
+}
