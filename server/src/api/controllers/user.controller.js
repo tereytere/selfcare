@@ -10,7 +10,7 @@ const addUser = async (req, res) => {
         const findUser = await User.find({ email: newUser.email })
         if (findUser.length === 0) {
             if (req.file) {
-                newUser.image = req.file;
+                newUser.image = req.file.path;
             }
             newUser.password = bcrypt.hashSync(newUser.password, 10);
             const createdUser = await newUser.save();

@@ -27,7 +27,7 @@ const getAllRoutine = async (req, res) => {
         const numRoutines = await Routine.countDocuments();
 
 
-        limit = limit >= 10 ? 20 : limit <= 0 ? 10 : limit;
+        limit = limit >= 20 ? 20 : limit <= 10 ? 10 : limit;
         pag = !isNaN(pag) ? pag : 1;
         limit = !isNaN(limit) ? limit : 10;
 
