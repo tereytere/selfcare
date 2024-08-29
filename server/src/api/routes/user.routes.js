@@ -10,8 +10,6 @@ router.get("/user/:id", [isAuth], getUserById);
 router.put("/user/:id", [isAuth], updateUser);
 router.put("/user/routine/add/:idU/:idR", [isAuth], addRoutineToUser);
 router.put("/user/routine/delete/:idU/:idR", [isAuth], deleteRoutinefromUser);
-//router.put("/user/review/add/:idU/:idRe", [isAuth], addReviewToUser);
-//router.put("/user/review/delete/:idU/:idRe", [isAuth], deleteReviewfromUser);
 router.get("/users", [isAdmin], getUsers);
 router.delete("/deleteuser", [isAdmin], deleteUser);
 
