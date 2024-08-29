@@ -4,7 +4,7 @@ const { connectDB } = require("./src/utils/db");
 const userRouter = require("./src/api/routes/user.routes");
 const productRouter = require("./src/api/routes/product.routes");
 const routineRouter = require("./src/api/routes/routine.routes");
-//const reviewRouter = require("./src/api/routes/review.routes");
+const reviewRouter = require("./src/api/routes/review.routes");
 const env = require("dotenv");
 env.config()
 
@@ -23,7 +23,7 @@ server.use(express.json())
 server.use("/", userRouter);
 server.use("/", productRouter);
 server.use("/", routineRouter);
-//server.use("/", reviewRouter);
+server.use("/", reviewRouter);
 server.use(cors());
 
 server.listen(PORT, () => {
