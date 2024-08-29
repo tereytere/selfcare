@@ -11,7 +11,7 @@ router.get("/review/:id", getReview);
 router.get("/reviews", getAllReviews);
 
 // Crear una nueva reseña (requiere autenticación)
-router.post("/addReview/:idR", [isAuth], addReview);
+router.post("/addReview/:idU/:idR", [isAuth], addReview);
 
 // Borrar una reseña por ID (requiere autenticación y autorización)
 router.delete("/deletereview/:id", [isAuth, isAdmin], deleteReview);
