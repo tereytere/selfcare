@@ -11,6 +11,7 @@ router.put("/user/:id", [isAuth], updateUser);
 router.put("/user/routine/add/:idU/:idR", [isAuth], addRoutineToUser);
 router.put("/user/routine/delete/:idU/:idR", [isAuth], deleteRoutinefromUser);
 router.get("/users", [isAdmin], getUsers);
-router.delete("/deleteuser", [isAdmin], deleteUser);
+router.delete("/user/:id", [isAuth], deleteUser);
+router.delete("/deleteuser/:id", [isAdmin], deleteUser);
 
 module.exports = router

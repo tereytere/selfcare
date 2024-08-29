@@ -150,12 +150,15 @@ const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
         const deleteUser = await User.findByIdAndDelete(id);
-        if (!deleteUser) {
-            return res.status(200).json({ success: false, message: "UserId not found" })
+        if (deleteUser) {
+            return res.status(202).json({ success: true, message: "User deleted successfully", deleted: deleteUser })
         }
-        if (deleteUser.image) {
+        if (deleteUser.image !== null) {
             deleteFile(deleteUser.image)
-            return res.status(200).json({ success: true, deleted: deleteUser });
+            return res.status(202).json({ success: true, message: "User deleted successfully", deleted: deleteUser });
+        }
+        else {
+            return res.status(404).json({ success: false, message: "UserId not found" })
         }
     } catch (error) {
         console.log(error);
