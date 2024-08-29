@@ -1,0 +1,78 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { lastValueFrom } from 'rxjs';
+import { Routine } from '../interfaces/routine.interface';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class RoutineService {
+
+  private baseUrl: string = /* ruta */`/routines`;
+
+
+  private httpClient = inject(HttpClient);
+
+
+  create(routine: Routine) {
+    return lastValueFrom(
+      this.httpClient.post<{ message: string, data: Routine }>(this.baseUrl, routine, this.createHeaders())
+    );
+  }
+
+
+  getAll(pag: number, limit: number) {
+    const params = { pag: pag.toString(), limit: limit.toString() };
+    return lastValueFrom(
+      this.httpClient.get<any>(this.baseUrl, { ...this.createHeaders(), params })
+    );
+  }
+
+
+  getById(id: string) {
+    return lastValueFrom(
+      this.httpClient.get<{ message: string, data: Routine }>(`${this.baseUrl}/${id}`, this.createHeaders())
+    );
+  }
+
+
+  update(id: string, routine: Routine) {
+    return lastValueFrom(
+      this.httpClient.put<{ message: string, data: Routine }>(`${this.baseUrl}/${id}`, routine, this.createHeaders())
+    );
+  }
+
+
+  deleteById(id: string) {
+    return lastValueFrom(
+      this.httpClient.delete<{ message: string, data: Routine }>(`${this.baseUrl}/${id}`, this.createHeaders())
+    );
+  }
+
+
+  addProductToRoutine(idR: string, idP: string) {
+    return lastValueFrom(
+      this.httpClient.put<{ message: string, data: Routine }>(`${this.baseUrl}/${idR}/addProduct/${idP}`, {}, this.createHeaders())
+    );
+  }
+
+
+  removeProductFromRoutine(idR: string, idP: string) {
+    return lastValueFrom(
+      this.httpClient.put<{ message: string, data: Routine }>(`${this.baseUrl}/${idR}/removeProduct/${idP}`, {}, this.createHeaders())
+    );
+  }
+
+
+  private createHeaders() {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('auth_token')!
+      })
+    };
+    return httpOptions;
+  }
+}
+
+
+

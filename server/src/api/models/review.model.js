@@ -8,7 +8,7 @@ const userSchema = new Schema({
     status: {
         type: String, enum: [
             "show", "hidden"
-        ]
+        ], default: "show"
     },
     stars: {
         type: Number, require: true, enum: [
