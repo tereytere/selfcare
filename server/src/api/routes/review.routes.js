@@ -1,26 +1,22 @@
 const express = require("express");
 const router = express.Router();
 
-// const { } = require("../controllers/review.controller");
-// const { isAuth, isAdmin } = require("../../middleware/auth");
+const { addReview, getReview, getAllReviews, deleteReview, updateReview } = require("../controllers/review.controller");
+const { isAuth } = require("../../middleware/auth");
 
+// Obtener una reseña por ID
+router.get("/review/:id", getReview);
 
+// Listar todas las reseñas
+router.get("/reviews", getAllReviews);
 
-// //una o todas
-// router.get("/getreview", getReview);
-// router.get("/getallreviews", getAllReviews);
+// Crear una nueva reseña (requiere autenticación)
+router.post("/review/add/:idU/:idR", [isAuth], addReview);
 
-// // por id y por nombre
-// router.get("/getbyid/:id", getRecipeById);
-// router.get("/getbyname/:name", getRecipeName);
+// Borrar una reseña por ID (requiere autenticación y autorización)
+router.delete("/review/delete/:id", [isAuth], deleteReview);
 
+// Actualizar una reseña por ID (requiere autenticación y verificar que el usuario es el autor)
+router.put("/review/update/:id", [isAuth], updateReview);
 
-// //borrar review
-// router.delete("/deletereview/:id", deleteReview);
-
-// //updatar review
-// router.put("/updatereview", updateReview);
-// router.put("/reviewhidden", [isAdmin], updateReviewHidden);
-
-
-module.exports = router
+module.exports = router;
