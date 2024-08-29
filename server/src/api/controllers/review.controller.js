@@ -1,5 +1,63 @@
 const User = require('../models/user.model');
+const User = require('../models/user.model');
 const Product = require('../models/product.model');
+const Review = require('../models/review.model'); 
+const addReview = async (req, res) => {
+    try {
+        const { idU, idR } = req.params; 
+        const { title, description, stars } = req.body;
+        const author = await User.findById(idU);
+        if (!author) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        const existingReview = await Review.findOne({ author: idU, routineId: idR });
+        if (existingReview) {
+            return res.status(409).json({ message: "You cannot create another review for the same routine" });
+        }
+        const newReview = new Review({
+            title,
+            description,
+            stars,
+            author: idU,
+            routineId: idR
+        });
+
+        const createdReview = await newReview.save();
+        await Routine.findByIdAndUpdate(idR, { $push: { reviews: createdReview._id }  }, {new: true});
+
+        return res.status(201).json({
+            message: "Review created",
+            data: createdReview
+        });
+    } catch (error) {
+        console.error('Error creating the review:', error);
+        return res.status(500).json({ message: "Error creating the review" });
+    }
+};
+
+/*const addReviewToUser = async (req, res) => {
+
+    const { idU, idRe } = req.params;
+    try {
+        const findUser = await User.findById(idU);
+        const reviews = findUser.reviews.includes(idR);
+        if (!reviews) {
+            const findUser = await User.find({ reviews: findUser.reviews })
+            if (findUser.length === 0) {
+                const modifyUser = await User.findByIdAndUpdate(idU, { $push: { reviews: idRe } }, { new: true });
+                if (!modifyUser) {
+                    return res.status(404).json({ message: "El usuario no existe" });
+                } else {
+                    return res.status(200).json({ message: "Usuario modificado", data: modifyUser });
+                }
+            }
+        } else {
+            return res.status(409).json({ message: "La review ya existe" });
+        }
+    } catch (error) {
+        console.log(error);
+    }
+}*/
 //obtener un producto por id
 const getReview = async (req, res) => {
     try {
@@ -25,7 +83,7 @@ const getAllReviews = async (req, res) => {
         pag = !isNaN(pag) ? pag : 1;
         limit = !isNaN(limit) ? limit : 20;
         limit = limit > 20 ? 20 : limit < 10 ? 10 : limit;
-
+        
         const numReviews = await Review.countDocuments();
 
         let numPage = Math.ceil(numReviews / limit);
@@ -47,49 +105,6 @@ const getAllReviews = async (req, res) => {
     } catch (error) {
         console.log(error);
         return res.status(500).json({ message: "Error al obtener las reseñas" });
-    }
-};
-//agregar review 
-const addReview = async (req, res) => {
-    try {
-
-        const { title, description, stars, author } = req.body;
-
-  
-        if (!title || !description || !stars || !author) {
-            return res.status(400).json({ message: "Todos los campos son obligatorios" });
-        }
-
-  
-        const newReview = new Review({
-            title,
-            description,
-            stars,
-            author
-        });
-
-  
-        const existingReview = await Review.findOne({
-            description,
-            author,
-            stars
-        });
-
-        if (existingReview) {
-            return res.status(409).json({ message: "Review already exists" });
-        }
-
-
-        const createdReview = await newReview.save();
-
-
-        return res.status(201).json({
-            message: "Review created",
-            data: createdReview
-        });
-    } catch (error) {
-        console.error('Error creating review:', error);
-        return res.status(500).json({ message: "Error creating review" });
     }
 };
 
@@ -116,17 +131,19 @@ const updateReview = async (req, res) => {
 const deleteReview = async (req, res) => {
     try {
         const { id } = req.params;
+
         const deleteRe = await Review.findByIdAndDelete(id);
+
         if (deleteRe) {
-            res.status(201).json({ success: true, message: deleteRe })
+            await Routine.findByIdAndUpdate(deleteRe.routineId, { $pull: { reviews: id } });
+            return res.status(200).json({ success: true, message: "Review deleted successfully", data: deleteRe });
         } else {
-            res.status(200).json({ success: false, message: "No existe el id" })
+            return res.status(404).json({ success: false, message: "Review ID does not exist" });
         }
-
     } catch (error) {
-        res.status(500).json(error)
+        console.error('Error deleting the review:', error);
+        return res.status(500).json({ success: false, message: "Error deleting the review", error });
     }
+};
 
-
-}
 module.exports = { deleteReview, updateReview,getReview,getAllReviews,addReview }
