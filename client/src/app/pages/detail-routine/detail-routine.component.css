@@ -21,9 +21,19 @@
     & .column-products {
         width: 30%;
 
+        & div.p-datatable-header {
+            padding: 0;
+        }
+
+        & .body {
+            padding: 0;
+            height: 20px;
+        }
+
         & .td {
-            height: 50px;
+            height: 30px;
             overflow: hidden;
+            padding: 0;
         }
 
         & img.shadow-4 {
@@ -31,6 +41,7 @@
             width: 50px;
             overflow: hidden;
             object-fit: cover;
+            padding: 0;
         }
 
 
@@ -40,7 +51,6 @@
         width: 70%;
 
         & p {
-
             padding: 30px;
         }
     }
