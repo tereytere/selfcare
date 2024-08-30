@@ -1,17 +1,5 @@
-<<<<<<< HEAD
-import { Component } from '@angular/core';
 
-@Component({
-  selector: 'app-products',
-  standalone: true,
-  imports: [],
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
-})
-export class ProductsComponent {
 
-}
-=======
 import { PaginatorModule } from 'primeng/paginator';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit, inject } from '@angular/core';
@@ -60,4 +48,4 @@ export class ProductsComponent implements OnInit {
   }
 }
 
->>>>>>> miguel
+
