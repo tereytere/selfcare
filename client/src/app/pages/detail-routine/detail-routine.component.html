@@ -1,1 +1,28 @@
-<p>detail-routine works!</p>
+@if(routine) {
+<div class="routine {{routine.category}}">
+    <h1>{{routine.name}}</h1>
+</div>
+<div class="routineCenter">
+    <div class="column-products">
+        <p-table [value]="routineProducts" [tableStyle]="{'min-width': '25rem'}">
+            <ng-template pTemplate="caption">
+                <div class="flex align-items-center justify-content-between">
+                    Productos de la rutina
+                </div>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td><img [src]="product.image" [alt]="product.name" width="50" class="shadow-4" /></td>
+                    <td>{{product.name}}</td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="summary">
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="column-routine">
+        <p>{{routine.description}}</p>
+    </div>
+</div>
+
+}

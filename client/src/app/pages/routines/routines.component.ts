@@ -5,12 +5,13 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { CardRoutineAllComponent } from '../../components/card-routine-all/card.component';
 
 
 @Component({
   selector: 'routines',
   standalone: true,
-  imports: [PaginatorModule, TableModule, InputTextModule, ButtonModule],
+  imports: [PaginatorModule, TableModule, InputTextModule, ButtonModule, CardRoutineAllComponent],
   templateUrl: './routines.component.html',
   styleUrl: './routines.component.css'
 })
