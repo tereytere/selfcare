@@ -1,0 +1,47 @@
+.body {
+    background-image: url('../../assets/images/hombreojos.png');
+}
+
+.routine {
+    height: 180px;
+    text-align: center;
+    align-content: center;
+
+    & h1 {
+        color: white;
+        font-family: --title-font;
+        font-size: 50px;
+    }
+}
+
+.routineCenter {
+    display: flex;
+    margin: 20px 0;
+
+    & .column-products {
+        width: 30%;
+
+        & .td {
+            height: 50px;
+            overflow: hidden;
+        }
+
+        & img.shadow-4 {
+            height: 50px;
+            width: 50px;
+            overflow: hidden;
+            object-fit: cover;
+        }
+
+
+    }
+
+    & .column-routine {
+        width: 70%;
+
+        & p {
+
+            padding: 30px;
+        }
+    }
+}

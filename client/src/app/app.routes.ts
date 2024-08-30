@@ -1,3 +1,4 @@
+import { DetailRoutineComponent } from './pages/detail-routine/detail-routine.component';
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -17,5 +18,6 @@ export const routes: Routes = [
     component: HomeComponent
   },
 
+  { path: 'routine/:id', component: DetailRoutineComponent }
 
 ];
