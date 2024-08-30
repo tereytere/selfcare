@@ -3,11 +3,10 @@
   --title-font: "Josefin Sans", sans-serif;
   --corporate-color: #CABA9F;
   --secondary-color: #A3897a;
+  --background-color: #f4f1eb;
 }
 
 * {
-  padding: 0;
-  margin: 0;
   box-sizing: border-box;
   font-family: var(--text-font);
 }
