@@ -1,10 +1,11 @@
+import { Product } from './../../interfaces/product.interface';
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../services/product.service';
-import { Product } from '../../interfaces/product.interface';
+
 
 @Component({
-  selector: 'app-detail-product',
+  selector: 'detail-product',
   standalone: true,
   imports: [],
   templateUrl: './detail-product.component.html',
@@ -12,7 +13,7 @@ import { Product } from '../../interfaces/product.interface';
 })
 export class DetailProductComponent {
 
-  product: Product | null = null;
+  /*  product: Product = new Product; */
   activatedRoute = inject(ActivatedRoute);
   productService = inject(ProductService);
 
@@ -21,7 +22,7 @@ export class DetailProductComponent {
     this.activatedRoute.params.subscribe(async params => {
       //params['productId']---> el id del empleado
       const response = await this.productService.getById(params['productId']);
-      this.product = response;
+      /* this.product = response; */
 
     });
   }
