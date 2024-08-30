@@ -1,4 +1,5 @@
 const User = require('../models/user.model');
+const User = require('../models/user.model');
 const Review = require('../models/review.model');
 const Routine = require('../models/routine.model');
 

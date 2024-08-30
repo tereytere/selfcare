@@ -10,7 +10,7 @@ const addUser = async (req, res) => {
         const findUser = await User.find({ email: newUser.email })
         if (findUser.length === 0) {
             if (req.file) {
-                newUser.image = req.file;
+                newUser.image = req.file.path;
             }
             newUser.password = bcrypt.hashSync(newUser.password, 10);
             const createdUser = await newUser.save();
@@ -96,8 +96,8 @@ const getUsers = async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
-    const { id } = req.params;
     try {
+        const { id } = req.params;
         const body = req.body;
         const findUser = await User.findByIdAndUpdate(id, body, { new: true });
         if (!findUser) {
@@ -150,12 +150,15 @@ const deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
         const deleteUser = await User.findByIdAndDelete(id);
-        if (!deleteUser) {
-            return res.status(200).json({ success: false, message: "UserId not found" })
+        if (deleteUser) {
+            return res.status(202).json({ success: true, message: "User deleted successfully", deleted: deleteUser })
         }
-        if (deleteUser.image) {
+        if (deleteUser.image !== null) {
             deleteFile(deleteUser.image)
-            return res.status(200).json({ success: true, deleted: deleteUser });
+            return res.status(202).json({ success: true, message: "User deleted successfully", deleted: deleteUser });
+        }
+        else {
+            return res.status(404).json({ success: false, message: "UserId not found" })
         }
     } catch (error) {
         console.log(error);
