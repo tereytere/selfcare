@@ -13,9 +13,14 @@ import { ProductService } from '../../services/product.service';
 })
 export class DetailProductComponent {
 
-  /*  product: Product = new Product; */
-/* activatedRoute = inject(ActivatedRoute);
-productService = inject(ProductService);
+
+
+
+
+  product: Product | null = null;
+  //routineProducts: Product[] = [];
+  activatedRoute = inject(ActivatedRoute);
+  productService = inject(ProductService);
 
 //Recuperar el id del producto cuando arranca el componente
 ngOnInit() {
