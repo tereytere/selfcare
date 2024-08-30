@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-
-
-=======
->>>>>>> miguel
 import { PaginatorModule } from 'primeng/paginator';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit, inject } from '@angular/core';
