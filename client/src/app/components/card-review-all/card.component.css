@@ -1,0 +1,25 @@
+.card-container {
+    border-radius: 0.3125rem;
+    overflow: hidden;
+    width: 360px;
+}
+
+.p-card-header {
+    overflow: hidden;
+}
+
+img {
+    /* border-radius: 8px; */
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 0.3125rem;
+    border-top-right-radius: 0.3125rem;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    object-fit: cover;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
