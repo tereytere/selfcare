@@ -21,7 +21,7 @@ export class DetailProductComponent {
     this.activatedRoute.params.subscribe(async params => {
       //params['productId']---> el id del empleado
       const response = await this.productService.getById(params['productId']);
-      this.product = response;
+      //this.product = response;
 
     });
   }

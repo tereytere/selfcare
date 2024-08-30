@@ -31,8 +31,10 @@ export class RoutineService {
 
 
   getById(id: string) {
+    console.log(id);
+
     return lastValueFrom(
-      this.httpClient.get<{ message: string, data: Routine }>(`${this.baseUrl}/routine/${id}`, this.createHeaders())
+      this.httpClient.get<{ message: string, data: Routine }>(`${this.baseUrl}/routine/${id}`)
     );
   }
 
@@ -68,7 +70,7 @@ export class RoutineService {
   private createHeaders() {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('auth_token')!
+        'Authorization': localStorage.getItem('token')!
       })
     };
     return httpOptions;
