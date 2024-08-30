@@ -1,0 +1,43 @@
+.routines-container {
+    padding: 1.25rem;
+}
+
+.page-title {
+    font-size: 3rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    font-family: var(--title-font);
+    color: var(--secondary-color);
+}
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+.search-bar {
+    width: 15.625rem;
+}
+
+
+.routines-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+
+    justify-content: center;
+}
+
+.routine-card {
+    flex: 1 1 calc(33.333% - 1.25rem);
+
+    box-sizing: border-box;
+}
+
+.paginator-custom {
+    margin-top: 1.25rem;
+    display: flex;
+    justify-content: center;
+}

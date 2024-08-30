@@ -1,1 +1,25 @@
-<p>routines works!</p>
+<div class="routines-container">
+    <h1 class="page-title">Routines</h1>
+
+    <div class="toolbar">
+
+        <!--  <p-button icon="pi pi-plus" label="Add Routine" class="p-button-success"></p-button>
+      <p-inputText placeholder="Search routines..." (input)="onSearch($event)" class="search-bar"></p-inputText> -->
+    </div>
+
+
+    <div class="routines-grid">
+        <div class="routine-card">
+            @for( rout of routines; track rout._id){
+            <p>Hola</p>
+            <!-- <app-card-routine [routine]="routine"></app-card-routine> -->
+
+            }
+        </div>
+    </div>
+
+
+    <p-paginator [rows]="itemsPerPage" [totalRecords]="totalPages * itemsPerPage" (onPageChange)="onPageChange($event)"
+        class="paginator-custom">
+    </p-paginator>
+</div>
