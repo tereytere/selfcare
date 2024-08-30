@@ -1,0 +1,22 @@
+.corporate_primary {
+  background-color: var(--corporate-color);
+  color: white;
+  border: 0.0625rem solid transparent;
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+  align-items: center;
+  vertical-align: bottom;
+  text-align: center;
+  overflow: hidden;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  border-radius: 0.375rem;
+  outline-color: transparent;
+  font-weight: 700;
+
+  &:hover {
+    background-color: var(--secondary-color);
+  }
+}
