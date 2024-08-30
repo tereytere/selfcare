@@ -6,9 +6,9 @@ const { addRoutine, getAllRoutine, deleteRoutine, getRoutine, updateRoutine, add
 
 router.post("/routine/add", addRoutine, [isAuth])
 router.get("/routines", getAllRoutine)
-router.delete("/deleteroutine", deleteRoutine, [isAuth])
+router.delete("/routine/delete/:id", deleteRoutine, [isAuth])
 router.get("/routine/:id", getRoutine)
-router.put("/routine/:id", updateRoutine, [isAuth])
+router.put("/routine/update/:id", updateRoutine, [isAuth])
 router.put("/routine/product/add/:idR/:idP", addProductRoutine, [isAuth])
 router.put("/routine/product/delete/:idR/:idP", deleteProductRoutine, [isAuth])
 //router.put("routine/review/add/:idRo/:idRe", addReviewRoutine, [isAuth])

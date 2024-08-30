@@ -1,4 +1,12 @@
-@import './app/pages/login/login.component.css';
+:root {
+  --text-font: "Roboto", sans-serif;
+  --title-font: "Josefin Sans", sans-serif;
+  --corporate-color: #CABA9F;
+  --secondary-color: #A3897a;
+  --background-color: #f4f1eb;
+}
+
 * {
   box-sizing: border-box;
+  font-family: var(--text-font);
 }

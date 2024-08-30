@@ -2,13 +2,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { Product } from '../interfaces/product.interface';
+import { environment } from '../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl: string = /* ruta */`/products`;
 
+  private baseUrl = environment.BASE_URL;
 
   private httpClient = inject(HttpClient);
 
@@ -18,14 +19,14 @@ export class ProductService {
     params = params.append('pag', pag.toString());
     params = params.append('limit', limit.toString());
     return lastValueFrom(
-      this.httpClient.get<any>(this.baseUrl)
+      this.httpClient.get<any>(this.baseUrl + '/products')
     );
   }
 
 
   getById(id: string) {
     return lastValueFrom(
-      this.httpClient.get<{ data: Product }>(`${this.baseUrl}/${id}`)
+      this.httpClient.get<{ data: Product }>(`${this.baseUrl}/product/${id}`)
     );
   }
 
@@ -40,7 +41,7 @@ export class ProductService {
     formData.append('image', imageFile);
 
     return lastValueFrom(
-      this.httpClient.post<{ message: string, data: Product }>(this.baseUrl, formData, this.createHeaders())
+      this.httpClient.post<{ message: string, data: Product }>(this.baseUrl + 'product/add', formData, this.createHeaders())
     );
   }
 
@@ -56,14 +57,14 @@ export class ProductService {
     }
 
     return lastValueFrom(
-      this.httpClient.put<{ message: string, data: Product }>(`${this.baseUrl}/${id}`, formData, this.createHeaders())
+      this.httpClient.put<{ message: string, data: Product }>(`${this.baseUrl}/product/update/${id}`, formData, this.createHeaders())
     );
   }
 
 
   deleteById(id: string) {
     return lastValueFrom(
-      this.httpClient.delete<{ message: string, data: Product }>(`${this.baseUrl}/${id}`, this.createHeaders())
+      this.httpClient.delete<{ message: string, data: Product }>(`${this.baseUrl}/product/delete/${id}`, this.createHeaders())
     );
   }
 
