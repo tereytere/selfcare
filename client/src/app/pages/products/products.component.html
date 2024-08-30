@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-<p>products works!</p>
-=======
 <div class="routines-container">
     <h1 class="page-title">Products</h1>
 
@@ -13,9 +10,9 @@
 
     <div class="products-grid">
         <div class="product-card">
-            @for( rout of routines; track rout._id){
-            <p>Hola</p>
-            <!-- <app-card-routine [routine]="routine"></app-card-routine> -->
+            @for( prod of products; track prod._id){
+            <card-product-all [product]="prod"></card-product-all>
+
 
             }
         </div>
@@ -26,4 +23,3 @@
         class="paginator-custom">
     </p-paginator>
 </div>
->>>>>>> miguel
