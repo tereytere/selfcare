@@ -65,9 +65,10 @@ export class RoutineService {
 
 
   private createHeaders() {
+    const token = localStorage.getItem('token')!
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('auth_token')!
+        'Authorization': `Bearer ${token}`
       })
     };
     return httpOptions;
