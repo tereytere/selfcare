@@ -1,0 +1,5 @@
+<p-card class="card-container" id={{routine?._id}} [header]="routine?.name" [subheader]="routine?.category">
+    <ng-template pTemplate="header">
+        <img alt={{routine?.name}} src="../../../../public/image/${routine?.category}.jpg" />
+    </ng-template>
+</p-card>

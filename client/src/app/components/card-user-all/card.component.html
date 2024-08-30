@@ -1,0 +1,12 @@
+<p-card class="card-container" id={{user?._id}} [header]="user?.name" [subheader]="user?.email">
+    <ng-template pTemplate="header">
+        <img alt={{user?.name}} src={{user?.image}} />
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+            <p-button label="Editar" severity="secondary" class="w-full" styleClass="w-full" />
+            <p-button label="Borrar" class="w-full ms-2" styleClass="w-full" />
+        </div>
+    </ng-template>
+
+</p-card>
