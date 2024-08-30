@@ -1,4 +1,40 @@
 nav {
+  width: 100%;
   background-color: var(--corporate-color);
   color: white;
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+    padding-right: 0.625rem;
+
+    li {
+      display: inline-block;
+      margin: 0 0.625rem;
+      padding: 0.625rem;
+      font-weight: 700;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--secondary-color);
+        border-radius: 0.625rem;
+      }
+
+    }
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.headerdiv {
+  padding: 0.625rem;
+  background-color: var(--background-color);
 }

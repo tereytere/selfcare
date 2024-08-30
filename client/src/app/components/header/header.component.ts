@@ -15,12 +15,28 @@ import { ButtonModule } from 'primeng/button';
 export class HeaderComponent {
   router = inject(Router);
   userService = inject(UserService);
-  token = localStorage.getItem('token');
-  decodedToken = JSON.parse(atob(this.token!.split('.')[1]));
-  userId = this.decodedToken.id;
+  user: any = null;
+
+  constructor() {
+    this.initializeUser();
+  }
+
+  async initializeUser() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        this.user = await this.userService.getById(decodedToken.id);
+      } catch (error) {
+        console.error('Failed to decode token or fetch user:', error);
+        this.onClickLogout();
+      }
+    }
+  }
 
   async onClickLogout() {
     localStorage.removeItem('token');
+    this.user = null;
     this.router.navigateByUrl('/home');
   }
 
@@ -28,5 +44,15 @@ export class HeaderComponent {
     this.router.navigateByUrl('/login');
   }
 
+  async onClickUser() {
+    if (this.user && this.user.id) {
+      this.router.navigateByUrl(`/user/${this.user.id}`);
+    } else {
+      console.error('User ID is not available');
+    }
+  }
 
+  isLoggedIn(): boolean {
+    return !this.user;
+  }
 }
