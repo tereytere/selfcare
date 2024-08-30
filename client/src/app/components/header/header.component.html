@@ -1,20 +1,22 @@
 <header>
-    <nav>
-        <div class="logo">
-            <img src="../../../../public/favicon.ico" alt="selfcare">
-        </div>
-        <ul>
-            <li [routerLink]="['/routines']" routerLinkActive="activo">Rutinas</li>
-            <li [routerLink]="['/products']" routerLinkActive="activo">Productos</li>
-        </ul>
-    </nav>
-    <div className='flex headerdiv'>
-        @if(userService.isLogged()){
-        <img src='https://res.cloudinary.com/dk2lcfwx5/image/upload/v1724322871/users/ltcagpxild7fzreyw7o0.jpg'
-            alt='Tu Nombre' />
-        <custom-button [label]="'Logout'" (onClick)="onClickLogout()" />
-        }@else{
-        <custom-button [label]="'Login'" (onClick)="onClickLogin()" />
-        }
+  <nav>
+    <div class="logo">
+      <img src="https://res.cloudinary.com/dk2lcfwx5/image/upload/v1724322871/users/ltcagpxild7fzreyw7o0.jpg"
+        alt="selfcare">
     </div>
+    <ul>
+      <li [routerLink]="['/routines']" routerLinkActive="activo">Rutinas</li>
+      <li [routerLink]="['/products']" routerLinkActive="activo">Productos</li>
+    </ul>
+  </nav>
+  <div class='flex headerdiv'>
+    @if(userService.isLogged()){
+    <img
+      [src]="user?.image || 'https://res.cloudinary.com/dk2lcfwx5/image/upload/v1724322871/users/ltcagpxild7fzreyw7o0.jpg'"
+      [alt]="user?.name || 'username'" (onClick)="onClickUser()" />
+    <custom-button [label]="'Logout'" (onClick)="onClickLogout()" />
+    }@else{
+    <custom-button [label]="'Login'" (onClick)="onClickLogin()" />
+    }
+  </div>
 </header>
