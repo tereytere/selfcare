@@ -6,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
-
+import { DividerModule } from 'primeng/divider';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -15,7 +15,8 @@ import { Router } from '@angular/router';
     ReactiveFormsModule,
     InputTextModule,
     ButtonModule,
-    HttpClientModule 
+    HttpClientModule ,
+    DividerModule 
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -49,7 +50,7 @@ export class LoginComponent {
         .subscribe({
           next: (response: any) => {
             console.log('Login exitoso', response);
-            this.router.navigate(['http://localhost:5000/getAll']);
+            this.router.navigate(['http://localhost:5000/home']);
           },
           error: (error) => {
             console.error('Error en el login', error);

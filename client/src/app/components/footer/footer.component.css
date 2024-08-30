@@ -1,0 +1,161 @@
+/* Estilos generales */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Color de texto blanco */
+}
+
+/* Contenedor principal para flexbox */
+.footer-content {
+    display: flex;
+    flex-direction: row; /* Alinea las secciones horizontalmente */
+    justify-content: space-between; /* Espacio equitativo entre las secciones */
+    flex-wrap: wrap; /* Permite que las secciones se ajusten en la siguiente línea si es necesario */
+    gap: 20px; /* Espacio entre las secciones */
+}
+
+/* Secciones del pie de página */
+.footer-section {
+    flex: 1; /* Permite que las secciones crezcan igualmente */
+    min-width: 200px; /* Ancho mínimo para las secciones */
+    margin-bottom: 20px; /* Espacio inferior entre las secciones */
+    display: flex;
+    flex-direction: column; /* Alinea el contenido dentro de cada sección en columna */
+}
+
+/* Encabezados */
+h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #fff; /* Color de texto blanco */
+}
+
+/* Estilos para las imágenes */
+.footer-section img {
+    max-width: 100%;
+    height: auto;
+}
+
+.footer-info img {
+    display: block;
+    margin: 0 auto 20px;
+}
+
+/* Párrafos */
+p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #ccc; /* Color de texto ligeramente más claro */
+}
+
+p.text-xs-center {
+    text-align: center;
+}
+
+p.text-sm-left {
+    text-align: left;
+}
+
+.h3 {
+    font-size: 18px;
+    margin: 20px 0;
+    color: #fff; /* Color de texto blanco */
+}
+
+/* Estilos para el formulario de newsletter */
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.input-wrapper input[type="email"] {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #666; /* Borde gris claro */
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #333; /* Fondo gris oscuro para el campo de entrada */
+    color: #fff; /* Texto blanco en el campo de entrada */
+}
+
+.input-wrapper button {
+    background-color: #007bff;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.input-wrapper button[disabled] {
+    background-color: #555; /* Fondo gris más oscuro para el botón deshabilitado */
+    cursor: not-allowed;
+}
+
+/* Estilos para el consentimiento de GDPR */
+.gdpr_consent {
+    margin-top: 20px;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+}
+
+.custom-checkbox label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #ccc; /* Color de texto ligeramente más claro */
+}
+
+.custom-checkbox input {
+    margin-right: 10px;
+}
+
+.custom-checkbox span {
+    margin-left: 5px;
+}
+
+.custom-checkbox a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.custom-checkbox a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para los iconos sociales */
+.social-block-icon {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.social-block-icon svg {
+    fill: #fff; /* Color de los iconos blanco */
+    transition: fill 0.3s ease;
+}
+
+.social-block-icon:hover svg {
+    fill: #007bff; /* Color de los iconos al pasar el ratón */
+}
+
+/* Quitar los puntos de las listas */
+ul, ol {
+    list-style-type: none; /* Elimina los puntos de las listas */
+    padding: 0; /* Elimina el padding predeterminado */
+    margin: 0; /* Elimina el margen predeterminado */
+}
+
+/* Asegúrate de que los elementos de lista tengan el margen y padding correctos */
+li {
+    margin: 0;
+    padding: 0;
+}
+
