@@ -1,36 +1,29 @@
 <div class="login-container">
-    <div class="login-form">
-      <h2>Iniciar sesión</h2>
-      <form (submit)="onSubmit($event)">
-        <div class="form-group">
+  <div class="login-form">
+    <h2>Iniciar sesión</h2>
+    <form class="mt-5" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <span class="p-float-label">
+          <input type="text" id="email" pInputText formControlName="email" required />
           <label for="email">Correo electrónico</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            class="form-control"
-          />
-          
-          <div class="error">
-            {{ emailError }}
-          </div>
+        </span>
+        <div class="error">
+          {{ emailError }}
         </div>
-        <div class="form-group">
+      </div>
+      <div class="mb-4">
+        <span class="p-float-label">
+          <input type="password" id="password" pInputText formControlName="password" required />
           <label for="password">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            class="form-control"
-          />
-          <div  class="error">
-            {{ passwordError }}
-          </div>
+        </span>
+        <div class="error">
+          {{ passwordError }}
         </div>
-        <button type="submit" [disabled]="!isFormValid()" class="btn btn-primary">Iniciar sesión</button>
-      </form>
+      </div>
+      <p-button type="submit" label="Iniciar sesión" [disabled]="!isFormValid()" [outlined]="true" severity="info"></p-button>
+    </form>
+    <div class="register-link mt-4">
+      <p>¿No tienes una cuenta? <a href="/register">Regístrate aquí</a></p>
     </div>
   </div>
-  
+</div>

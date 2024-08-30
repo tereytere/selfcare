@@ -1,53 +1,58 @@
 
 .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
-  }
-  
-  .login-form {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  input {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-  }
-  
-  .error {
-    color: red;
-    font-size: 12px;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+
+.login-form {
+  background: white;
+  padding: 30px; 
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  width: 350px; 
+}
+.form-group {
+  margin-bottom: 30px; 
+}
+.p-float-label label {
+  font-size: 16px; 
+  color: #333;
+  margin-bottom: 8px; 
+}
+.p-float-label input {
+  width: 100%;
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 6px; 
+}
+.p-float-label .p-inputtext:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25); 
+}
+.p-button {
+  width: 100%;
+  padding: 12px; 
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 6px; 
+  cursor: pointer;
+  font-size: 16px; 
+}
+
+
+.p-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  font-size: 14px; 
+  margin-top: 8px; 
+}

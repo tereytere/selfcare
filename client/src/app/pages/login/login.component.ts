@@ -1,66 +1,91 @@
 import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpClient, HttpClientModule } from '@angular/common/http'; 
+import { CommonModule } from '@angular/common'; 
 import { ReactiveFormsModule } from '@angular/forms';
-import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
-
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  standalone:true,
-  imports:[],
+  standalone: true,
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule,
+    InputTextModule,
+    ButtonModule,
+    HttpClientModule 
+  ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
-  
 })
 export class LoginComponent {
- 
-  model: any = {};
-  
+  formulario: FormGroup;
+
   emailError: string | null = null;
   passwordError: string | null = null;
 
-  
-  onSubmit(event: Event): void {
-    event.preventDefault(); 
+  constructor(
+    private fb: FormBuilder,
+    private http: HttpClient,
+    private router: Router 
+  ) {
+    this.formulario = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
+    });
+  }
+
+  onSubmit(): void {
     this.emailError = null;
     this.passwordError = null;
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const password = (document.getElementById('password') as HTMLInputElement).value;
-    let isValid = true;
 
-    if (!email) {
-      this.emailError = 'El correo electrónico es requerido.';
-      isValid = false;
-    } else if (!this.validateEmail(email)) {
-      this.emailError = 'El correo electrónico no es válido.';
-      isValid = false;
-    }
+    if (this.formulario.valid) {
+      const { email, password } = this.formulario.value;
 
-    if (!password) {
-      this.passwordError = 'La contraseña es requerida.';
-      isValid = false;
-    }
 
-    if (isValid) {
-      console.log('Formulario enviado', { email, password });
-
+      this.http.post(`http://localhost:5000/login `, { email, password })
+        .subscribe({
+          next: (response: any) => {
+            console.log('Login exitoso', response);
+            this.router.navigate(['http://localhost:5000/getAll']);
+          },
+          error: (error) => {
+            console.error('Error en el login', error);
+            if (error.status === 403) {
+              this.passwordError = 'Contraseña incorrecta.';
+            } else if (error.status === 404) {
+              this.emailError = 'El correo electrónico no existe.';
+            } else {
+              console.error('Error desconocido', error);
+            }
+          }
+        });
     } else {
-    
+      this.validateForm();
       console.error('Formulario no válido');
     }
   }
 
- 
-  validateEmail(email: string): boolean {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
+  validateForm(): void {
+    const emailControl = this.formulario.get('email');
+    const passwordControl = this.formulario.get('password');
+
+    if (emailControl?.invalid) {
+      if (emailControl.errors?.['required']) {
+        this.emailError = 'El correo electrónico es requerido.';
+      } else if (emailControl.errors?.['email']) {
+        this.emailError = 'El correo electrónico no es válido.';
+      }
+    }
+
+    if (passwordControl?.invalid) {
+      this.passwordError = 'La contraseña es requerida.';
+    }
   }
+
   isFormValid(): boolean {
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const password = (document.getElementById('password') as HTMLInputElement).value;
-    return email !== '' && this.validateEmail(email) && password !== '';
+    return this.formulario.valid;
   }
 }
-
-
