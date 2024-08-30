@@ -13,7 +13,12 @@ import { ProductService } from '../../services/product.service';
 })
 export class DetailProductComponent {
 
-  /*  product: Product = new Product; */
+
+
+
+
+  product: Product | null = null;
+  //routineProducts: Product[] = [];
   activatedRoute = inject(ActivatedRoute);
   productService = inject(ProductService);
 
