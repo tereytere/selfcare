@@ -7,5 +7,5 @@ export interface User {
   location: string;
   role: 'admin' | 'user';
   image?: string;
-  routines: string[];
+  routines?: string[];
 }
