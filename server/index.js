@@ -19,12 +19,12 @@ connectDB();
 const server = express();
 const PORT = process.env.PORT;
 
+server.use(cors());
 server.use(express.json())
 server.use("/", userRouter);
 server.use("/", productRouter);
 server.use("/", routineRouter);
 server.use("/", reviewRouter);
-server.use(cors());
 
 server.listen(PORT, () => {
     console.log(`listen port http://localhost:${PORT} `);

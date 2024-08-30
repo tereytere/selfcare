@@ -31,14 +31,14 @@ export class ProductService {
   }
 
 
-  addProduct(product: Product, imageFile: File) {
+  addProduct(product: Product) {
     const formData = new FormData();
     formData.append('name', product.name);
     formData.append('brand', product.brand);
     formData.append('category', product.category);
     formData.append('properties', product.properties);
     formData.append('shoplink', product.shoplink);
-    formData.append('image', imageFile);
+    formData.append('image', product.image);
 
     return lastValueFrom(
       this.httpClient.post<{ message: string, data: Product }>(this.baseUrl + 'product/add', formData, this.createHeaders())
