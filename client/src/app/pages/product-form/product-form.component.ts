@@ -6,7 +6,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { JsonPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
-import { InputLabelComponent } from '../../components/input-label/input-label.component';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -22,7 +21,7 @@ interface ProductCategory {
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [FormsModule, InputLabelComponent, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule, FileUploadModule],
+  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -51,16 +50,9 @@ export class ProductFormComponent {
 
   productsService = inject(ProductService);
   router = inject(Router);
+  formData = new FormData();
+  formData.append("image", image);
 
-  onUpload(event: any) {
-    const input = event.target as HTMLInputElement;
-    if (input && input.files && input.files.length > 0) {
-      const file = input.files[0];
-      this.formulario.patchValue({ image: file });
-      console.log(file);
-
-    }
-  }
 
   async onSubmit() {
     // if (this.formulario.value.category) {
