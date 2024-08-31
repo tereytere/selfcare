@@ -51,8 +51,10 @@ export class ProductFormComponent {
   onUpload(event: any) {
     const input = event.target as HTMLInputElement;
     if (input && input.files && input.files.length > 0) {
-      const file = input.files[0]; // Aquí usamos solo el primer archivo (archivo único)
+      const file = input.files[0];
       this.formulario.patchValue({ image: file });
+      console.log(file);
+
     }
   }
 
@@ -62,9 +64,17 @@ export class ProductFormComponent {
     }
 
     try {
-      console.log(this.formulario.value);
+      const formData = new FormData();
 
-      const response = await this.productsService.addProduct(this.formulario.value);
+      Object.keys(this.formulario.controls).forEach(key => {
+        const control = this.formulario.get(key);
+        if (key === 'image' && control?.value) {
+          formData.append(key, control.value);
+        } else {
+          formData.append(key, control?.value);
+        }
+      });
+      const response = await this.productsService.addProduct(formData);
 
       console.log(response.message);
 

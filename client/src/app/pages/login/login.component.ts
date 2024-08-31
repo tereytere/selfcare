@@ -1,3 +1,5 @@
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http'; 
@@ -5,12 +7,15 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
 import { ButtonComponent } from "../../components/button/button.component";
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule],
+  imports: [ButtonComponent, ReactiveFormsModule, FloatLabelModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 
@@ -21,6 +26,28 @@ export class LoginComponent {
     email: new FormControl(),
     password: new FormControl(),
   });
+
+
+  private userService = inject(UserService);
+  private router = inject(Router);
+
+  formulario: FormGroup = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.email])
+  })
+
+  async onSubmit() {
+    try {
+      const response = await this.userService.login(this.formulario.value);
+      this.router.navigate(['/home']);
+    } catch (error) {
+      console.error('Error registering user', error);
+    }
+  }
+
+
+}
+
 
 
   model: any = {};

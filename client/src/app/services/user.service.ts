@@ -3,17 +3,17 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { User } from '../interfaces/user.interface';
+import { tap } from 'rxjs/operators';
 
-type RegisterBody = {
-  name: string;
-  email: string;
-  about?: string;
-  password: string;
-  location: string;
-  role: 'admin' | 'user';
-  image?: string;
-  routines?: string[];
-}
+// type RegisterBody = {
+//   name: string;
+//   email: string;
+//   about?: string;
+//   password: string;
+//   location: string;
+//   image?: string;
+
+// }
 
 type LoginBody = {
   email: string,
@@ -29,12 +29,21 @@ export class UserService {
 
   private httpClient = inject(HttpClient);
 
-  register(body: RegisterBody) {
-    return lastValueFrom(this.httpClient.post<{ success: string }>(this.baseUrl + '/user/add', body))
+  private tokenKey = 'token';
+
+  register(body: any) {
+    return lastValueFrom(this.httpClient.post<{ message: string, data: User }>(this.baseUrl + '/user/add', body))
   }
 
   login(body: LoginBody) {
-    return lastValueFrom(this.httpClient.post<{ success: string, token: string }>(this.baseUrl + '/login', body))
+    return lastValueFrom(this.httpClient.post<{ message: string, token: string }>(this.baseUrl + '/login', body).pipe(
+      tap(response => this.setToken(response.token)) // Almacena el token recibido
+    ));
+  }
+
+
+  private setToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token); // Guarda el token en localStorage
   }
 
   isLogged() {
@@ -49,9 +58,13 @@ export class UserService {
   isAdmin() {
     const token = localStorage.getItem('token');
     if (token) {
-      const decodedToken = JSON.parse(atob(token.split('.')[1]));
-      //decodedToken.role should be admin
-      return true;
+      try {
+        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        return decodedToken.role === 'admin';
+      } catch (error) {
+        console.error('Error decoding token:', error);
+        return false;
+      }
     } else {
       return false;
     }
@@ -106,9 +119,10 @@ export class UserService {
   }
 
   private createHeaders() {
+    const token = localStorage.getItem('token');
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('auth_token')!
+        'Authorization': token ? `Bearer ${token}` : ''
       })
     };
     return httpOptions;
