@@ -27,12 +27,24 @@
             <label for="inputAbout">About</label>
         </p-floatLabel>
     </div>
+
     <div class="mb-4">
+        <p-floatLabel>
+            <select id="inputLocation" pInputText formControlName="location">
+                <option value="" disabled>Select a city</option>
+                @for(city of cities; track city) {
+                <option [value]="city">{{ city }}</option>
+                }
+            </select>
+
+        </p-floatLabel>
+    </div>
+    <!-- <div class="mb-4">
         <p-floatLabel>
             <input type="text" id="inputLocation" pInputText formControlName="location">
             <label for="inputLocation">Location</label>
         </p-floatLabel>
-    </div>
+    </div> -->
     <div class="image-button">
         <input type="file" #filePicker (change)="onUpload($event)">
         <!--  <p-fileUpload mode="basic" chooseLabel="Image" chooseIcon="fa-solid fa-arrow-up-from-bracket" name="image"
