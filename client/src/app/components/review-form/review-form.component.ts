@@ -1,12 +1,46 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { RatingModule } from 'primeng/rating';
+import { ButtonModule } from 'primeng/button';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-review-form',
+  selector: 'review-form',
   standalone: true,
-  imports: [],
+  imports: [
+    InputTextModule,
+    RatingModule,
+    ButtonModule,
+    InputTextareaModule,
+    ReactiveFormsModule
+  ],
   templateUrl: './review-form.component.html',
-  styleUrl: './review-form.component.css'
+  styleUrls: ['./review-form.component.css']
 })
 export class ReviewFormComponent {
+  reviewForm: FormGroup;
 
+  constructor(private fb: FormBuilder) {
+    this.reviewForm = this.fb.group({
+      title: ['', Validators.required],
+      stars: [0, Validators.required],
+      description: ['', Validators.required],
+    });
+  }
+
+  get starsControl(): FormControl {
+    return this.reviewForm.get('stars') as FormControl;
+  }
+
+  onSubmit() {
+    if (this.reviewForm.valid) {
+      console.log('Form Submitted', this.reviewForm.value);
+      // Maneja el envío del formulario, como, enviarlo a un servicio
+    } else {
+      console.log('Form is invalid');
+    }
+  }
 }
+
