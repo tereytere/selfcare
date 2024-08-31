@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Category, Product } from '../../interfaces/product.interface';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
@@ -13,6 +12,10 @@ import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
 import Swal from 'sweetalert2';
 
+interface ProductCategory {
+  name: string;
+  code: string;
+}
 
 
 
@@ -26,20 +29,21 @@ import Swal from 'sweetalert2';
 export class ProductFormComponent {
 
   errores: { field: string, message: string }[] = [];
-
-  category = [
-    { name: 'face', code: 'face' },
-    { name: 'body', code: 'body' },
-    { name: 'mouth', code: 'mouth' },
-    { name: 'hair', code: 'hair' },
-    { name: 'hands', code: 'hands' },
-    { name: 'feet', code: 'feet' }
-  ];
-
+  category: ProductCategory[] | undefined;
+  ngOnInit() {
+    this.category = [
+      { name: 'face', code: 'face' },
+      { name: 'body', code: 'body' },
+      { name: 'mouth', code: 'mouth' },
+      { name: 'hair', code: 'hair' },
+      { name: 'hands', code: 'hands' },
+      { name: 'feet', code: 'feet' }
+    ];
+  }
   formulario: FormGroup = new FormGroup({
     name: new FormControl(),
     brand: new FormControl(),
-    category: new FormControl(),
+    category: new FormControl<ProductCategory | null>(null),
     properties: new FormControl(),
     shoplink: new FormControl(),
     image: new FormControl(),
@@ -60,7 +64,8 @@ export class ProductFormComponent {
 
   async onSubmit() {
     if (this.formulario.value.category) {
-      this.formulario.value.category = this.formulario.value.category.name;
+      this.formulario.value.category = this.formulario.value.category.code;
+      console.log(this.formulario.value.category);
     }
 
     try {
