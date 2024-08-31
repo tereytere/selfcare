@@ -24,17 +24,16 @@
     <div class="mb-4">
         <p-floatLabel>
             <input type="text" id="inputShoplink" pInputText formControlName="shoplink">
-            <label for="inputShoplink">Marca</label>
+            <label for="inputShoplink">Link</label>
         </p-floatLabel>
     </div>
-    <!--     <div class="mb-4">
-        <p-floatLabel>
-            <input type="text" id="inputImage" pInputText formControlName="image">
-            <label for="inputImage">Imagen</label>
-        </p-floatLabel>
-    </div> -->
-
+    <div class="image-button">
+        <input type="file" #filePicker (change)="onUpload($event)">
+        <!--  <p-fileUpload mode="basic" chooseLabel="Image" chooseIcon="fa-solid fa-arrow-up-from-bracket" name="image"
+            accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" /> -->
+    </div>
     <p-button type="submit" label="Enviar" [outlined]="true" severity="info" />
+
 </form>
 
 <ul>
