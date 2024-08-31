@@ -1,1 +1,48 @@
-<p>routine-form works!</p>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+        <p-floatLabel>
+            <input id="name" pInputText formControlName="name">
+            <label for="name">Nombre Rutina</label>
+        </p-floatLabel>
+    </div>
+
+    <div class="mb-4">
+        <p-floatLabel>
+            <select id="category" pInputText formControlName="category">
+                <option value="" disabled>Select a category</option>
+                <option value="face">Face</option>
+                <option value="body">Body</option>
+                <option value="mouth">Mouth</option>
+                <option value="hair">Hair</option>
+                <option value="hands">Hands</option>
+                <option value="feet">Feet</option>
+                <option value="beard">Beard</option>
+            </select>
+            <label for="category">Category</label>
+        </p-floatLabel>
+    </div>
+
+    <div class="mb-4">
+        <p-floatLabel>
+            <select id="applyschedule" pInputText formControlName="applyschedule">
+                <option value="" disabled>Select a schedule</option>
+                <option value="morning">Morning</option>
+                <option value="afternoon">Afternoon</option>
+                <option value="night">Night</option>
+                <option value="other">Other</option>
+            </select>
+            <label for="applyschedule">Apply Schedule</label>
+        </p-floatLabel>
+    </div>
+
+    <!-- Repeat and Products fields would be similar, with the possibility of multiple selections or additions -->
+
+    <div class="mb-4">
+        <p-floatLabel>
+            <textarea id="description" pInputTextarea formControlName="description"></textarea>
+            <label for="description">Description</label>
+        </p-floatLabel>
+    </div>
+
+    <p-button type="submit" label="Save Routine"></p-button>
+</form>
