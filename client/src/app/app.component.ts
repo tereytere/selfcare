@@ -6,6 +6,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { RoutinesComponent } from './pages/routines/routines.component';
 import { CardReviewAllComponent } from "./components/card-review-all/card.component";
 
+
 @Component({
   selector: 'root',
   standalone: true,
