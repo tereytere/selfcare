@@ -7,24 +7,9 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { DividerModule } from 'primeng/divider';
+
+
 @Component({
-<<<<<<< HEAD
-  selector: 'app-login',
-  standalone: true,
-  imports: [
-    CommonModule, 
-    ReactiveFormsModule,
-    InputTextModule,
-    ButtonModule,
-    HttpClientModule ,
-    DividerModule 
-  ],
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-})
-export class LoginComponent {
-  formulario: FormGroup;
-=======
   selector: 'login',
   standalone: true,
   imports: [],
@@ -35,29 +20,13 @@ export class LoginComponent {
 export class LoginComponent {
 
   model: any = {};
->>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
 
   emailError: string | null = null;
   passwordError: string | null = null;
 
-<<<<<<< HEAD
-  constructor(
-    private fb: FormBuilder,
-    private http: HttpClient,
-    private router: Router 
-  ) {
-    this.formulario = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  }
-
-  onSubmit(): void {
-=======
 
   onSubmit(event: Event): void {
     event.preventDefault();
->>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
     this.emailError = null;
     this.passwordError = null;
 
@@ -83,37 +52,14 @@ export class LoginComponent {
           }
         });
     } else {
-<<<<<<< HEAD
-      this.validateForm();
-=======
-
->>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
       console.error('Formulario no válido');
     }
   }
 
-<<<<<<< HEAD
-  validateForm(): void {
-    const emailControl = this.formulario.get('email');
-    const passwordControl = this.formulario.get('password');
-
-    if (emailControl?.invalid) {
-      if (emailControl.errors?.['required']) {
-        this.emailError = 'El correo electrónico es requerido.';
-      } else if (emailControl.errors?.['email']) {
-        this.emailError = 'El correo electrónico no es válido.';
-      }
-    }
-
-    if (passwordControl?.invalid) {
-      this.passwordError = 'La contraseña es requerida.';
-    }
-=======
 
   validateEmail(email: string): boolean {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);
->>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
   }
 
   isFormValid(): boolean {
