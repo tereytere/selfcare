@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { lastValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { User } from '../interfaces/user.interface';
+import { tap } from 'rxjs/operators';
 
 type RegisterBody = {
   name: string;
@@ -28,12 +29,21 @@ export class UserService {
 
   private httpClient = inject(HttpClient);
 
+  private tokenKey = 'token';
+
   register(body: RegisterBody) {
     return lastValueFrom(this.httpClient.post<{ message: string, data: User }>(this.baseUrl + '/user/add', body))
   }
 
   login(body: LoginBody) {
-    return lastValueFrom(this.httpClient.post<{ success: string, token: string }>(this.baseUrl + '/login', body))
+    return lastValueFrom(this.httpClient.post<{ message: string, token: string }>(this.baseUrl + '/login', body).pipe(
+      tap(response => this.setToken(response.token)) // Almacena el token recibido
+    ));
+  }
+
+
+  private setToken(token: string): void {
+    localStorage.setItem(this.tokenKey, token); // Guarda el token en localStorage
   }
 
   isLogged() {
