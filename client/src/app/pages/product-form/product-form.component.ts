@@ -53,6 +53,8 @@ export class ProductFormComponent {
     if (input && input.files && input.files.length > 0) {
       const file = input.files[0];
       this.formulario.patchValue({ image: file.name });
+      console.log(file.name);
+
     }
   }
 
