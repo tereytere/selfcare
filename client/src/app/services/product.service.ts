@@ -31,7 +31,7 @@ export class ProductService {
   }
 
 
-  addProduct(body: Product) {
+  addProduct(body: any) {
     return lastValueFrom(
       this.httpClient.post<{ message: string, data: Product }>(this.baseUrl + '/product/add', body, this.createHeaders())
     );
