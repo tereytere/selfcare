@@ -6,23 +6,23 @@ import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
 
 
 @Component({
-  selector: 'app-login',
-  standalone:true,
-  imports:[],
+  selector: 'login',
+  standalone: true,
+  imports: [],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
-  
+
 })
 export class LoginComponent {
- 
+
   model: any = {};
-  
+
   emailError: string | null = null;
   passwordError: string | null = null;
 
-  
+
   onSubmit(event: Event): void {
-    event.preventDefault(); 
+    event.preventDefault();
     this.emailError = null;
     this.passwordError = null;
     const email = (document.getElementById('email') as HTMLInputElement).value;
@@ -46,12 +46,12 @@ export class LoginComponent {
       console.log('Formulario enviado', { email, password });
 
     } else {
-    
+
       console.error('Formulario no válido');
     }
   }
 
- 
+
   validateEmail(email: string): boolean {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailPattern.test(email);

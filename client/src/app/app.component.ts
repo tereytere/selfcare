@@ -7,7 +7,7 @@ import { RoutinesComponent } from './pages/routines/routines.component';
 import { CardReviewAllComponent } from "./components/card-review-all/card.component";
 
 @Component({
-  selector: 'app-root',
+  selector: 'root',
   standalone: true,
   imports: [RouterOutlet, HeaderComponent, FooterComponent, RoutinesComponent, CardReviewAllComponent],
   templateUrl: './app.component.html',

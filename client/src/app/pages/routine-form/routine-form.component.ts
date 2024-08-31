@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-routine-form',
+  selector: 'routine-form',
   standalone: true,
   imports: [],
   templateUrl: './routine-form.component.html',
