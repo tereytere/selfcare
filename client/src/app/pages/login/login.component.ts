@@ -3,16 +3,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http'; 
 import { CommonModule } from '@angular/common'; 
 import { ReactiveFormsModule } from '@angular/forms';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { Router } from '@angular/router';
-import { DividerModule } from 'primeng/divider';
+import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
+import { ButtonComponent } from "../../components/button/button.component";
 
 
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [],
+  imports: [ButtonComponent, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 
@@ -38,7 +36,7 @@ export class LoginComponent {
         .subscribe({
           next: (response: any) => {
             console.log('Login exitoso', response);
-            this.router.navigate(['http://localhost:5000/home']);
+            this.router.navigate(['/home']);
           },
           error: (error) => {
             console.error('Error en el login', error);
