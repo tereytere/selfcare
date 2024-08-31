@@ -53,9 +53,6 @@ export class DetailRoutineComponent {
     })
   }
   onRowSelect(event: any) {
-    console.log(event.data._id);
     this.router.navigateByUrl(`/product/${event.data._id}`);
-
-
   }
 }
