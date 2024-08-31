@@ -3,12 +3,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
+import { ButtonComponent } from "../../components/button/button.component";
 
 
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [],
+  imports: [ButtonComponent, ReactiveFormsModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 

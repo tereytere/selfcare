@@ -5,10 +5,11 @@ import { UserService } from '../../services/user.service';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 
+
 @Component({
   selector: 'register',
   standalone: true,
-  imports: [ButtonModule, FloatLabelModule, FormsModule, ReactiveFormsModule],
+  imports: [ButtonModule, FloatLabelModule, FormsModule, ReactiveFormsModule,],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
