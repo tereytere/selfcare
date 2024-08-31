@@ -63,19 +63,23 @@ export class ProductFormComponent {
   }
 
   async onSubmit() {
-    if (this.formulario.value.category) {
-      this.formulario.value.category = this.formulario.value.category.code;
-      console.log(this.formulario.value.category);
-    }
+    // if (this.formulario.value.category) {
+    //   this.formulario.value.category = this.formulario.value.category.code;
+    //   console.log(this.formulario.value.category);
+    // }
 
     try {
       const formData = new FormData();
+      console.log(this.formulario.controls);
 
       Object.keys(this.formulario.controls).forEach(key => {
         const control = this.formulario.get(key);
         if (key === 'image' && control?.value) {
           formData.append(key, control.value);
-        } else {
+        } else if (key === 'category') {
+          formData.append(key, control?.value.code);
+        }
+        else {
           formData.append(key, control?.value);
         }
       });
