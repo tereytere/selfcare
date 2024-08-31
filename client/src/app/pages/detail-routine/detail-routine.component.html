@@ -26,8 +26,11 @@
             <p>{{routine.description}}</p>
         </div>
     </div>
-    <div>
-
+    <div class="steps">
+        @for (step of routine.usesteps; track $index) {
+        <span>Paso {{$index + 1}}</span>
+        <p>{{step}}</p>
+        }
     </div>
     <div class="reviews-container">
         @for (review of routineReviews; track review._id) {
