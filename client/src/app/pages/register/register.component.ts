@@ -41,10 +41,7 @@ export class RegisterComponent {
 
   async onSubmit() {
     try {
-      console.log(this.formulario.value);
-
       const response = await this.userService.register(this.formulario.value);
-      console.log(response.message)
       this.router.navigate(['/login']);
     } catch (error) {
       this.errores = [{ message: 'An error occurred' }];
