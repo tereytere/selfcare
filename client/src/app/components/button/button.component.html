@@ -1,2 +1,3 @@
-<button class="corporate_primary" (click)="handleClick()">{{label}}
+<button type="submit" class="corporate_primary" (click)="handleClick()" [attr.disabled]="disabled ? true : null">
+  {{ label }}
 </button>
