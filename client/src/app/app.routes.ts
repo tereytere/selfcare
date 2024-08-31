@@ -8,6 +8,7 @@ import { ProductsComponent } from './pages/products/products.component';
 import { ProductFormComponent } from './pages/product-form/product-form.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
+import { UsersComponent } from './pages/users/users.component';
 
 
 export const routes: Routes = [
@@ -39,6 +40,12 @@ export const routes: Routes = [
   {
     path: 'product/form',
     component: ProductFormComponent,
+    canActivate: [authGuard],
+    data: { role: 'admin' },
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
     canActivate: [authGuard],
     data: { role: 'admin' },
   },

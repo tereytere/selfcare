@@ -47,4 +47,12 @@ nav {
 .headerdiv {
   padding: 0.625rem;
   background-color: var(--background-color);
+
+  img {
+    display: inline-block;
+    object-fit: contain;
+    border-radius: 50%;
+    width: 3.125rem;
+    height: 3.125rem;
+  }
 }
