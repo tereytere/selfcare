@@ -3,7 +3,8 @@
     <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="title">Título</label>
-            <input id="title" type="text" pInputText formControlName="title" placeholder="Enter review title" />
+            <input id="title" type="text" pInputText formControlName="title"
+                placeholder="Introducir el título de la reseña" />
         </div>
 
         <div class="form-group">
@@ -14,11 +15,11 @@
         <div class="form-group">
             <label for="description">Descripción</label>
             <textarea id="description" pInputTextarea rows="4" formControlName="description"
-                placeholder="Enter your review"></textarea>
+                placeholder=" tu opión"></textarea>
         </div>
 
         <div class="form-group">
-            <button pButton type="submit" label="Submit" class="submit-button"></button>
+            <custom-button [label]="'Enviar'" (onClick)="onSubmit()" />
         </div>
     </form>
 </div>

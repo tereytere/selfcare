@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { RatingModule } from 'primeng/rating';
 import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonComponent } from "../button/button.component";
 
 @Component({
   selector: 'review-form',
@@ -14,10 +15,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     RatingModule,
     ButtonModule,
     InputTextareaModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonComponent
   ],
   templateUrl: './review-form.component.html',
-  styleUrls: ['./review-form.component.css']
+  styleUrls: ['./review-form.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ReviewFormComponent {
   reviewForm: FormGroup;
