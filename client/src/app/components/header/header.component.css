@@ -5,8 +5,15 @@ nav {
   display: flex;
   justify-content: space-between;
 
+  .logo {
+    padding: 0.625rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   img {
     cursor: pointer;
+    height: 2.5rem;
   }
 
   ul {
