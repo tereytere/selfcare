@@ -46,6 +46,17 @@ export class UserService {
     }
   }
 
+  isAdmin() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      //decodedToken.role should be admin
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   getById(id: string) {
     return lastValueFrom(
       this.httpClient.get<{ message: string, data: User }>(`${this.baseUrl}/user/${id}`, this.createHeaders())
@@ -77,6 +88,11 @@ export class UserService {
     );
   }
 
+  getLocation() {
+    return lastValueFrom(
+      this.httpClient.get<{ message: string, data: string[] }>(`${this.baseUrl}/location`))
+  }
+
   deleteById(id: string) {
     return lastValueFrom(
       this.httpClient.delete<{ message: string, data: User }>(`${this.baseUrl}/user/delete/${id}`, this.createHeaders())
@@ -88,11 +104,6 @@ export class UserService {
       this.httpClient.delete<{ message: string, data: User }>(`${this.baseUrl}/user/admindelete/${id}`, this.createHeaders())
     );
   }
-
-
-
-
-
 
   private createHeaders() {
     const httpOptions = {
