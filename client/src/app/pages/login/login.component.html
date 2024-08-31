@@ -1,36 +1,20 @@
 <div class="login-container">
-    <div class="login-form">
-      <h2>Iniciar sesión</h2>
-      <form (submit)="onSubmit($event)">
-        <div class="form-group">
-          <label for="email">Correo electrónico</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            required
-            class="form-control"
-          />
-          
-          <div class="error">
-            {{ emailError }}
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="password">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            required
-            class="form-control"
-          />
-          <div  class="error">
-            {{ passwordError }}
-          </div>
-        </div>
-        <button type="submit" [disabled]="!isFormValid()" class="btn btn-primary">Iniciar sesión</button>
-      </form>
-    </div>
+  <div class="login-form">
+    <h2>Iniciar sesión</h2>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <p-floatLabel>
+          <input type="text" id="inputEmail" pInputText formControlName="email">
+          <label for="inputEmail">Email</label>
+        </p-floatLabel>
+      </div>
+      <div class="mb-4">
+        <p-floatLabel>
+          <input type="password" id="inputPassword" pInputText formControlName="password">
+          <label for="inputPassword">Password</label>
+        </p-floatLabel>
+      </div>
+      <custom-button [label]="'Inicia sesión'"></custom-button>
+    </form>
   </div>
-  
+</div>

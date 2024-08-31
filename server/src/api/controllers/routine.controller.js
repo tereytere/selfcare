@@ -6,7 +6,21 @@ const Product = require('../models/product.model');
 const addRoutine = async (req, res) => {
     try {
 
-        const newRoutine = new Routine(req.body);
+        const { name, category, applyschedule, repeat, products, usesteps, description } = req.body;
+
+        const repeatDays = Array.isArray(repeat) ? repeat : [];
+        const productIds = Array.isArray(products) ? products : [];
+        const steps = Array.isArray(usesteps) ? usesteps : [];
+
+        const newRoutine = new Routine({
+            name,
+            category,
+            applyschedule,
+            repeat: repeatDays,
+            products: productIds,
+            usesteps: steps,
+            description
+        });
         const createdRoutine = await newRoutine.save();
 
         return res.status(201).json({ message: "Routine created", data: createdRoutine })

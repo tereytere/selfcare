@@ -1,66 +1,39 @@
-import { Component } from '@angular/core';
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
-import { TriStateCheckboxModule } from 'primeng/tristatecheckbox';
+import { Component, inject } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ButtonComponent } from "../../components/button/button.component";
+import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 
 @Component({
-  selector: 'app-login',
-  standalone:true,
-  imports:[],
+  selector: 'login',
+  standalone: true,
+  imports: [ButtonComponent, ReactiveFormsModule, FloatLabelModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
-  
+
 })
 export class LoginComponent {
- 
-  model: any = {};
-  
-  emailError: string | null = null;
-  passwordError: string | null = null;
 
-  
-  onSubmit(event: Event): void {
-    event.preventDefault(); 
-    this.emailError = null;
-    this.passwordError = null;
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const password = (document.getElementById('password') as HTMLInputElement).value;
-    let isValid = true;
+  private userService = inject(UserService);
+  private router = inject(Router);
 
-    if (!email) {
-      this.emailError = 'El correo electrónico es requerido.';
-      isValid = false;
-    } else if (!this.validateEmail(email)) {
-      this.emailError = 'El correo electrónico no es válido.';
-      isValid = false;
-    }
+  formulario: FormGroup = new FormGroup({
+    email: new FormControl('', Validators.required),
+    password: new FormControl('', [Validators.required, Validators.email])
+  })
 
-    if (!password) {
-      this.passwordError = 'La contraseña es requerida.';
-      isValid = false;
-    }
-
-    if (isValid) {
-      console.log('Formulario enviado', { email, password });
-
-    } else {
-    
-      console.error('Formulario no válido');
+  async onSubmit() {
+    try {
+      const response = await this.userService.login(this.formulario.value);
+      this.router.navigate(['/home']);
+    } catch (error) {
+      console.error('Error registering user', error);
     }
   }
 
- 
-  validateEmail(email: string): boolean {
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailPattern.test(email);
-  }
-  isFormValid(): boolean {
-    const email = (document.getElementById('email') as HTMLInputElement).value;
-    const password = (document.getElementById('password') as HTMLInputElement).value;
-    return email !== '' && this.validateEmail(email) && password !== '';
-  }
+
 }
 
 

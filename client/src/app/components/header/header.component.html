@@ -1,11 +1,15 @@
 <header>
   <nav>
     <div class="logo">
-      <img src="../../assets/images/Logo_Blanco/Selfcare_Logo-12.png" alt="selfcare">
+      <img src="images/Logo_Blanco/Selfcare_Logo-12.png" alt="selfcare">
     </div>
     <ul>
-      <li [routerLink]="['/routines']" routerLinkActive="activo">Rutinas</li>
-      <li [routerLink]="['/products']" routerLinkActive="activo">Productos</li>
+      <li [routerLink]="['/routines']" routerLinkActive="activo">RUTINAS</li>
+      <li [routerLink]="['/products']" routerLinkActive="activo">PRODUCTOS</li>
+      @if(userService.isAdmin()){
+      <li [routerLink]="['/product/form']" routerLinkActive="activo">Product Form</li>
+      <li [routerLink]="['/users']" routerLinkActive="activo">USERS</li>
+      }
     </ul>
   </nav>
   <div class='flex headerdiv'>
@@ -13,7 +17,7 @@
     <img
       [src]="user?.image || 'https://res.cloudinary.com/dk2lcfwx5/image/upload/v1724322871/users/ltcagpxild7fzreyw7o0.jpg'"
       [alt]="user?.name || 'username'" (onClick)="onClickUser()" />
-    <custom-button [label]="'Logout'" (onClick)="onClickLogout()" />
+    <p-button type="submit" label="Logout" severity="danger" (onClick)="onClickLogout()" />
     }@else{
     <custom-button [label]="'Login'" (onClick)="onClickLogin()" />
     }

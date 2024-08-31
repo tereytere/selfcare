@@ -5,9 +5,18 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoutinesComponent } from './pages/routines/routines.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { DetailProductComponent } from './pages/detail-product/detail-product.component';
+import { ProductFormComponent } from './pages/product-form/product-form.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { authGuard } from './guards/auth.guard';
+import { UsersComponent } from './pages/users/users.component';
+
 
 export const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },
   {
     path: 'registro',
     component: RegisterComponent
@@ -28,9 +37,30 @@ export const routes: Routes = [
     path: 'products',
     component: ProductsComponent
   },
-
-  { path: 'routine/:id', component: DetailRoutineComponent },
-
-  { path: 'product/:id', component: DetailProductComponent }
-
+  {
+    path: 'product/form',
+    component: ProductFormComponent,
+    canActivate: [authGuard],
+    data: { role: 'admin' },
+  },
+  {
+    path: 'users',
+    component: UsersComponent,
+    canActivate: [authGuard],
+    data: { role: 'admin' },
+  },
+  {
+    path: 'user/:id',
+    component: ProductFormComponent,
+    canActivate: [authGuard],
+    data: { role: 'user' },
+  },
+  {
+    path: 'routine/:id',
+    component: DetailRoutineComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
+  },
 ];

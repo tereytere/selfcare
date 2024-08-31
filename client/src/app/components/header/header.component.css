@@ -5,8 +5,15 @@ nav {
   display: flex;
   justify-content: space-between;
 
+  .logo {
+    padding: 0.625rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
   img {
     cursor: pointer;
+    height: 2.5rem;
   }
 
   ul {
@@ -14,15 +21,18 @@ nav {
     padding-right: 0.625rem;
 
     li {
+      font-family: var(--title-font);
       display: inline-block;
       margin: 0 0.625rem;
       padding: 0.625rem;
-      font-weight: 700;
+      font-weight: 500;
+      letter-spacing: 2px;
       cursor: pointer;
 
       &:hover {
         background-color: var(--secondary-color);
         border-radius: 0.625rem;
+        font-weight: 700;
       }
 
     }
@@ -32,9 +42,26 @@ nav {
 .flex {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .headerdiv {
   padding: 0.625rem;
   background-color: var(--background-color);
+
+  img {
+    display: inline-block;
+    object-fit: contain;
+    border-radius: 50%;
+    width: 3.125rem;
+    height: 3.125rem;
+    margin-right: 1.25rem;
+    cursor: pointer;
+  }
+
+  button {
+    padding: 0.25rem;
+    font-size: 0.8rem;
+  }
+
 }

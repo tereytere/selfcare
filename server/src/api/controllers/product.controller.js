@@ -49,7 +49,7 @@ const addProduct = async (req, res) => {
         const findProduct = await Product.find({ name: req.body.name });
 
         if (findProduct.length === 0) {
-            if (req.file.path) {
+            if (req.file) {
                 newProduct.image = req.file.path;
             }
             const createdProduct = await newProduct.save();

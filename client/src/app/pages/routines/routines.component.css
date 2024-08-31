@@ -21,23 +21,65 @@
     width: 15.625rem;
 }
 
-/* Grid layout for routines */
-.routines-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
 
-    justify-content: center;
-}
 
-.routine-card {
-    flex: 1 1 calc(33.333% - 1.25rem);
 
-    box-sizing: border-box;
-}
 
 .paginator-custom {
     margin-top: 1.25rem;
     display: flex;
     justify-content: center;
+}
+
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.col-12,
+.col-sm-6,
+.col-md-4 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    /* Separación entre filas */
+}
+
+.card-routine-all {
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    /* Tamaño máximo uniforme */
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #fff;
+    padding: 15px;
+}
+
+/* Si necesitas ajustar el tamaño de elementos internos */
+.card-routine-all img {
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    /* Limitar la altura de la imagen */
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.card-routine-all h3 {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.card-routine-all p {
+    flex-grow: 1;
+    font-size: 1rem;
 }

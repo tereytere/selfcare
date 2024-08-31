@@ -20,22 +20,40 @@ const isAuth = async (req, res, next) => {
 }
 
 const isAdmin = async (req, res, next) => {
-    const authorization = req.headers.authorization
+    const authorization = req.headers.authorization;
+
     if (!authorization) {
-        return res.status(401).json({ message: "No tienes autorización" })
+        return res.status(401).json({ message: "No tienes autorización" });
     }
+
     const token = authorization.split(' ')[1];
+
     if (!token) {
-        return res.status(407).json({ message: "No hay token" })
+        return res.status(407).json({ message: "No hay token" });
     }
-    const tokenVerify = verifyToken(token);
-    if (!tokenVerify.id) {
-        return res.status(404).json({ message: "No existe este ID" })
+
+    let tokenVerify;
+
+    try {
+        tokenVerify = verifyToken(token);
+    } catch (error) {
+        return res.status(400).json({ message: "Token inválido" });
     }
+
+    if (!tokenVerify || !tokenVerify.id) {
+        return res.status(404).json({ message: "No existe este ID" });
+    }
+
     const logged = await User.findById(tokenVerify.id);
-    if (logged.role !== "admin") {
-        return res.status(401).json({ message: "No eres admin" })
+
+    if (!logged) {
+        return res.status(404).json({ message: "Usuario no encontrado" });
     }
+
+    if (logged.role !== "admin") {
+        return res.status(401).json({ message: "No eres admin" });
+    }
+
     req.dataUser = logged;
     next();
 }
