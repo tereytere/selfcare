@@ -10,9 +10,8 @@ type RegisterBody = {
   about?: string;
   password: string;
   location: string;
-  role: 'admin' | 'user';
   image?: string;
-  routines?: string[];
+
 }
 
 type LoginBody = {
@@ -30,7 +29,7 @@ export class UserService {
   private httpClient = inject(HttpClient);
 
   register(body: RegisterBody) {
-    return lastValueFrom(this.httpClient.post<{ success: string }>(this.baseUrl + '/user/add', body))
+    return lastValueFrom(this.httpClient.post<{ message: string, data: User }>(this.baseUrl + '/user/add', body))
   }
 
   login(body: LoginBody) {
@@ -40,6 +39,17 @@ export class UserService {
   isLogged() {
     const token = localStorage.getItem('token');
     if (token) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isAdmin() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken = JSON.parse(atob(token.split('.')[1]));
+      //decodedToken.role should be admin
       return true;
     } else {
       return false;
@@ -77,6 +87,11 @@ export class UserService {
     );
   }
 
+  getLocation() {
+    return lastValueFrom(
+      this.httpClient.get<{ message: string, data: string[] }>(`${this.baseUrl}/location`))
+  }
+
   deleteById(id: string) {
     return lastValueFrom(
       this.httpClient.delete<{ message: string, data: User }>(`${this.baseUrl}/user/delete/${id}`, this.createHeaders())
@@ -88,11 +103,6 @@ export class UserService {
       this.httpClient.delete<{ message: string, data: User }>(`${this.baseUrl}/user/admindelete/${id}`, this.createHeaders())
     );
   }
-
-
-
-
-
 
   private createHeaders() {
     const httpOptions = {

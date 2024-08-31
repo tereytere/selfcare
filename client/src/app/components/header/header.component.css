@@ -21,15 +21,18 @@ nav {
     padding-right: 0.625rem;
 
     li {
+      font-family: var(--title-font);
       display: inline-block;
       margin: 0 0.625rem;
       padding: 0.625rem;
-      font-weight: 700;
+      font-weight: 500;
+      letter-spacing: 2px;
       cursor: pointer;
 
       &:hover {
         background-color: var(--secondary-color);
         border-radius: 0.625rem;
+        font-weight: 700;
       }
 
     }
