@@ -37,7 +37,7 @@ export const routes: Routes = [
     component: ProductsComponent
   },
   {
-    path: 'productform',
+    path: 'product/form',
     component: ProductFormComponent,
     canActivate: [authGuard],
     data: { role: 'admin' },
@@ -51,10 +51,6 @@ export const routes: Routes = [
   {
     path: 'routine/:id',
     component: DetailRoutineComponent
-  },
-  {
-    path: 'product/form',
-    component: ProductFormComponent
   },
   {
     path: '**',
