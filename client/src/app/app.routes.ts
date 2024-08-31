@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoutinesComponent } from './pages/routines/routines.component';
 import { ProductsComponent } from './pages/products/products.component';
+import { DetailProductComponent } from './pages/detail-product/detail-product.component';
 
 export const routes: Routes = [
   {
@@ -28,6 +29,8 @@ export const routes: Routes = [
     component: ProductsComponent
   },
 
-  { path: 'routine/:id', component: DetailRoutineComponent }
+  { path: 'routine/:id', component: DetailRoutineComponent },
+
+  { path: 'product/:id', component: DetailProductComponent }
 
 ];

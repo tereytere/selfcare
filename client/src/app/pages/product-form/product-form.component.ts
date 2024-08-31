@@ -7,7 +7,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { JsonPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
-import { InputLabelComponent } from '../../components/input-label/input-label.component';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import Swal from 'sweetalert2';
@@ -18,7 +17,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [FormsModule, InputLabelComponent, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
+  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -48,6 +47,10 @@ export class ProductFormComponent {
 
   productsService = inject(ProductService);
   router = inject(Router);
+  formData = new FormData();
+  formData.append("image", image);
+
+
   async onSubmit() {
     if (this.formulario.value.category)
       this.formulario.value.category = this.formulario.value.category.code;
