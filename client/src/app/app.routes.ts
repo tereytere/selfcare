@@ -5,7 +5,9 @@ import { LoginComponent } from './pages/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { RoutinesComponent } from './pages/routines/routines.component';
 import { ProductsComponent } from './pages/products/products.component';
-import { MapComponent } from './components/map/map.component';
+import { authGuard } from './guards/auth.guard';
+import { ProductFormComponent } from './pages/product-form/product-form.component';
+
 
 export const routes: Routes = [
   {
@@ -28,7 +30,21 @@ export const routes: Routes = [
     path: 'products',
     component: ProductsComponent
   },
-
-  { path: 'routine/:id', component: DetailRoutineComponent }
+  {
+    path: 'productform',
+    component: ProductFormComponent,
+    canActivate: [authGuard],
+    data: { role: 'admin' },
+  },
+  {
+    path: 'user/:id',
+    component: ProductFormComponent,
+    canActivate: [authGuard],
+    data: { role: 'user' },
+  },
+  {
+    path: 'routine/:id',
+    component: DetailRoutineComponent
+  },
 
 ];
