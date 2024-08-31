@@ -1,29 +1,28 @@
 <div class="products-container">
-    <h1 class="page-title">Products</h1>
+  <h1 class="page-title">Products</h1>
 
-    <!--   <div class="toolbar">
+  <!--   <div class="toolbar">
 
          <p-button icon="pi pi-plus" label="Add Routine" class="p-button-success"></p-button>
       <p-inputText placeholder="Search routines..." (input)="onSearch($event)" class="search-bar"></p-inputText>
     </div> -->
 
 
-    <div class="row g-4">
+  <div class="row g-4">
 
-        @for( prod of products; track prod._id){
-        <div class="col-12 col-sm-6 col-md-4">
-            <card-product-all [product]="prod"></card-product-all>
+    @for( prod of products; track prod._id){
+    <div class="col-12 col-sm-6 col-md-4">
+      <card-product-all [product]="prod"></card-product-all>
 
-        </div>
-
-        }
     </div>
 
+    }
+  </div>
 
 
-    <p-paginator [rows]="itemsPerPage" [totalRecords]="totalPages * itemsPerPage" (onPageChange)="onPageChange($event)"
-        class="paginator-custom">
-    </p-paginator>
+
+  <p-paginator [rows]="itemsPerPage" [totalRecords]="totalPages * itemsPerPage" (onPageChange)="onPageChange($event)"
+    class="paginator-custom">
+  </p-paginator>
 
 </div>
->>>>>>> miguel
