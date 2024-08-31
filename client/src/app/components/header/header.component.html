@@ -17,7 +17,7 @@
     <img
       [src]="user?.image || 'https://res.cloudinary.com/dk2lcfwx5/image/upload/v1724322871/users/ltcagpxild7fzreyw7o0.jpg'"
       [alt]="user?.name || 'username'" (onClick)="onClickUser()" />
-    <custom-button [label]="'Logout'" (onClick)="onClickLogout()" />
+    <p-button type="submit" label="Logout" severity="danger" (onClick)="onClickLogout()" />
     }@else{
     <custom-button [label]="'Login'" (onClick)="onClickLogin()" />
     }
