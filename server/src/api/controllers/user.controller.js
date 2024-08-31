@@ -57,6 +57,27 @@ const getUserById = async (req, res) => {
     }
 }
 
+const getLocation = async (req, res) => {
+    try {
+        const findUsers = await User.find({}, 'location');
+
+        if (findUsers.length === 0) {
+            return res.status(404).json({ message: "No users found" });
+        }
+
+        const locations = findUsers.map(user => user.location);
+
+        return res.status(200).json({
+            message: "Users found",
+            data: locations
+        });
+
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: "An error occurred while fetching locations" });
+    }
+};
+
 const getUsers = async (req, res) => {
     try {
         let pag = parseInt(req.query.pag);
@@ -77,7 +98,6 @@ const getUsers = async (req, res) => {
         if (pag < 1) {
             pag = 1;
         }
-
 
         const findUsers = await User.find().skip((pag - 1) * limit).limit(limit).populate("routines");
         if (!findUsers) {
@@ -166,4 +186,4 @@ const deleteUser = async (req, res) => {
 
 }
 
-module.exports = { addUser, login, getUserById, getUsers, deleteUser, updateUser, addRoutineToUser, deleteRoutinefromUser }
+module.exports = { addUser, login, getUserById, getUsers, deleteUser, updateUser, addRoutineToUser, deleteRoutinefromUser, getLocation }

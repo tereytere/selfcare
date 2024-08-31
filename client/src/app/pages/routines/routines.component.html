@@ -1,0 +1,28 @@
+<div class="routines-container">
+    <h1 class="page-title">Routines</h1>
+
+    <!-- <div class="toolbar">
+
+         <p-button icon="pi pi-plus" label="Add Routine" class="p-button-success"></p-button>
+      <p-inputText placeholder="Search routines..." (input)="onSearch($event)" class="search-bar"></p-inputText>
+    </div> -->
+
+
+    <div class="row g-4">
+
+        @for( rout of routines; track rout._id){
+        <div class="col-12 col-sm-6 col-md-4">
+
+            <card-routine-all [routine]="rout"></card-routine-all>
+        </div>
+
+
+        }
+
+    </div>
+
+
+    <p-paginator [rows]="itemsPerPage" [totalRecords]="totalPages * itemsPerPage" (onPageChange)="onPageChange($event)"
+        class="paginator-custom">
+    </p-paginator>
+</div>

@@ -31,17 +31,9 @@ export class ProductService {
   }
 
 
-  addProduct(product: Product, imageFile: File) {
-    const formData = new FormData();
-    formData.append('name', product.name);
-    formData.append('brand', product.brand);
-    formData.append('category', product.category);
-    formData.append('properties', product.properties);
-    formData.append('shoplink', product.shoplink);
-    formData.append('image', imageFile);
-
+  addProduct(body: Product) {
     return lastValueFrom(
-      this.httpClient.post<{ message: string, data: Product }>(this.baseUrl + 'product/add', formData, this.createHeaders())
+      this.httpClient.post<{ message: string, data: Product }>(this.baseUrl + '/product/add', body, this.createHeaders())
     );
   }
 

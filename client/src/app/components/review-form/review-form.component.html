@@ -1,0 +1,25 @@
+<div class="review-form-container">
+    <h2>Submit Your Review</h2>
+    <form [formGroup]="reviewForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label for="title">Título</label>
+            <input id="title" type="text" pInputText formControlName="title"
+                placeholder="Introducir el título de la reseña" />
+        </div>
+
+        <div class="form-group">
+            <label for="stars">Calificación</label>
+            <p-rating id="stars" [formControl]="starsControl" [cancel]="false" [stars]="5"></p-rating>
+        </div>
+
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <textarea id="description" pInputTextarea rows="4" formControlName="description"
+                placeholder=" tu opión"></textarea>
+        </div>
+
+        <div class="form-group">
+            <custom-button [label]="'Enviar'" (onClick)="onSubmit()" />
+        </div>
+    </form>
+</div>

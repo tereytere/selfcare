@@ -1,0 +1,12 @@
+<p-card class="card-container" [id]="review?._id" [header]="review?.title">
+    <ng-template pTemplate="header">
+        <p-rating [formControl]="starsControl" [cancel]="false" [stars]="5" />
+    </ng-template>
+    <ng-template pTemplate="body">
+        <p>{{review?.description}}</p>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <p>{{review?.author}}</p>
+        <p>{{review?.date}}</p>
+    </ng-template>
+</p-card>

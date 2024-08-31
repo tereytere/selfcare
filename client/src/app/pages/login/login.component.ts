@@ -8,6 +8,7 @@ import { ButtonModule } from 'primeng/button';
 import { Router } from '@angular/router';
 import { DividerModule } from 'primeng/divider';
 @Component({
+<<<<<<< HEAD
   selector: 'app-login',
   standalone: true,
   imports: [
@@ -23,10 +24,23 @@ import { DividerModule } from 'primeng/divider';
 })
 export class LoginComponent {
   formulario: FormGroup;
+=======
+  selector: 'login',
+  standalone: true,
+  imports: [],
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
+
+})
+export class LoginComponent {
+
+  model: any = {};
+>>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
 
   emailError: string | null = null;
   passwordError: string | null = null;
 
+<<<<<<< HEAD
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
@@ -39,6 +53,11 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
+=======
+
+  onSubmit(event: Event): void {
+    event.preventDefault();
+>>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
     this.emailError = null;
     this.passwordError = null;
 
@@ -64,11 +83,16 @@ export class LoginComponent {
           }
         });
     } else {
+<<<<<<< HEAD
       this.validateForm();
+=======
+
+>>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
       console.error('Formulario no válido');
     }
   }
 
+<<<<<<< HEAD
   validateForm(): void {
     const emailControl = this.formulario.get('email');
     const passwordControl = this.formulario.get('password');
@@ -84,6 +108,12 @@ export class LoginComponent {
     if (passwordControl?.invalid) {
       this.passwordError = 'La contraseña es requerida.';
     }
+=======
+
+  validateEmail(email: string): boolean {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+>>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
   }
 
   isFormValid(): boolean {
