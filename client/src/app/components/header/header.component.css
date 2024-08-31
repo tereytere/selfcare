@@ -42,6 +42,7 @@ nav {
 .flex {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .headerdiv {
@@ -55,6 +56,12 @@ nav {
     width: 3.125rem;
     height: 3.125rem;
     margin-right: 1.25rem;
+    cursor: pointer;
+  }
+
+  button {
+    padding: 0.25rem;
+    font-size: 0.8rem;
   }
 
 }

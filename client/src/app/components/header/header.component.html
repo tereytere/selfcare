@@ -6,7 +6,7 @@
     <ul>
       <li [routerLink]="['/routines']" routerLinkActive="activo">RUTINAS</li>
       <li [routerLink]="['/products']" routerLinkActive="activo">PRODUCTOS</li>
-      @if(userService.isLogged()){
+      @if(userService.isAdmin()){
       <li [routerLink]="['/product/form']" routerLinkActive="activo">Product Form</li>
       <li [routerLink]="['/users']" routerLinkActive="activo">USERS</li>
       }

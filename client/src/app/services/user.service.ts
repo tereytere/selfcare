@@ -119,9 +119,10 @@ export class UserService {
   }
 
   private createHeaders() {
+    const token = localStorage.getItem('token');
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('auth_token')!
+        'Authorization': token ? `Bearer ${token}` : ''
       })
     };
     return httpOptions;
