@@ -42,9 +42,26 @@ nav {
 .flex {
   display: flex;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .headerdiv {
   padding: 0.625rem;
   background-color: var(--background-color);
+
+  img {
+    display: inline-block;
+    object-fit: contain;
+    border-radius: 50%;
+    width: 3.125rem;
+    height: 3.125rem;
+    margin-right: 1.25rem;
+    cursor: pointer;
+  }
+
+  button {
+    padding: 0.25rem;
+    font-size: 0.8rem;
+  }
+
 }

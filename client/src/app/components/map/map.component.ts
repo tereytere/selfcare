@@ -73,9 +73,9 @@ export class MapComponent implements OnInit {
       const jitteredLatLng = this.jitterPosition(city.latLng, 0.001);
 
       const markerIcon = new L.Icon({
-        iconUrl: 'images/location.png',
-        iconSize: [25, 41],
-        iconAnchor: [12, 41],
+        iconUrl: 'images/Icons_Corporate/icons-corporate-30.png',
+        iconSize: [25, 25],
+        iconAnchor: [12, 12],
         popupAnchor: [1, -34]
       });
 

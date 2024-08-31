@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ButtonComponent } from "../button/button.component";
@@ -11,6 +11,7 @@ import { ButtonModule } from 'primeng/button';
   imports: [RouterLink, RouterLinkActive, ButtonComponent, ButtonModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent {
   router = inject(Router);
@@ -22,11 +23,15 @@ export class HeaderComponent {
   }
 
   async initializeUser() {
+    console.log('Initializing user...');
     const token = localStorage.getItem('token');
     if (token) {
       try {
         const decodedToken = JSON.parse(atob(token.split('.')[1]));
-        this.user = await this.userService.getById(decodedToken.id);
+        console.log('Decoded Token:', decodedToken);
+        const response = await this.userService.getById(decodedToken.id);
+        this.user = response.data;
+        console.log('Fetched User:', this.user);
       } catch (error) {
         console.error('Failed to decode token or fetch user:', error);
         this.onClickLogout();
