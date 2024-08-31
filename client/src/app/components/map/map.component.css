@@ -1,0 +1,15 @@
+.mapdiv {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  margin: 0.625rem 0;
+  padding: 0;
+}
+
+.map {
+  width: 50%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
