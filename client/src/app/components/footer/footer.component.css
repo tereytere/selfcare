@@ -1,6 +1,12 @@
-/* Estilos generales para el footer */
 footer {
     background-color: #262626;
+    font-size: 13px;
+}
+
+#selfcareLogo {
+    width: 150px; 
+    height: auto; 
+    margin-top: 10px;
 }
 
 .container {
@@ -15,13 +21,28 @@ footer {
     margin-right: 70px;
 }
 
-/* Estilos para cada columna */
+
 .column {
     flex: 1;
     margin: 0 -5px;
     padding: 0;
     min-width: 0;
     margin-left: 30px;
+    margin-top: 20px; 
+}
+
+.column2 {
+    flex: 1;
+    margin: 0 -5px;
+    padding: 0;
+    min-width: 0;
+    margin-left: 30px;
+    margin-top: 20px; /
+}
+
+
+.column2 ul li {
+    margin-bottom: 10px; 
 }
 
 ul, ol {
@@ -40,7 +61,6 @@ ul, ol {
     margin-top: 10px;
 }
 
-/* Estilo para los enlaces en el footer */
 footer a, .legal-links a {
     color: #fff;
     text-decoration: none;
@@ -50,10 +70,21 @@ footer a:hover, .legal-links a:hover {
     text-decoration: underline;
 }
 
-.footer p {
+
+footer p {
     margin: 0;
     display: flex;
     align-items: center;
+    line-height: 1.6; 
+}
+
+
+.column p:last-of-type {
+    margin-bottom: 20px; 
+}
+
+.checkbox-container {
+    margin-top: 20px; 
 }
 
 .legal-links {
@@ -66,16 +97,20 @@ footer a:hover, .legal-links a:hover {
     color: #fff;
 }
 
+footer h4 {
+    font-size: 16px; 
+    margin-bottom: 20px; 
+
+}
+
 .icons {
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: space-between;
     color: #fff;
-}
-
-.icons a svg {
-    fill: #fff;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .icons ul {
@@ -97,7 +132,12 @@ footer a:hover, .legal-links a:hover {
     display: block;
     text-decoration: none;
 }
-/* Estilos generales para el botón de envío */
+
+.icons img {
+    width: 24px; 
+    height: auto; 
+}
+
 .submit-button {
     background-color: transparent;
     border: none;
@@ -108,20 +148,18 @@ footer a:hover, .legal-links a:hover {
     justify-content: center;
 }
 
-.submit-button svg {
-    fill: #fff; 
-    transition: fill 0.3s ease;
+.submit-button img {
+    width: 24px; 
+    height: auto; 
 }
 
-.submit-button:hover svg {
-    fill: #ccc; 
-}
 .submit-button {
     width: 30px;
     height: 30px;
 }
 
-.submit-button svg {
-    width: 24px;
-    height: 24px;
+#flecha {
+    width: 20px; 
+    height: 10px;
 }
+

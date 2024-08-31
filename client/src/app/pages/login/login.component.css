@@ -1,65 +1,7 @@
-<<<<<<< HEAD
-/* Estilo para el contenedor del formulario */
-=======
->>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
-<<<<<<< HEAD
-  min-height: 100vh;
-  background-color: #f5f5f5;
-}
-
-/* Estilo para el formulario */
-.login-form {
-  max-width: 400px;
-  width: 100%;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
-}
-
-/* Estilo para los grupos de formulario */
-.form-group {
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.form-group input {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-/* Estilo para el mensaje de error */
-.error {
-  color: red;
-  font-size: 0.875rem;
-  margin-top: 0.5rem;
-}
-
-/* Estilo para el botón */
-p-button {
-  display: block;
-  margin-top: 1.5rem;
-}
-
-/* Estilo para los placeholders (opcional) */
-input::placeholder {
-  color: #6c757d;
-}
-=======
   height: 100vh;
 }
 
@@ -101,4 +43,3 @@ button:disabled {
   color: red;
   font-size: 12px;
 }
->>>>>>> 65aee31145e30edd60d115ab57a0852917d5a734
