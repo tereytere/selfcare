@@ -51,8 +51,8 @@ export class ProductFormComponent {
   onUpload(event: any) {
     const input = event.target as HTMLInputElement;
     if (input && input.files && input.files.length > 0) {
-      const file = input.files[0]; // Aquí usamos solo el primer archivo (archivo único)
-      this.formulario.patchValue({ image: file });
+      const file = input.files[0];
+      this.formulario.patchValue({ image: file.name });
     }
   }
 
