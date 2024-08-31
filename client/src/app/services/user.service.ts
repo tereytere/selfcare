@@ -10,9 +10,8 @@ type RegisterBody = {
   about?: string;
   password: string;
   location: string;
-  role: 'admin' | 'user';
   image?: string;
-  routines?: string[];
+
 }
 
 type LoginBody = {
@@ -30,7 +29,7 @@ export class UserService {
   private httpClient = inject(HttpClient);
 
   register(body: RegisterBody) {
-    return lastValueFrom(this.httpClient.post<{ success: string }>(this.baseUrl + '/user/add', body))
+    return lastValueFrom(this.httpClient.post<{ message: string, data: User }>(this.baseUrl + '/user/add', body))
   }
 
   login(body: LoginBody) {
