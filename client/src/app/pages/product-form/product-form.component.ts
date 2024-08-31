@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { InputLabelComponent } from '../../components/input-label/input-label.component';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
+import { FileUploadModule } from 'primeng/fileupload';
 import Swal from 'sweetalert2';
 
 
@@ -18,7 +19,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [FormsModule, InputLabelComponent, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
+  imports: [FormsModule, InputLabelComponent, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule, FileUploadModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -42,17 +43,31 @@ export class ProductFormComponent {
     properties: new FormControl(),
     shoplink: new FormControl(),
     image: new FormControl(),
-    createdAt: new FormControl(),
-    updatedAt: new FormControl()
   });
 
   productsService = inject(ProductService);
   router = inject(Router);
+
+  onUpload(event: any) {
+    const input = event.target as HTMLInputElement;
+    if (input && input.files && input.files.length > 0) {
+      const file = input.files[0]; // Aquí usamos solo el primer archivo (archivo único)
+      this.formulario.patchValue({ image: file });
+    }
+  }
+
   async onSubmit() {
-    if (this.formulario.value.category)
-      this.formulario.value.category = this.formulario.value.category.code;
+    if (this.formulario.value.category) {
+      this.formulario.value.category = this.formulario.value.category.name;
+    }
+
     try {
+      console.log(this.formulario.value);
+
       const response = await this.productsService.addProduct(this.formulario.value);
+
+      console.log(response.message);
+
       // Avisa al usuario ADMIN que se ha insertado el producto correctamente
       await Swal.fire({
         title: 'Producto creado correctamente',
