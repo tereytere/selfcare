@@ -6,7 +6,6 @@ const addReview = async (req, res) => {
 
     try {
         const { idU, idR } = req.params;
-        console.log(idU, idR);
 
         const { title, description, stars } = req.body;
         const currentAuthor = await User.findById(idU);
@@ -17,7 +16,6 @@ const addReview = async (req, res) => {
         }
 
         const existingRoutines = await Routine.find().populate("reviews");
-        console.log(existingRoutines[0].reviews[0].author);
         existingRoutines.forEach(routine => {
             routine.reviews.forEach(review => {
                 let authorId = review.author.toString();
