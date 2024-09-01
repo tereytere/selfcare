@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { User } from '../interfaces/user.interface';
 import { tap } from 'rxjs/operators';
@@ -31,6 +31,9 @@ export class UserService {
 
   private tokenKey = 'token';
 
+  private userSubject = new BehaviorSubject<User | null>(null);
+  user$ = this.userSubject.asObservable();
+
   register(body: any) {
     return lastValueFrom(this.httpClient.post<{ message: string, data: User }>(this.baseUrl + '/user/add', body))
   }
@@ -42,9 +45,28 @@ export class UserService {
   }
 
 
-  private setToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token); // Guarda el token en localStorage
+  setToken(token: string | null): void {
+    if (token) {
+      localStorage.setItem(this.tokenKey, token); // Almacena el token recibido
+    } else {
+      localStorage.removeItem(this.tokenKey); // Elimina el token
+      this.userSubject.next(null);
+    }
   }
+
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey); // Obtiene el token de localStorage
+  }
+
+  decodeToken(token: string): any {
+    try {
+      return JSON.parse(atob(token.split('.')[1])); // Decodifica el token obtenido
+    } catch (error) {
+      console.error('Failed to decode token:', error);
+      throw error;
+    }
+  }
+
 
   isLogged() {
     const token = localStorage.getItem('token');
@@ -84,7 +106,7 @@ export class UserService {
 
   addRoutineToUser(idU: string, idR: string) {
     return lastValueFrom(
-      this.httpClient.put<{ message: string, data: User }>(`${this.baseUrl}/routine/product/add/${idU}/${idR}`, {}, this.createHeaders())
+      this.httpClient.put<{ message: string, data: User }>(`${this.baseUrl}/user/routine/add/${idU}/${idR}`, {}, this.createHeaders())
     );
   }
 

@@ -29,19 +29,13 @@ export class ReviewService {
     );
   }
 
-  addProduct(review: Review, idU: string, idR: string) {
-    const formData = new FormData();
-    formData.append('title', review.title);
-    formData.append('description', review.description);
-    formData.append('stars', review.stars.toString());
-    formData.append('author', review.author);
-
+  addReview(review: Review, idU: string, idR: string) {
     return lastValueFrom(
-      this.httpClient.post<{ message: string, data: Review }>(`${this.baseUrl}/review/add/${idU}/${idR}`, formData, this.createHeaders())
+      this.httpClient.post<{ message: string, data: Review }>(`${this.baseUrl}/review/add/${idU}/${idR}`, review, this.createHeaders())
     );
   }
 
-  updateProduct(id: string, review: Review) {
+  updateReview(id: string, review: Review) {
     const formData = new FormData();
     formData.append('title', review.title);
     formData.append('description', review.description);

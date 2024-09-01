@@ -50,8 +50,15 @@ export class ProductFormComponent {
 
   productsService = inject(ProductService);
   router = inject(Router);
-  formData = new FormData();
-  formData.append("image", image);
+
+  onUpload(event: any) {
+    const input = event.target as HTMLInputElement;
+    if (input && input.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.formulario.patchValue({ image: file });
+      console.log(file);
+    }
+  }
 
 
   async onSubmit() {
@@ -62,7 +69,6 @@ export class ProductFormComponent {
 
     try {
       const formData = new FormData();
-      console.log(this.formulario.controls);
 
       Object.keys(this.formulario.controls).forEach(key => {
         const control = this.formulario.get(key);
