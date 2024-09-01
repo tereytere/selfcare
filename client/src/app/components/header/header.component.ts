@@ -3,6 +3,7 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ButtonComponent } from "../button/button.component";
 import { ButtonModule } from 'primeng/button';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'header-component',
@@ -17,42 +18,40 @@ export class HeaderComponent implements OnInit {
   userService = inject(UserService);
   user: any = null;
 
-  constructor() { }
+  private userSubscription: Subscription;
 
-  ngOnInit() {
-    this.initializeUser();
+  constructor() {
+    this.userSubscription = this.userService.user$.subscribe(user => {
+      this.user = user;
+    });
   }
 
-  async initializeUser() {
-    console.log('Initializing user...');
+  ngOnInit() {
     if (this.userService.isLogged()) {
-      try {
-        const token = this.userService.getToken();
-        const decodedToken = this.userService.decodeToken(token!);
-        console.log('Decoded Token:', decodedToken);
-        const response = await this.userService.getById(decodedToken.id);
-        this.user = response.data;
-        console.log('Fetched User:', this.user);
-      } catch (error) {
-        console.error('Failed to decode token or fetch user:', error);
-        this.onClickLogout();
-      }
+      this.userService.fetchAndSetUser();
     }
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
   }
 
   async onClickLogout() {
     this.userService.setToken('');
-    this.user = null;
     this.router.navigateByUrl('/home');
   }
 
-  async onClickLogin() {
+  onClickLogin() {
     this.router.navigateByUrl('/login');
   }
 
+  onClickHome() {
+    this.router.navigateByUrl('/home');
+  }
+
   async onClickUser() {
-    if (this.user && this.user.id) {
-      this.router.navigateByUrl(`/user/${this.user.id}`);
+    if (this.user && this.user._id) {
+      this.router.navigateByUrl(`/user/${this.user._id}`);
     } else {
       console.error('User ID is not available');
     }

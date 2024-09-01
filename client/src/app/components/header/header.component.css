@@ -12,8 +12,8 @@ nav {
   }
 
   img {
-    cursor: pointer;
     height: 2.5rem;
+    cursor: pointer;
   }
 
   ul {
@@ -51,7 +51,7 @@ nav {
 
   img {
     display: inline-block;
-    object-fit: contain;
+    object-fit: cover;
     border-radius: 50%;
     width: 3.125rem;
     height: 3.125rem;

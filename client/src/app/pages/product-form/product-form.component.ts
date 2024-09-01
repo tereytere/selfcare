@@ -3,7 +3,6 @@ import { FormsModule } from '@angular/forms';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
-import { JsonPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -16,12 +15,10 @@ interface ProductCategory {
   code: string;
 }
 
-
-
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
+  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule, FileUploadModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -50,28 +47,31 @@ export class ProductFormComponent {
 
   productsService = inject(ProductService);
   router = inject(Router);
-  formData = new FormData();
-  formData.append("image", image);
 
+  onUpload(event: any) {
+    const input = event.target as HTMLInputElement;
+    if (input && input.files && input.files.length > 0) {
+      const file = input.files[0];
+      this.formulario.patchValue({ image: file });
+      console.log(file);
+
+    }
+  }
 
   async onSubmit() {
-    // if (this.formulario.value.category) {
-    //   this.formulario.value.category = this.formulario.value.category.code;
-    //   console.log(this.formulario.value.category);
-    // }
+    if (this.formulario.value.category) {
+      this.formulario.value.category = this.formulario.value.category.code;
+      console.log(this.formulario.value.category);
+    }
 
     try {
       const formData = new FormData();
-      console.log(this.formulario.controls);
 
       Object.keys(this.formulario.controls).forEach(key => {
         const control = this.formulario.get(key);
         if (key === 'image' && control?.value) {
           formData.append(key, control.value);
-        } else if (key === 'category') {
-          formData.append(key, control?.value.code);
-        }
-        else {
+        } else {
           formData.append(key, control?.value);
         }
       });

@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { lastValueFrom } from 'rxjs';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { User } from '../interfaces/user.interface';
 import { tap } from 'rxjs/operators';
@@ -29,13 +29,32 @@ export class UserService {
   private httpClient = inject(HttpClient);
   private tokenKey = 'token';
 
+  private userSubject = new BehaviorSubject<User | null>(null);
+  user$ = this.userSubject.asObservable();
+
+  fetchAndSetUser() {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = this.decodeToken(token);
+      this.getById(decodedToken.id).then(response => {
+        this.userSubject.next(response.data);
+      }).catch(error => {
+        console.error('Failed to fetch user:', error);
+        this.setToken(null);
+      });
+    }
+  }
+
   register(body: any) {
     return lastValueFrom(this.httpClient.post<{ message: string, data: User }>(this.baseUrl + '/user/add', body))
   }
 
   login(body: LoginBody) {
     return lastValueFrom(this.httpClient.post<{ message: string, token: string }>(this.baseUrl + '/login', body).pipe(
-      tap(response => this.setToken(response.token)) // Almacena el token recibido
+      tap(response => {
+        this.setToken(response.token);
+        this.fetchAndSetUser();
+      })
     ));
   }
 
@@ -44,6 +63,7 @@ export class UserService {
       localStorage.setItem(this.tokenKey, token); // Almacena el token recibido
     } else {
       localStorage.removeItem(this.tokenKey); // Elimina el token
+      this.userSubject.next(null);
     }
   }
 

@@ -7,8 +7,8 @@
       <p><strong>Contraseña:</strong> {{user?.password}}</p>
       <p><strong>Ubicación:</strong> {{user?.location}}</p>
       <div class="flex gap-3 mt-1">
-        <p-button label="Editar" severity="secondary" class="w-full" styleClass="w-full" (onClick)="onClickEdit()" />
-        <p-button label="Eliminar" severity="danger" class="w-full" styleClass="w-full" (onClick)="onClickDelete()" />
+        <p-button label="Editar" severity="secondary" class="w-full" styleClass="w-full" (click)="onClickEdit()" />
+        <p-button label="Eliminar" severity="danger" class="w-full" styleClass="w-full" (click)="onClickDelete()" />
       </div>
     </p-card>
   </ng-template>

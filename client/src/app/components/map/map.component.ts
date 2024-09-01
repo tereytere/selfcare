@@ -62,7 +62,7 @@ export class MapComponent implements OnInit {
     return cityLocations;
   }
 
-  private jitterPosition(position: [number, number], maxOffset: number = 0.001): [number, number] {
+  private jitterPosition(position: [number, number], maxOffset: number = 0.01): [number, number] {
     const latOffset = (Math.random() - 0.5) * maxOffset * 2;
     const lngOffset = (Math.random() - 0.5) * maxOffset * 2;
     return [position[0] + latOffset, position[1] + lngOffset];
@@ -70,7 +70,7 @@ export class MapComponent implements OnInit {
 
   private addMarkersToMap(cityLocations: CityLocation[]): void {
     cityLocations.forEach(city => {
-      const jitteredLatLng = this.jitterPosition(city.latLng, 0.001);
+      const jitteredLatLng = this.jitterPosition(city.latLng, 0.01);
 
       const markerIcon = new L.Icon({
         iconUrl: 'images/Icons_Corporate/icons-corporate-30.png',

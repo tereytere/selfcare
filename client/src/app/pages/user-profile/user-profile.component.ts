@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, ViewEncapsulation, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -12,7 +12,8 @@ import { UserService } from '../../services/user.service';
   standalone: true,
   imports: [CardModule, ButtonModule, CardReviewAllComponent, CardRoutineAllComponent],
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.css'
+  styleUrl: './user-profile.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class UserProfileComponent {
   @Input() user: User | null = null;
@@ -26,16 +27,13 @@ export class UserProfileComponent {
   }
 
   async initializeUser() {
-    console.log('Initializing user...');
     if (this.userService.isLogged()) {
       const token = this.userService.getToken();
       if (token) {
         try {
           const decodedToken = this.userService.decodeToken(token);
-          console.log('Decoded Token:', decodedToken);
           const response = await this.userService.getById(decodedToken.id);
           this.user = response.data;
-          console.log('Fetched User:', this.user);
         } catch (error) {
           console.error('Failed to decode token or fetch user:', error);
         }
