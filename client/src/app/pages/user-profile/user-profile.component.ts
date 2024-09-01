@@ -17,17 +17,37 @@ import { UserService } from '../../services/user.service';
 export class UserProfileComponent {
   @Input() user: User | null = null;
   router = inject(Router);
+  userService = inject(UserService);
 
-  private userService = inject(UserService);
+  constructor() { }
 
+  ngOnInit() {
+    this.initializeUser();
+  }
 
+  async initializeUser() {
+    console.log('Initializing user...');
+    if (this.userService.isLogged()) {
+      const token = this.userService.getToken();
+      if (token) {
+        try {
+          const decodedToken = this.userService.decodeToken(token);
+          console.log('Decoded Token:', decodedToken);
+          const response = await this.userService.getById(decodedToken.id);
+          this.user = response.data;
+          console.log('Fetched User:', this.user);
+        } catch (error) {
+          console.error('Failed to decode token or fetch user:', error);
+        }
+      }
+    }
+  }
 
   async onClickEdit() {
-    //edit user with userService.update()
+    // Edit user with userService.update()
   }
 
   async onClickDelete() {
-    //delete user with userService.deleteById(this.user.id)
+    // Delete user with userService.deleteById(this.user.id)
   }
-
 }

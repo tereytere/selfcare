@@ -26,9 +26,7 @@ type LoginBody = {
 export class UserService {
 
   private baseUrl = environment.BASE_URL;
-
   private httpClient = inject(HttpClient);
-
   private tokenKey = 'token';
 
   register(body: any) {
@@ -41,33 +39,42 @@ export class UserService {
     ));
   }
 
-
-  private setToken(token: string): void {
-    localStorage.setItem(this.tokenKey, token); // Guarda el token en localStorage
-  }
-
-  isLogged() {
-    const token = localStorage.getItem('token');
+  setToken(token: string | null): void {
     if (token) {
-      return true;
+      localStorage.setItem(this.tokenKey, token); // Almacena el token recibido
     } else {
-      return false;
+      localStorage.removeItem(this.tokenKey); // Elimina el token
     }
   }
 
-  isAdmin() {
-    const token = localStorage.getItem('token');
+  getToken(): string | null {
+    return localStorage.getItem(this.tokenKey); // Obtiene el token de localStorage
+  }
+
+  decodeToken(token: string): any {
+    try {
+      return JSON.parse(atob(token.split('.')[1])); // Decodifica el token obtenido
+    } catch (error) {
+      console.error('Failed to decode token:', error);
+      throw error;
+    }
+  }
+
+  isLogged(): boolean {
+    return this.getToken() !== null;
+  }
+
+  isAdmin(): boolean {
+    const token = this.getToken();
     if (token) {
       try {
-        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const decodedToken = this.decodeToken(token);
         return decodedToken.role === 'admin';
       } catch (error) {
         console.error('Error decoding token:', error);
-        return false;
       }
-    } else {
-      return false;
     }
+    return false;
   }
 
   getById(id: string) {
@@ -97,7 +104,7 @@ export class UserService {
   getAll(pag: number, limit: number) {
     const params = { pag: pag.toString(), limit: limit.toString() };
     return lastValueFrom(
-      this.httpClient.get<any>(this.baseUrl + '/users', { ...this.createHeaders(), params })
+      this.httpClient.get<any>(`${this.baseUrl}/users`, { ...this.createHeaders(), params })
     );
   }
 
@@ -118,8 +125,8 @@ export class UserService {
     );
   }
 
-  private createHeaders() {
-    const token = localStorage.getItem('token');
+  createHeaders() {
+    const token = this.getToken();
     const httpOptions = {
       headers: new HttpHeaders({
         'Authorization': token ? `Bearer ${token}` : ''

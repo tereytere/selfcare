@@ -1,9 +1,8 @@
-import { Component, inject, ViewEncapsulation } from '@angular/core';
+import { Component, inject, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { UserService } from '../../services/user.service';
 import { ButtonComponent } from "../button/button.component";
 import { ButtonModule } from 'primeng/button';
-
 
 @Component({
   selector: 'header-component',
@@ -13,21 +12,23 @@ import { ButtonModule } from 'primeng/button';
   styleUrl: './header.component.css',
   encapsulation: ViewEncapsulation.None
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   router = inject(Router);
   userService = inject(UserService);
   user: any = null;
 
-  constructor() {
+  constructor() { }
+
+  ngOnInit() {
     this.initializeUser();
   }
 
   async initializeUser() {
     console.log('Initializing user...');
-    const token = localStorage.getItem('token');
-    if (token) {
+    if (this.userService.isLogged()) {
       try {
-        const decodedToken = JSON.parse(atob(token.split('.')[1]));
+        const token = this.userService.getToken();
+        const decodedToken = this.userService.decodeToken(token!);
         console.log('Decoded Token:', decodedToken);
         const response = await this.userService.getById(decodedToken.id);
         this.user = response.data;
@@ -40,7 +41,7 @@ export class HeaderComponent {
   }
 
   async onClickLogout() {
-    localStorage.removeItem('token');
+    this.userService.setToken('');
     this.user = null;
     this.router.navigateByUrl('/home');
   }
@@ -58,6 +59,6 @@ export class HeaderComponent {
   }
 
   isLoggedIn(): boolean {
-    return !this.user;
+    return this.userService.isLogged();
   }
 }
