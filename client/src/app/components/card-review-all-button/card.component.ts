@@ -9,7 +9,7 @@ import { Review } from '../../interfaces/review.inteface';
 
 //Lógica del componenete e incluyo la gestión de los datos de entrada y la navegacion al hacer el click en "Ver más"
 @Component({
-  selector: 'card-review-all',
+  selector: 'card-review-all-buttons',
   standalone: true,
   imports: [CardModule, ButtonModule, RatingModule, ReactiveFormsModule],
   templateUrl: './card.component.html',
