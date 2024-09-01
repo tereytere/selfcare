@@ -12,8 +12,9 @@
         </p-floatLabel>
     </div>
     <div class="mb-4">
-        <p-dropdown [options]="category" optionLabel="name" placeholder="Selecciona la categoría"
-            formControlName="category"></p-dropdown>
+        <p-dropdown [options]="categories" optionLabel="name" placeholder="Selecciona la categoría"
+            formControlName="category">
+        </p-dropdown>
     </div>
     <div class="mb-4">
         <p-floatLabel>
@@ -27,17 +28,25 @@
             <label for="inputShoplink">Link</label>
         </p-floatLabel>
     </div>
-    <div class="image-button">
-        <input type="file" #filePicker (change)="onUpload($event)">
-        <!--  <p-fileUpload mode="basic" chooseLabel="Image" chooseIcon="fa-solid fa-arrow-up-from-bracket" name="image"
-            accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" /> -->
+    <div class="mb-4">
+        <div class="mb-4">
+            <p-floatLabel>
+                <input type="file" id="inputImage" (change)="onImageSelect($event)" />
+                <label for="inputImage">Seleccionar imagen</label>
+            </p-floatLabel>
+        </div>
     </div>
-    <p-button type="submit" label="Enviar" [outlined]="true" severity="info" />
-
+    <div class="text-center">
+        <p-button type="submit" label="Enviar" [outlined]="true" severity="info">
+        </p-button>
+    </div>
 </form>
 
-<ul>
-    @for(err of errores; track $index){
-    <li>{{err.message}}</li>
-    }
-</ul>
+
+<div @if(errores.length 0)>
+    <ul class="error-list">
+        @for(err of errores; track err.field){
+        <li>{{err.message}}</li>
+        }
+    </ul>
+</div>
