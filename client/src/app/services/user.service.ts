@@ -5,15 +5,15 @@ import { environment } from '../../environments/environment.development';
 import { User } from '../interfaces/user.interface';
 import { tap } from 'rxjs/operators';
 
-type RegisterBody = {
-  name: string;
-  email: string;
-  about?: string;
-  password: string;
-  location: string;
-  image?: string;
+// type RegisterBody = {
+//   name: string;
+//   email: string;
+//   about?: string;
+//   password: string;
+//   location: string;
+//   image?: string;
 
-}
+// }
 
 type LoginBody = {
   email: string,
@@ -31,7 +31,7 @@ export class UserService {
 
   private tokenKey = 'token';
 
-  register(body: RegisterBody) {
+  register(body: any) {
     return lastValueFrom(this.httpClient.post<{ message: string, data: User }>(this.baseUrl + '/user/add', body))
   }
 

@@ -1,5 +1,5 @@
 import { DetailRoutineComponent } from './pages/detail-routine/detail-routine.component';
-/* import { DetailProductComponent } from './pages/detail-routine/detail-routine.component';*/
+import { DetailProductComponent } from './pages/detail-product/detail-product.component';
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
 import { LoginComponent } from './pages/login/login.component';
@@ -44,10 +44,10 @@ export const routes: Routes = [
     path: 'products',
     component: ProductsComponent
   },
-  /*   {
-      path: 'product/:id',
-      component: DetailProductComponent
-    }, */
+  {
+    path: 'product/:id',
+    component: DetailProductComponent
+  },
   {
     path: 'product/form',
     component: ProductFormComponent,

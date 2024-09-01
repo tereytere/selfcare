@@ -34,14 +34,24 @@ export class RegisterComponent {
     const input = event.target as HTMLInputElement;
     if (input && input.files && input.files.length > 0) {
       const file = input.files[0];
-      this.formulario.patchValue({ image: file.name });
+      this.formulario.patchValue({ image: file });
     }
 
   }
 
   async onSubmit() {
     try {
-      const response = await this.userService.register(this.formulario.value);
+      const formData = new FormData();
+
+      Object.keys(this.formulario.controls).forEach(key => {
+        const control = this.formulario.get(key);
+        if (key === 'image' && control?.value) {
+          formData.append(key, control.value);
+        } else {
+          formData.append(key, control?.value);
+        }
+      });
+      const response = await this.userService.register(formData);
       this.router.navigate(['/login']);
     } catch (error) {
       this.errores = [{ message: 'An error occurred' }];
@@ -49,5 +59,4 @@ export class RegisterComponent {
     }
   }
 }
-
 
