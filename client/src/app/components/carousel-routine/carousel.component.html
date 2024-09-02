@@ -5,7 +5,12 @@
         <ng-template let-product pTemplate="item">
             <!-- Aquí empieza la plantilla para cada item del carrusel -->
             <div class="border-1 surface-border border-round m-2 p-3">
-                <div class="mb-3">
+                <!-- border-1 : aplica un borde 1 px -->
+                <!-- surface-border: define el color del borde -->
+                <!-- border-round: clase aplica bordes redondeados al elemento -->
+                <!-- m-2: aplica márgenes alrededor del elemento -->
+                <!-- p-3: parecido a m-2 pero para padding (relleno interior del elemento ) -->
+                <div class="mb-3"> <!-- Tamaño Margen -->
                     <div class="relative mx-auto">
                         <!-- Se utiliza la variable "product" para mostrar el nombre del producto -->
                         <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product. image }}"
