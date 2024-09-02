@@ -1,7 +1,9 @@
-import { Component, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, EventEmitter, Output, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
+import { JsonPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -17,22 +19,32 @@ interface ProductCategory {
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    InputTextModule,
-    FloatLabelModule,
-    DropdownModule,
-    ButtonModule,
-    FileUploadModule
-  ],
+  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css'] // Corregido 'styleUrl' a 'styleUrls'
+  styleUrl: './product-form.component.css'
 })
 export class ProductFormComponent {
 
   errores: { field: string, message: string }[] = [];
-  categories: ProductCategory[] = [];
-  file: File | null = null;
+  category: ProductCategory[] | undefined;
+  ngOnInit() {
+    this.category = [
+      { name: 'face', code: 'face' },
+      { name: 'body', code: 'body' },
+      { name: 'mouth', code: 'mouth' },
+      { name: 'hair', code: 'hair' },
+      { name: 'hands', code: 'hands' },
+      { name: 'feet', code: 'feet' }
+    ];
+  }
+  formulario: FormGroup = new FormGroup({
+    name: new FormControl(),
+    brand: new FormControl(),
+    category: new FormControl<ProductCategory | null>(null),
+    properties: new FormControl(),
+    shoplink: new FormControl(),
+    image: new FormControl(),
+  });
 
   productsService = inject(ProductService);
   router = inject(Router);
@@ -48,10 +60,10 @@ export class ProductFormComponent {
 
 
   async onSubmit() {
-    if (this.formulario.invalid) {
-      this.errores.push({ field: 'general', message: 'Por favor, completa todos los campos requeridos.' });
-      return;
-    }
+    // if (this.formulario.value.category) {
+    //   this.formulario.value.category = this.formulario.value.category.code;
+    //   console.log(this.formulario.value.category);
+    // }
 
     try {
       const formData = new FormData();
@@ -62,24 +74,25 @@ export class ProductFormComponent {
           formData.append(key, control.value);
         } else if (key === 'category') {
           formData.append(key, control?.value.code);
-        } else {
+        }
+        else {
           formData.append(key, control?.value);
         }
       });
-
       const response = await this.productsService.addProduct(formData);
+
       console.log(response.message);
 
+      // Avisa al usuario ADMIN que se ha insertado el producto correctamente
       await Swal.fire({
         title: 'Producto creado correctamente',
-        text: '¡Se ha creado el producto! Puedes verlo en la lista ahora.',
+        text: 'Se ha creado el producto! Puedes verlo en la lista ahora',
         icon: 'success'
       });
-
+      // Navegar a la lista de productos
       this.router.navigateByUrl('/products');
-    } catch (error: any) {
-      console.error('Error al crear el producto:', error);
-      this.errores = error.error || [{ field: 'general', message: 'Ocurrió un error inesperado.' }];
+    } catch ({ error }: any) {
+      this.errores = error;
     }
 
   }
