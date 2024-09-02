@@ -6,13 +6,12 @@ import { Router } from '@angular/router';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import Swal from 'sweetalert2';
 import { InputTextModule } from 'primeng/inputtext';
-import { StyleClassModule } from 'primeng/styleclass';
 
 
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule, FloatLabelModule, InputTextModule, StyleClassModule],
+  imports: [ButtonComponent, ReactiveFormsModule, FloatLabelModule, InputTextModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   encapsulation: ViewEncapsulation.None
@@ -21,7 +20,7 @@ import { StyleClassModule } from 'primeng/styleclass';
 export class LoginComponent {
 
   private userService = inject(UserService);
-  private router = inject(Router);
+  router = inject(Router);
   value: string | undefined;
 
   formulario: FormGroup = new FormGroup({
@@ -32,10 +31,14 @@ export class LoginComponent {
   async onSubmit() {
     try {
       const response = await this.userService.login(this.formulario.value);
-      this.router.navigate(['/home']);
+      this.router.navigateByUrl('/home');
     } catch (error) {
       Swal.fire('Error', 'Email o contraseña incorrectos', 'error')
     }
+  }
+
+  toRegister() {
+    this.router.navigateByUrl('/registro');
   }
 
 
