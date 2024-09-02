@@ -43,6 +43,12 @@ export const routes: Routes = [
     component: DetailRoutineComponent
   },
   {
+    path: "routineform",
+    component: RoutineFormComponent,
+    canActivate: [authGuard],
+    data: { role: ['user', 'admin'] },
+  },
+  {
     path: 'products',
     component: ProductsComponent
   },
@@ -51,10 +57,10 @@ export const routes: Routes = [
     component: DetailProductComponent
   },
   {
-    path: 'product/form',
+    path: 'productform',
     component: ProductFormComponent,
     canActivate: [authGuard],
-    data: { role: 'admin' },
+    data: { role: ['admin'] },
   },
   {
     path: 'reviews',
@@ -64,22 +70,16 @@ export const routes: Routes = [
     path: 'users',
     component: UsersComponent,
     canActivate: [authGuard],
-    data: { role: 'admin' },
+    data: { role: ['admin'] },
   },
   {
     path: 'user/:id',
     component: UserProfileComponent,
     canActivate: [authGuard],
-    data: { role: 'user' },
+    data: { role: ['user', 'admin'] },
   },
   {
     path: '**',
     component: NotFoundComponent
-  },
-  {
-    path: "routine/form",
-    component: RoutineFormComponent,
-    canActivate: [authGuard],
-    data: { role: 'user' },
   }
 ];

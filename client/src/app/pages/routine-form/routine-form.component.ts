@@ -15,7 +15,7 @@ import { MultiSelectModule } from 'primeng/multiselect';
   templateUrl: './routine-form.component.html',
   styleUrl: './routine-form.component.css'
 })
-export class RoutineFormComponent implements OnInit {
+export class RoutineFormComponent {
 
 
   private routineService = inject(RoutineService);

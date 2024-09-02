@@ -16,8 +16,6 @@ interface ProductCategory {
   code: string;
 }
 
-
-
 @Component({
   selector: 'product-form',
   standalone: true,
@@ -96,5 +94,6 @@ export class ProductFormComponent {
     } catch ({ error }: any) {
       this.errores = error;
     }
+
   }
 }
