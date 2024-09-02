@@ -6,14 +6,14 @@ import { ProductService } from '../../services/product.service';
 import { Product } from '../../interfaces/product.interface';
 
 @Component({
-  selector: 'carousel-component',
+  selector: 'carousel-routine',
   standalone: true,
   imports: [CarouselModule, ButtonModule, TagModule],
   providers: [ProductService],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css'
 })
-export class CarouselComponent {
+export class CarouselRoutine {
 
   products: Product[] | undefined;
 
