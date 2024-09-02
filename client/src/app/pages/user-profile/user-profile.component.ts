@@ -10,11 +10,17 @@ import { ReviewService } from '../../services/review.service';
 import { CardReviewAllComponent } from "../../components/card-review-all/card.component";
 import { Routine } from '../../interfaces/routine.interface';
 import { RoutineService } from '../../services/routine.service';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { CITY_COORDINATES } from '../../data/city-coordinates';
+import { ButtonComponent } from '../../components/button/button.component';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'user-profile',
   standalone: true,
-  imports: [CardModule, ButtonModule, CardRoutineAllComponent, CardReviewAllComponent],
+  imports: [CardModule, ButtonModule, CardRoutineAllComponent, CardReviewAllComponent, FloatLabelModule, ButtonComponent, FormsModule, ReactiveFormsModule, InputTextModule],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
   encapsulation: ViewEncapsulation.None
@@ -30,11 +36,15 @@ export class UserProfileComponent {
 
   userReviews: Review[] = [];
 
+  isEdit: boolean = false;
+  cities: string[] = [];
+
   constructor() { }
 
   ngOnInit() {
     this.initializeUser();
     this.loadUserReviews();
+    this.loadCities();
   }
 
   async initializeUser() {
@@ -83,13 +93,61 @@ export class UserProfileComponent {
     }
   }
 
+  loadCities(): void {
+    this.cities = Object.keys(CITY_COORDINATES);
+  }
+
+  formulario: FormGroup = new FormGroup({
+    name: new FormControl('', Validators.required),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', Validators.required),
+    location: new FormControl('', Validators.required),
+    about: new FormControl('')
+  })
+  errores: { message: string }[] = [];
 
   async onClickEdit() {
+    this.isEdit = true;
     // Edit user with userService.update()
+  }
+  async onSubmit() {
+    try {
+      const response = await this.userService.update(this.userId, this.formulario.value);
+      this.initializeUser();
+      this.isEdit = false;
+    }
+    catch {
+
+    }
+  }
+  cancelEdit() {
+    this.isEdit = false;
   }
 
   async onClickDelete() {
     // Delete user with userService.deleteById(this.user.id)
+    try {
+
+
+      const result = await Swal.fire({
+        title: 'Borar usuario',
+        text: 'Esta acción es irreversible. Estás segura/o?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, borralo'
+      });
+
+      if (result.isConfirmed) {
+        this.userService.deleteById(this.userId);
+        Swal.fire('Borrado', 'Se ha borrado correctamente', 'success');
+        this.userService.setToken('');
+        this.router.navigateByUrl('/home');
+      }
+    }
+
+    catch {
+
+    }
   }
 
   async onReviewErased($event: string) {
