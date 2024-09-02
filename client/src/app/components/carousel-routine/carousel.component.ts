@@ -4,16 +4,20 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../interfaces/product.interface';
+import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'carousel-routine',
   standalone: true,
-  imports: [CarouselModule, ButtonModule, TagModule],
+  imports: [CarouselModule, ButtonModule, TagModule, CardModule],
   providers: [ProductService],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css'
 })
 export class CarouselRoutine {
+  toproutines = [
+
+  ]
 
   products: Product[] | undefined;
 

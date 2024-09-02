@@ -1,35 +1,19 @@
 <div class="card">
 
-    <p-carousel [numVisible]="3" [numScroll]="3" [circular]="true" [responsiveOptions]="responsiveOptions"
-        autoplayInterval="3000">
+    <p-carousel [value]="routines" [numVisible]="3" [numScroll]="3" [circular]="true"
+        [responsiveOptions]="responsiveOptions" autoplayInterval[]="3000">
         <ng-template let-product pTemplate="item">
-            <!-- Aquí empieza la plantilla para cada item del carrusel -->
             <div class="border-1 surface-border border-round m-2 p-3">
-                <!-- border-1 : aplica un borde 1 px -->
-                <!-- surface-border: define el color del borde -->
-                <!-- border-round: clase aplica bordes redondeados al elemento -->
-                <!-- m-2: aplica márgenes alrededor del elemento -->
-                <!-- p-3: parecido a m-2 pero para padding (relleno interior del elemento ) -->
-                <div class="mb-3"> <!-- Tamaño Margen -->
+                <div class="mb-3">
                     <div class="relative mx-auto">
-                        <!-- Se utiliza la variable "product" para mostrar el nombre del producto -->
-                        <img src="https://primefaces.org/cdn/primeng/images/demo/product/{{ product. image }}"
+                        <img src="/client/public/images/2-beard:face-selfcare.jpg {{product. image }}"
                             [alt]="product.name" class="w-full border-round" />
                     </div>
                 </div>
                 <div class="mb-3 font-medium">
-                    <!-- Se utiliza la variable product para mostrar el nombre del producto -->
                     {{ product.name }}
                 </div>
                 <div class="flex justify-content-between align-items-center">
-
-                    <!-- <span>
-                    --- Botones de acción como agregar a favoritos o al carrito ---
-
-                        <p-button icon="pi pi-heart" severity="secondary" [outlined]="true" />
-                        <p-button icon="pi pi-shopping-cart" styleClass="ml-2" />
-                    </span> -->
-
                 </div>
             </div>
         </ng-template>
