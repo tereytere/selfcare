@@ -31,8 +31,6 @@ export class RoutineService {
 
 
   getById(id: string) {
-    console.log(id);
-
     return lastValueFrom(
       this.httpClient.get<{ message: string, data: Routine }>(`${this.baseUrl}/routine/${id}`)
     );

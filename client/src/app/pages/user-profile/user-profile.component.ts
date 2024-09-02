@@ -8,6 +8,8 @@ import { UserService } from '../../services/user.service';
 import { Review } from '../../interfaces/review.inteface';
 import { ReviewService } from '../../services/review.service';
 import { CardReviewAllComponent } from "../../components/card-review-all/card.component";
+import { Routine } from '../../interfaces/routine.interface';
+import { RoutineService } from '../../services/routine.service';
 
 @Component({
   selector: 'user-profile',
@@ -22,7 +24,9 @@ export class UserProfileComponent {
   router = inject(Router);
   userService = inject(UserService);
   reviewService = inject(ReviewService);
+  routineService = inject(RoutineService);
   userId: string = "";
+  routines: Routine[] = [];
 
   userReviews: Review[] = [];
 
@@ -42,6 +46,27 @@ export class UserProfileComponent {
           this.userId = decodedToken.id;
           const response = await this.userService.getById(decodedToken.id);
           this.user = response.data;
+          if (this.user?.routines) {
+            // Use a type assertion to specify that routines are of type (string | { _id: string })[]
+            const routinesWithNulls = await Promise.all(
+              (this.user.routines as (string | { _id: string })[]).map(async (routineId) => {
+                // Check if routineId is an object with an _id field
+                if (typeof routineId === 'object' && routineId !== null && '_id' in routineId) {
+                  routineId = (routineId as { _id: string })._id;
+                }
+
+                if (typeof routineId === 'string') { // Ensure routineId is a string
+                  const routineResponse = await this.routineService.getById(routineId);
+                  return routineResponse.data;
+                } else {
+                  console.error('Routine ID is not a string or valid object:', routineId);
+                  return null; // Handle invalid ID case
+                }
+              })
+            );
+            // Filter out null values
+            this.routines = routinesWithNulls.filter((routine): routine is Routine => routine !== null);
+          }
         } catch (error) {
           console.error('Failed to decode token or fetch user:', error);
         }
