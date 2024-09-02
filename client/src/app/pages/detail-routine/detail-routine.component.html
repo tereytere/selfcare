@@ -33,7 +33,12 @@
         }
     </div>
     <div class="steps">
+        @if(userService.isLogged()){
         <custom-button [label]="isSavedLabel" (onClick)="saveRoutine()"></custom-button>
+        }
+        @else {
+        <custom-button [label]="isSavedLabel" (onClick)="redirectLogin()"></custom-button>
+        }
     </div>
     <div class="steps">
         <custom-button [label]="showFormLabel" (onClick)="toggleForm()"></custom-button>
@@ -42,19 +47,11 @@
         }
     </div>
     <div class="reviews-container">
-
         @for (review of routineReviews; track review._id) {
-
-
-
-        <card-review-all [review]="review" [stars]="review.stars" [userId]="userId"
-            (reviewErased)="onReviewErased($event)"></card-review-all>
-
-        <!-- <p-card [header]="review.title">
-            <p class="m-0">
-                {{review.description}}
-            </p>
-        </p-card> -->
+        <div class="review-card">
+            <card-review-all [review]="review" [stars]="review.stars" [userId]="userId"
+                (reviewErased)="onReviewErased($event)" (reviewEdited)="onReviewEdited($event)"></card-review-all>
+        </div>
         }
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, Input, inject, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, inject, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 import { Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -8,15 +8,17 @@ import { Review } from '../../interfaces/review.inteface';
 import { DatePipe } from '@angular/common';
 import { ButtonComponent } from '../button/button.component';
 import { ReviewService } from '../../services/review.service';
+import { ReviewFormComponent } from '../review-form/review-form.component';
 
 
 //Lógica del componenete e incluyo la gestión de los datos de entrada y la navegacion al hacer el click en "Ver más"
 @Component({
   selector: 'card-review-all',
   standalone: true,
-  imports: [CardModule, ButtonModule, RatingModule, ReactiveFormsModule, FormsModule, DatePipe, ButtonComponent],
+  imports: [CardModule, ButtonModule, RatingModule, ReactiveFormsModule, FormsModule, DatePipe, ButtonComponent, ReviewFormComponent],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrl: './card.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class CardReviewAllComponent {
 
@@ -25,16 +27,14 @@ export class CardReviewAllComponent {
   @Input() userId: string | null = null;
 
   @Output() reviewErased: EventEmitter<string> = new EventEmitter();
+  @Output() reviewEdited: EventEmitter<string> = new EventEmitter();
 
   //starsControl: FormControl = new FormControl(0);
   reviewService = inject(ReviewService);
   router = inject(Router);
 
-  // ngOnInit() {
-  //   if (this.review) {
-  //     this.value.setValue(this.review.stars);
-  //   }
-  // }
+  isEdit: boolean = false;
+
   async onErase(reviewId: any) {
     const response = await this.reviewService.deleteById(reviewId);
     console.log(response.message);
@@ -42,9 +42,14 @@ export class CardReviewAllComponent {
 
   }
 
-  /*  onViewMore() {
-    this.router.navigate(['/routine', this.routineId]);
-   } */
+  toggleEdit() {
+    this.isEdit = true;
+  }
+
+  onReviewUpdated() {
+    this.isEdit = false;
+    this.reviewEdited.emit();
+  }
 
 }
 

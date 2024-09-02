@@ -35,15 +35,10 @@ export class ReviewService {
     );
   }
 
-  updateReview(id: string, review: Review) {
-    const formData = new FormData();
-    formData.append('title', review.title);
-    formData.append('description', review.description);
-    formData.append('stars', review.stars.toString());
-    formData.append('author', review.author);
+  updateReview(review: Review, id: string) {
 
     return lastValueFrom(
-      this.httpClient.put<{ message: string, data: Review }>(`${this.baseUrl}/review/update/${id}`, formData, this.createHeaders())
+      this.httpClient.put<{ message: string, data: Review }>(`${this.baseUrl}/review/update/${id}`, review, this.createHeaders())
     );
   }
 

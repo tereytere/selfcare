@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { RoutineService } from './../../services/routine.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Routine } from './../../interfaces/routine.interface';
@@ -24,7 +24,8 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [DividerModule, ListboxModule, TableModule, CardModule, CardReviewAllComponent, CardReviewAllComponentEdit, ReviewFormComponent, ButtonComponent],
   templateUrl: './detail-routine.component.html',
-  styleUrl: './detail-routine.component.css'
+  styleUrl: './detail-routine.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class DetailRoutineComponent {
   router = inject(Router);
@@ -49,34 +50,6 @@ export class DetailRoutineComponent {
 
   ngOnInit() {
     this.loadPage();
-    // this.activatedRoute.params.subscribe(async params => {
-    //   const response = await this.routineService.getById(params['id']);
-    //   this.routine = response.data;
-    //   if (this.routine.products.length > 0) {
-    //     this.routine.products.forEach(async product => {
-    //       const responseProducts = await this.productService.getById(product);
-    //       this.routineProducts.push(responseProducts.data);
-    //     });
-    //   }
-    //   if (this.routine.reviews) {
-    //     this.routine.reviews.forEach(async review => {
-    //       const responseReviews = await this.reviewService.getById(review);
-    //       this.routineReviews.push(responseReviews.data);
-    //     });
-    //   }
-    // })
-
-    // if (this.userService.isLogged()) {
-    //   const token = this.userService.getToken();
-    //   if (token) {
-    //     try {
-    //       const decodedToken = this.userService.decodeToken(token);
-    //       this.userId = decodedToken.id;
-    //     } catch (error) {
-    //       console.error('Failed to decode token or fetch user:', error);
-    //     }
-    //   }
-    // }
   }
 
   async loadPage() {
@@ -131,11 +104,19 @@ export class DetailRoutineComponent {
     this.routineReviews = [];
     this.loadPage();
   }
+
+  async onReviewEdited($event: string) {
+    this.routineReviews = [];
+    this.loadPage();
+  }
   toggleForm() {
     this.isForm = !this.isForm;
     this.showFormLabel === "Review this Routine" ? this.showFormLabel = "Cancel" : this.showFormLabel = "Review this Routine";
   }
   onRowSelect(event: any) {
     this.router.navigateByUrl(`/product/${event.data._id}`);
+  }
+  redirectLogin() {
+    this.router.navigateByUrl(`/login`);
   }
 }

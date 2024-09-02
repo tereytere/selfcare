@@ -35,8 +35,14 @@
 }
 
 .product-image {
-    height: 15vh;
+    height: 30vh;
     margin-bottom: 20px;
+    overflow: hidden;
+
+    & img {
+        height: 100%;
+        object-fit: contain;
+    }
 }
 
 .product-details {

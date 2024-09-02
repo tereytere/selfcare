@@ -4,6 +4,7 @@ import { ButtonComponent } from "../../components/button/button.component";
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { FloatLabelModule } from 'primeng/floatlabel';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class LoginComponent {
       const response = await this.userService.login(this.formulario.value);
       this.router.navigate(['/home']);
     } catch (error) {
-      console.error('Error registering user', error);
+      Swal.fire('Error', 'Email o contraseña incorrectos', 'error')
     }
   }
 

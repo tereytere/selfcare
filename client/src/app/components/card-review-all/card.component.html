@@ -1,3 +1,4 @@
+@if(isEdit === false){
 <p-card class="card-container" [id]="review?._id">
     <ng-template pTemplate="body">
         <p-rating [(ngModel)]="stars" [readonly]="true" [cancel]="false" />
@@ -8,7 +9,7 @@
         <p>{{review?.date | date:'HH:mm dd-MM-yy'}}</p>
         <div class="flex gap-3 mt-1">
             @if (review?.author === userId) {
-            <p-button label="Editar" severity="warning" class="w-full" styleClass="w-full" />
+            <p-button label="Editar" severity="warning" class="w-full" styleClass="w-full" (onClick)="toggleEdit()" />
             <p-button label="Borrar" severity="danger" class="w-full" styleClass="w-full"
                 (onClick)="onErase(review?._id)" />
             }
@@ -17,3 +18,7 @@
         </div>
     </ng-template>
 </p-card>
+}
+@else {
+<review-form [review]="review" (reviewUpdated)="onReviewUpdated()" />
+}

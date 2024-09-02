@@ -7,6 +7,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from "../button/button.component";
 import { ReviewService } from '../../services/review.service';
+import { Review } from '../../interfaces/review.inteface';
 
 @Component({
   selector: 'review-form',
@@ -30,8 +31,12 @@ export class ReviewFormComponent {
 
   @Input() routineId: string | null = null;
   @Input() userId: string | null = null;
+  @Input() review: Review | null = null;
 
   @Output() reviewCreated: EventEmitter<string> = new EventEmitter();
+  @Output() reviewUpdated: EventEmitter<string> = new EventEmitter();
+
+  reviewId: any = null;
 
   constructor(private fb: FormBuilder) {
     this.reviewForm = this.fb.group({
@@ -53,6 +58,16 @@ export class ReviewFormComponent {
       this.reviewCreated.emit(response.message)
 
       // Maneja el envío del formulario, como, enviarlo a un servicio
+    } else {
+      console.log('Form is invalid');
+    }
+  }
+
+  async onSubmitEdit() {
+    this.reviewId = this.review?._id;
+    if (this.reviewForm.valid) {
+      const response = await this.reviewService.updateReview(this.reviewForm.value, this.reviewId)
+      this.reviewUpdated.emit(response.message)
     } else {
       console.log('Form is invalid');
     }
