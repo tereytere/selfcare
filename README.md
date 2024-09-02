@@ -2,6 +2,9 @@
 <h1 align="center">Hola 👋 Aquí tienes SelfCare, todas las rutinas de autocuidado ✨ a tu alcance !</h1>
 </div>
 
+![banner1](https://github.com/user-attachments/assets/29bda9b3-a58c-4c2e-8067-6467889b44a4)
+
+
    #  En este proyecto puedes:
 
 
