@@ -1,17 +1,17 @@
 .body {
-  background-image: url('/images/2-body-selfcare.jpg');
+  background-image: url('/images/body-selfcare.jpg');
   background-position: center;
   background-size: cover;
 }
 
 .face {
-  background-image: url('/images/2-face-selfcare.jpg');
+  background-image: url('/images/face-selfcare.jpg');
   background-position: center;
   background-size: cover;
 }
 
 .mouth {
-  background-image: url('/images/2-mounth-selfcare.jpg');
+  background-image: url('/images/mounth-selfcare.jpg');
   background-position-y: 285px;
   background-size: cover;
 }
@@ -35,10 +35,11 @@
 }
 
 .beard {
-  background-image: url('/images/3-beard:face-selfcare.jpg');
+  background-image: url('/images/beard-selfcare.jpg');
   background-position: center;
   background-size: cover;
 }
+
 
 .routine {
   height: 180px;
