@@ -1,7 +1,8 @@
 .card-container {
     border-radius: 0.3125rem;
     overflow: hidden;
-    width: 360px;
+    width: max-content 150px;
+    height: max-content 75px;
 }
 
 .p-card-header {

@@ -34,8 +34,24 @@
             <label for="applyschedule">Apply Schedule</label>
         </p-floatLabel>
     </div>
+    <div class="mb-4">
+        <p-floatLabel>
+            <input id="repeat" pInputText formControlName="repeat">
+            <label for="name">Repeat</label>
+        </p-floatLabel>
+    </div>
+    <div class="mb-4">
+        <label for="products">Products</label>
+        <p-multiSelect id="products" formControlName="products" [options]="productsAvailable" optionLabel="name"
+            placeholder="Select products"></p-multiSelect>
+    </div>
+    <div class="mb-4">
+        <p-floatLabel>
+            <textarea id="usesteps" pInputTextarea formControlName="usesteps"></textarea>
+            <label for="usesteps">Usesteps</label>
+        </p-floatLabel>
+    </div>
 
-    <!-- Repeat and Products fields would be similar, with the possibility of multiple selections or additions -->
 
     <div class="mb-4">
         <p-floatLabel>

@@ -6,7 +6,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { JsonPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
-import { InputLabelComponent } from '../../components/input-label/input-label.component';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -22,7 +21,7 @@ interface ProductCategory {
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [FormsModule, InputLabelComponent, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule, FileUploadModule],
+  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -58,15 +57,15 @@ export class ProductFormComponent {
       const file = input.files[0];
       this.formulario.patchValue({ image: file });
       console.log(file);
-
     }
   }
 
+
   async onSubmit() {
-    if (this.formulario.value.category) {
-      this.formulario.value.category = this.formulario.value.category.code;
-      console.log(this.formulario.value.category);
-    }
+    // if (this.formulario.value.category) {
+    //   this.formulario.value.category = this.formulario.value.category.code;
+    //   console.log(this.formulario.value.category);
+    // }
 
     try {
       const formData = new FormData();
@@ -75,7 +74,10 @@ export class ProductFormComponent {
         const control = this.formulario.get(key);
         if (key === 'image' && control?.value) {
           formData.append(key, control.value);
-        } else {
+        } else if (key === 'category') {
+          formData.append(key, control?.value.code);
+        }
+        else {
           formData.append(key, control?.value);
         }
       });
