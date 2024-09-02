@@ -1,3 +1,4 @@
+import { Component } from '@angular/core';
 import { DetailRoutineComponent } from './pages/detail-routine/detail-routine.component';
 import { Routes } from '@angular/router';
 import { RegisterComponent } from './pages/register/register.component';
@@ -9,6 +10,7 @@ import { ProductFormComponent } from './pages/product-form/product-form.componen
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
 import { UsersComponent } from './pages/users/users.component';
+import { RoutineFormComponent } from './pages/routine-form/routine-form.component';
 
 
 export const routes: Routes = [
@@ -63,4 +65,10 @@ export const routes: Routes = [
     path: '**',
     component: NotFoundComponent
   },
+  {
+    path: "routine/form",
+    component: RoutineFormComponent,
+    canActivate: [authGuard],
+    data: { role: 'user' },
+  }
 ];

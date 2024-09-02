@@ -1,0 +1,27 @@
+form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.mb-4 {
+    margin-bottom: 16px;
+}
+
+p-floatLabel {
+    width: 100%;
+}
+
+p-button {
+    display: block;
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 100px;
+}
+
+p-multiSelect {
+    width: 100%;
+}
