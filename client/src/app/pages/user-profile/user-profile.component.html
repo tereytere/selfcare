@@ -22,8 +22,15 @@
   </ng-template>
   <ng-template pTemplate="footer">
     <p><strong></strong>Tus Opiniones:</p>
-    <!-- map reviews if author === user-->
-    <card-review-all-edit></card-review-all-edit>
+    <!-- show reviews if author === user-->
+    <div class="reviews-container">
+      @for (review of userReviews; track review._id) {
+      <div class="review-card">
+        <card-review-all [review]="review" [stars]="review.stars" [userId]="userId"
+          (reviewErased)="onReviewErased($event)" (reviewEdited)="onReviewEdited($event)"></card-review-all>
+      </div>
+      }
+    </div>
     <ng-template pTemplate="footer">
     </ng-template>
   </ng-template>

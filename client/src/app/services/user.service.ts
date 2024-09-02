@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment.development';
 import { User } from '../interfaces/user.interface';
 import { tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
+import { ReviewService } from './review.service';
 
 type LoginBody = {
   email: string,
@@ -21,6 +22,8 @@ export class UserService {
   private baseUrl = environment.BASE_URL;
   private httpClient = inject(HttpClient);
   private tokenKey = 'token';
+
+  private reviewService = inject(ReviewService);
 
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
@@ -112,6 +115,20 @@ export class UserService {
     return lastValueFrom(
       this.httpClient.get<{ message: string, data: User }>(`${this.baseUrl}/user/${id}`, this.createHeaders())
     );
+  }
+
+  async getReviewsForCurrentUser() {
+    const token = this.getToken();
+    if (token) {
+      const decodedToken = this.decodeToken(token);
+      try {
+        const response = await this.reviewService.getReviewsByUserId(decodedToken.id);
+        return response.data;
+      } catch (error) {
+        console.error('Failed to fetch user reviews:', error);
+      }
+    }
+    return [];
   }
 
   update(id: string, routine: User) {

@@ -145,4 +145,14 @@ const deleteReview = async (req, res) => {
     }
 };
 
-module.exports = { deleteReview, updateReview, getReview, getAllReviews, addReview }
+const getUserReview = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const reviews = await Review.find({ author: id });
+        return res.status(200).json({ message: "Reviews found", data: reviews });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching user reviews', error });
+    }
+}
+
+module.exports = { deleteReview, updateReview, getReview, getAllReviews, addReview, getUserReview }

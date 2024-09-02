@@ -29,6 +29,12 @@ export class ReviewService {
     );
   }
 
+  getReviewsByUserId(userId: string) {
+    return lastValueFrom(
+      this.httpClient.get<{ data: Review[] }>(`${this.baseUrl}/review/user/${userId}`, this.createHeaders())
+    );
+  }
+
   addReview(review: Review, idU: string, idR: string) {
     return lastValueFrom(
       this.httpClient.post<{ message: string, data: Review }>(`${this.baseUrl}/review/add/${idU}/${idR}`, review, this.createHeaders())
