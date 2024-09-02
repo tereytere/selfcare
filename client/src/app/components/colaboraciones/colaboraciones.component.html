@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboraciones</title>
+    <link rel="stylesheet" href="colaboraciones.component.css">
+</head>
+
+<body>
+    <h1>Colaboraciones</h1>
+
+    <p-carousel [value]="colaboraciones" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000"
+        [responsiveOptions]="responsiveOptions">
+        <ng-template pTemplate="item" let-colaboracion>
+            <div class="colaboracion-card">
+                <img src="{{colaboracion.imgUrl}}" alt="Colaboración" class="colaboracion-image">
+            </div>
+        </ng-template>
+    </p-carousel>
+</body>
+
+</html>
