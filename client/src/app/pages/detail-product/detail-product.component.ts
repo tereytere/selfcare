@@ -5,11 +5,12 @@ import { ImageModule } from 'primeng/image';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { Product } from '../../interfaces/product.interface';
+import { ButtonComponent } from '../../components/button/button.component';
 
 @Component({
   selector: 'detail-product',
   standalone: true,
-  imports: [ImageModule, CardModule, ButtonModule],
+  imports: [ImageModule, CardModule, ButtonModule, ButtonComponent],
   templateUrl: './detail-product.component.html',
   styleUrls: ['./detail-product.component.css'],
   encapsulation: ViewEncapsulation.None

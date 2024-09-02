@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, ViewEncapsulation, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
@@ -12,7 +12,8 @@ import { ButtonComponent } from '../button/button.component';
   standalone: true,
   imports: [CardModule, ButtonModule, ButtonComponent],
   templateUrl: './card.component.html',
-  styleUrl: './card.component.css'
+  styleUrl: './card.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class CardProductAllComponent {
 
@@ -24,7 +25,7 @@ export class CardProductAllComponent {
   router = inject(Router);
   onViewMore(): void {
     if (this.product) {
-      this.router.navigate(['/detail-product', this.product._id]);
+      this.router.navigate([`/product/${this.product._id}`]);
     }
   }
 
