@@ -8,12 +8,15 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   // Check if the user is logged in
   if (userService.isLogged()) {
-    const expectedRole = route.data['role']; // Get the expected role from route data
+    const expectedRoles = route.data['role']; // Get the expected roles from route data
     const isAdmin = userService.isAdmin();  // Determine if the user is an admin
 
-    // Check if the user's role matches the expected role
-    if ((expectedRole === 'admin' && isAdmin) || (expectedRole === 'user' && !isAdmin)) {
-      return true; // Allow access if the role matches
+    // Convert expectedRoles to an array if it's not already
+    const roles = Array.isArray(expectedRoles) ? expectedRoles : [expectedRoles];
+
+    // Check if the user's role matches one of the expected roles
+    if ((roles.includes('admin') && isAdmin) || (roles.includes('user') && !isAdmin)) {
+      return true; // Allow access if one of the roles matches
     }
 
     // Redirect to forbidden page if the role does not match
