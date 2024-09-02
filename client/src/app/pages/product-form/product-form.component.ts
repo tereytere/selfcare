@@ -16,8 +16,6 @@ interface ProductCategory {
   code: string;
 }
 
-
-
 @Component({
   selector: 'product-form',
   standalone: true,
