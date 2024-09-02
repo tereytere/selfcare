@@ -1,0 +1,53 @@
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    color: var(--corporate-color);
+    margin-bottom: 20px;
+    font-family: var(--title-font);
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+/* Estilo para la tarjeta del testimonio */
+.testimonial-card {
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: var(--background-color);
+    color: var(--secondary-color);
+}
+
+/* Contenedor para centrar la imagen */
+.testimonial-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Estilo para la imagen del testimonio */
+.testimonial-image {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid var(--corporate-color);
+}
+
+/* Estilo para el contenido del testimonio */
+.testimonial-content {
+    text-align: center;
+    color: var(--secondary-color);
+}
+
+/* Estilo para el bloque de cita */
+blockquote {
+    font-style: italic;
+    border-left: 4px solid var(--corporate-color);
+    padding-left: 1rem;
+    margin: 0;
+    color: var(--secondary-color);
+    font-family: "Josefin Sans";
+}
