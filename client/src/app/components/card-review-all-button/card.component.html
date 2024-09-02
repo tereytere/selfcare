@@ -11,7 +11,7 @@
     <div class="flex gap-3 mt-1">
       <!-- @if(isLogged){ -->
       <p-button label="Editar" severity="warning" class="w-full" styleClass="w-full" />
-      <p-button label="Borrar" severity="danger" class="w-full" styleClass="w-full" />
+      <p-button label="Borrar" severity="danger" class="w-full" styleClass="w-full" (onClick)="onErase(review?._id)" />
       <!-- @if(isAdmin){ -->
       <p-button label="Ocultar" severity="secondary" class="w-full" styleClass="w-full" />
     </div>

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { RatingModule } from 'primeng/rating';
@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ButtonComponent } from "../button/button.component";
+import { ReviewService } from '../../services/review.service';
 
 @Component({
   selector: 'review-form',
@@ -23,7 +24,14 @@ import { ButtonComponent } from "../button/button.component";
   encapsulation: ViewEncapsulation.None
 })
 export class ReviewFormComponent {
+  reviewService = inject(ReviewService);
+
   reviewForm: FormGroup;
+
+  @Input() routineId: string | null = null;
+  @Input() userId: string | null = null;
+
+  @Output() reviewCreated: EventEmitter<string> = new EventEmitter();
 
   constructor(private fb: FormBuilder) {
     this.reviewForm = this.fb.group({
@@ -37,9 +45,13 @@ export class ReviewFormComponent {
     return this.reviewForm.get('stars') as FormControl;
   }
 
-  onSubmit() {
+  async onSubmit() {
     if (this.reviewForm.valid) {
-      console.log('Form Submitted', this.reviewForm.value);
+      console.log(this.reviewForm.value);
+      const response = await this.reviewService.addReview(this.reviewForm.value, this.userId!, this.routineId!)
+      console.log(response.message);
+      this.reviewCreated.emit(response.message)
+
       // Maneja el envío del formulario, como, enviarlo a un servicio
     } else {
       console.log('Form is invalid');
