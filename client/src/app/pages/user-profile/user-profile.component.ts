@@ -3,14 +3,14 @@ import { Router } from '@angular/router';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { User } from '../../interfaces/user.interface';
-import { CardReviewAllComponent } from "../../components/card-review-all-button/card.component";
+import { CardReviewAllComponentEdit } from "../../components/card-review-all-button/card.component";
 import { CardRoutineAllComponent } from "../../components/card-routine-all/card.component";
 import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'user-profile',
   standalone: true,
-  imports: [CardModule, ButtonModule, CardReviewAllComponent, CardRoutineAllComponent],
+  imports: [CardModule, ButtonModule, CardReviewAllComponentEdit, CardRoutineAllComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
   encapsulation: ViewEncapsulation.None

@@ -11,12 +11,9 @@ import { ProductFormComponent } from './pages/product-form/product-form.componen
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
 import { UsersComponent } from './pages/users/users.component';
-<<<<<<< HEAD
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
-=======
 import { RoutineFormComponent } from './pages/routine-form/routine-form.component';
->>>>>>> miguel
 
 
 export const routes: Routes = [
@@ -54,7 +51,7 @@ export const routes: Routes = [
     component: DetailProductComponent
   },
   {
-    path: 'product/form',
+    path: 'productform',
     component: ProductFormComponent,
     canActivate: [authGuard],
     data: { role: 'admin' },
@@ -73,16 +70,17 @@ export const routes: Routes = [
     path: 'user/:id',
     component: UserProfileComponent,
     canActivate: [authGuard],
+    data: { role: 'user' || 'admin' },
+  },
+
+  {
+    path: "routineform",
+    component: RoutineFormComponent,
+    canActivate: [authGuard],
     data: { role: 'user' },
   },
   {
     path: '**',
     component: NotFoundComponent
-  },
-  {
-    path: "routine/form",
-    component: RoutineFormComponent,
-    canActivate: [authGuard],
-    data: { role: 'user' },
   }
 ];
