@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
+import { JsonPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -15,10 +16,12 @@ interface ProductCategory {
   code: string;
 }
 
+
+
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule, FileUploadModule],
+  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
@@ -57,40 +60,41 @@ export class ProductFormComponent {
     }
   }
 
-}
-  }
 
   async onSubmit() {
-  if (this.formulario.value.category) {
-    this.formulario.value.category = this.formulario.value.category.code;
-    console.log(this.formulario.value.category);
+    // if (this.formulario.value.category) {
+    //   this.formulario.value.category = this.formulario.value.category.code;
+    //   console.log(this.formulario.value.category);
+    // }
+
+    try {
+      const formData = new FormData();
+
+      Object.keys(this.formulario.controls).forEach(key => {
+        const control = this.formulario.get(key);
+        if (key === 'image' && control?.value) {
+          formData.append(key, control.value);
+        } else if (key === 'category') {
+          formData.append(key, control?.value.code);
+        }
+        else {
+          formData.append(key, control?.value);
+        }
+      });
+      const response = await this.productsService.addProduct(formData);
+
+      console.log(response.message);
+
+      // Avisa al usuario ADMIN que se ha insertado el producto correctamente
+      await Swal.fire({
+        title: 'Producto creado correctamente',
+        text: 'Se ha creado el producto! Puedes verlo en la lista ahora',
+        icon: 'success'
+      });
+      // Navegar a la lista de productos
+      this.router.navigateByUrl('/products');
+    } catch ({ error }: any) {
+      this.errores = error;
+    }
   }
-
-  try {
-    const formData = new FormData();
-
-    Object.keys(this.formulario.controls).forEach(key => {
-      const control = this.formulario.get(key);
-      if (key === 'image' && control?.value) {
-        formData.append(key, control.value);
-      } else {
-        formData.append(key, control?.value);
-      }
-    });
-    const response = await this.productsService.addProduct(formData);
-
-    console.log(response.message);
-
-    // Avisa al usuario ADMIN que se ha insertado el producto correctamente
-    await Swal.fire({
-      title: 'Producto creado correctamente',
-      text: 'Se ha creado el producto! Puedes verlo en la lista ahora',
-      icon: 'success'
-    });
-    // Navegar a la lista de productos
-    this.router.navigateByUrl('/products');
-  } catch ({ error }: any) {
-    this.errores = error;
-  }
-}
 }
