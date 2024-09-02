@@ -1,0 +1,16 @@
+<div class="p-carousel">
+    <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true"
+        [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+        <ng-template pTemplate="item" let-product>
+            <p-card class="product-card">
+                <ng-template pTemplate="header">
+                    <img [alt]="product?.name" [src]="product?.image" class="product-image" />
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <h3>{{product.name}}</h3>
+                    <p>{{product.description}}</p>
+                </ng-template>
+            </p-card>
+        </ng-template>
+    </p-carousel>
+</div>

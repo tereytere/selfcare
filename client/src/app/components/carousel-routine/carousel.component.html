@@ -1,22 +1,17 @@
 <div class="card">
-
-    <!-- <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="true"
-        [responsiveOptions]="responsiveOptions" autoplayInterval[]="3000">
-        <ng-template let-product pTemplate="item">
-            <div class="border-1 surface-border border-round m-2 p-3">
-                <div class="mb-3">
-                    <div class="relative mx-auto">
-                        <img src="/client/public/images/2-beard:face-selfcare.jpg {{product. image }}"
-                            [alt]="product.name" class="w-full border-round" />
-                    </div>
-                </div>
-                <div class="mb-3 font-medium">
-                    {{ product.name }}
-                </div>
-                <div class="flex justify-content-between align-items-center">
-                </div>
-            </div>
-        </ng-template>
-    </p-carousel> -->
-
-</div>
+    <p-carousel [value]="routines" [numVisible]="3" [numScroll]="3" [circular]="true"
+        [responsiveOptions]="responsiveOptions" [autoplayInterval]="3000">
+      <ng-template pTemplate="item" let-routine>
+        <p-card class="routine-card" [ngClass]="routine.category">
+          <ng-template pTemplate="header">
+            <img [alt]="routine?.category" [src]="routine?.imageUrl" class="routine-image" />
+          </ng-template>
+          <ng-template pTemplate="content">
+            <h3>{{routine.name}}</h3>
+            <p>{{routine.description}}</p>
+          </ng-template>
+        </p-card>
+      </ng-template>
+    </p-carousel>
+  </div>
+  

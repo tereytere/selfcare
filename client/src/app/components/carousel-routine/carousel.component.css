@@ -1,36 +1,77 @@
-/* Estilo para la tarjeta del testimonio */
-.testimonial-card {
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+/* Ajusta el tamaño y la posición del contenedor del carrusel */
+.p-carousel {
+    width: 90%;
+    margin: 0 auto;
 }
 
-/* Contenedor para centrar la imagen */
-.testimonial-image-container {
+/* Estilo general para el contenido del carrusel */
+.routine-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Ajusta la altura del contenedor de la tarjeta */
+    width: 100%; /* Asegura que la tarjeta ocupe el 100% del contenedor */
+    background-color: var(--background-color);
+    border-radius: 8px;
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para las imágenes en el carrusel */
+.routine-image {
+    width: 100%;
+    height: 200px; /* Ajusta la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+    margin: 0; /* Elimina márgenes adicionales */
+    border-bottom: 2px solid var(--secondary-color); /* Opcional: añade una línea inferior para separación visual */
+}
+
+/* Ajusta la posición vertical de las imágenes en el carrusel para categorías específicas */
+.facial {
+    background-image: url('/images/facial-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.body {
+    background-image: url('/images/body-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.hair {
+    background-image: url('/images/hair-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.hands {
+    background-image: url('/images/hands-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.feet {
+    background-image: url('/images/feet-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.mouth {
+    background-image: url('/images/mouth-selfcare.jpg');
+    background-position-y: 285px;
+    background-size: cover;
+}
+
+/* Opcional: Ajusta la posición vertical de las imágenes en el carrusel para categorías específicas */
+.p-carousel .p-carousel-content .p-carousel-item {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1rem;
 }
 
-/* Estilo para la imagen del testimonio */
-.testimonial-image {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
-}
-
-/* Estilo para el contenido del testimonio */
-.testimonial-content {
-    text-align: center;
-}
-
-/* Estilo para el bloque de cita */
-blockquote {
-    font-style: italic;
-    border-left: 4px solid #A3897a;
-    padding-left: 1rem;
-    margin: 0;
-    color: #CABA9F;
+/* Ajusta el estilo de los indicadores del carrusel */
+.p-carousel .p-carousel-indicators .p-carousel-indicator {
+    background-color: var(--secondary-color);
 }

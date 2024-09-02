@@ -1,0 +1,43 @@
+/* Ajusta el tamaño y la posición del contenedor del carrusel */
+.p-carousel {
+    width: 90%;
+    margin: 0 auto;
+}
+
+/* Estilo general para el contenido del carrusel */
+.product-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 300px; /* Ajusta la altura del contenedor de la tarjeta */
+    width: 100%; /* Asegura que la tarjeta ocupe el 100% del contenedor */
+    background-color: var(--background-color);
+    border-radius: 8px;
+    overflow: hidden; /* Asegura que el contenido no se desborde */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px; /* Añade un poco de relleno para el contenido */
+}
+
+/* Estilos para las imágenes en el carrusel */
+.product-image {
+    width: 100%;
+    height: 200px; /* Ajusta la altura de la imagen */
+    object-fit: cover; /* Asegura que la imagen cubra el área sin distorsión */
+    border-bottom: 2px solid var(--secondary-color); /* Opcional: añade una línea inferior para separación visual */
+    margin: 0; /* Elimina márgenes adicionales */
+}
+
+/* Ajusta el estilo de los indicadores del carrusel */
+.p-carousel .p-carousel-indicators .p-carousel-indicator {
+    background-color: var(--secondary-color);
+}
+
+/* Opcional: Ajusta la posición y el estilo de los botones de navegación del carrusel */
+.p-carousel .p-carousel-prev,
+.p-carousel .p-carousel-next {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 50%;
+}
+
