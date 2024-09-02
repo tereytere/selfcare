@@ -51,7 +51,7 @@
 
 .p-card-header {
     overflow: hidden;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -78,7 +78,7 @@ img {
 }
 
 .p-card {
-    height: 300px;
+    height: 390px;
     width: 400px;
 }
 
