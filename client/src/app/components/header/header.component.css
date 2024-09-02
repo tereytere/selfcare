@@ -39,7 +39,7 @@ nav {
   }
 }
 
-.flex {
+.headerflex {
   display: flex;
   justify-content: flex-end;
   align-items: center;

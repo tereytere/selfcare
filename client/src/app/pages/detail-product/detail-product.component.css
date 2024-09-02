@@ -60,3 +60,7 @@
     width: 100%;
     text-align: center;
 }
+
+.product-container {
+    background-color: var(--background-color);
+}
