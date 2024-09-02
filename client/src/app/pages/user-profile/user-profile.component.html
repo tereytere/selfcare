@@ -1,33 +1,81 @@
-<p-card class="card-container" id={{user?._id}} [header]="user?.name">
-  <ng-template pTemplate="header">
-    <img alt={{user?.name}} src={{user?.image}} />
-    <p-card class="card-container">
+<div class="profile-container">
+  <div class="userinfo-container">
+    <div class="image-container">
+      <img class="img-profile" alt={{user?.name}} src={{user?.image}} />
+    </div>
+    <div class="info-container">
+      @if (isEdit === false){
       <p><strong>Nombre:</strong> {{user?.name}}</p>
-      <p><strong>Emiail:</strong> {{user?.email}}</p>
+      <p><strong>Email:</strong> {{user?.email}}</p>
       <p><strong>Contraseña:</strong> {{user?.password ? '**********' : 'No disponible'}}</p>
       <p><strong>Ubicación:</strong> {{user?.location}}</p>
-      <div class="flex gap-3 mt-1">
-        <p-button label="Editar" severity="secondary" class="w-full" styleClass="w-full" (click)="onClickEdit()" />
-        <p-button label="Eliminar" severity="danger" class="w-full" styleClass="w-full" (click)="onClickDelete()" />
-      </div>
-    </p-card>
-  </ng-template>
-  <ng-template pTemplate="body">
-    <p-card class="card-container">
       <p><strong>Sobre ti:</strong></p>
       <p>{{user?.about}}</p>
-    </p-card>
-    <!-- map user.routines-->
-    <div class="row g-4">
+      <div class="flex mr-1">
+        <p-button label="Editar" severity="secondary" class="w-full" styleClass="w-full" (click)="onClickEdit()" />
+        <p-button label="Eliminar" severity="danger" class="w-full" styleClass="w-full" (click)="onClickDelete()" />
+
+      </div>
+      }
+      @else {
+      <div class="register-form">
+        <form class="mt-5" [formGroup]="formulario" (ngSubmit)="onSubmit()">
+          <div class="mb-4">
+            <p-floatLabel>
+              <input type="text" id="inputName" pInputText formControlName="name" [(ngModel)]="user!.name">
+              <label for="inputName">Nombre</label>
+            </p-floatLabel>
+          </div>
+          <div class="mb-4">
+            <p-floatLabel>
+              <input type="email" id="inputEmail" pInputText formControlName="email" [(ngModel)]="user!.email">
+              <label for="inputBrand">Email</label>
+            </p-floatLabel>
+          </div>
+          <div class="mb-4">
+            <p-floatLabel>
+              <input type="password" id="inputPassword" pInputText formControlName="password"
+                [(ngModel)]="user!.password">
+              <label for="inputProperties">Password</label>
+            </p-floatLabel>
+          </div>
+          <div class="mb-4">
+            <p-floatLabel>
+              <input type="text" id="inputAbout" pInputText formControlName="about" [(ngModel)]="user!.about">
+              <label for="inputAbout">About</label>
+            </p-floatLabel>
+          </div>
+          <div class="mb-4">
+            <p-floatLabel>
+              <select id="inputLocation" pInputText formControlName="location" [(ngModel)]="user!.location">
+                <option value="" disabled>Selecciona tu ciudad</option>
+                @for(city of cities; track city) {
+                <option [value]="city">{{ city }}</option>
+                }
+              </select>
+            </p-floatLabel>
+          </div>
+          <div class="flex">
+            <custom-button type="submit" [label]="'Guardar'" />
+            <p-button label="Cancelar" severity="secondary" class="w-full" styleClass="w-full" (click)="cancelEdit()" />
+          </div>
+        </form>
+      </div>
+      }
+    </div>
+  </div>
+  <div class="routines-container">
+    <div>
+      <p><strong>Tus Rutinas:</strong></p>
       @for( rout of routines; track $index){
       <div class="col-12 col-sm-6 col-md-4">
         <card-routine-all [routine]="rout"></card-routine-all>
       </div>
       }
     </div>
-  </ng-template>
-  <ng-template pTemplate="footer">
-    <p><strong></strong>Tus Opiniones:</p>
+  </div>
+  <div class="routines-container">
+    <p><strong>Tus Opiniones:</strong></p>
     <!-- show reviews if author === user-->
     <div class="reviews-container">
       @for (review of userReviews; track review._id) {
@@ -37,7 +85,5 @@
       </div>
       }
     </div>
-    <ng-template pTemplate="footer">
-    </ng-template>
-  </ng-template>
-</p-card>
+  </div>
+</div>

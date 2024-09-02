@@ -7,8 +7,8 @@
       <li [routerLink]="['/routines']" routerLinkActive="activo">RUTINAS</li>
       <li [routerLink]="['/products']" routerLinkActive="activo">PRODUCTOS</li>
       @if(userService.isAdmin()){
-      <li [routerLink]="['/productform']" routerLinkActive="activo">Product Form</li>
-      <li [routerLink]="['/users']" routerLinkActive="activo">USERS</li>
+      <li [routerLink]="['/productform']" routerLinkActive="activo">AGREGAR PRODUCTO</li>
+      <li [routerLink]="['/users']" routerLinkActive="activo">USUARIOS</li>
       }
     </ul>
   </nav>
@@ -17,9 +17,9 @@
     <img
       [src]="user?.image || 'https://res.cloudinary.com/dk2lcfwx5/image/upload/v1724322871/users/ltcagpxild7fzreyw7o0.jpg'"
       [alt]="user?.name || 'username'" (click)="onClickUser()" />
-    <p-button type="submit" label="Logout" severity="danger" (click)="onClickLogout()" />
+    <p-button type="submit" label="Cerrar Sesión" severity="danger" (click)="onClickLogout()" />
     }@else{
-    <custom-button [label]="'Login'" (click)="onClickLogin()" />
+    <custom-button [label]="'Iniciar Sesión'" (click)="onClickLogin()" />
     }
   </div>
 </header>

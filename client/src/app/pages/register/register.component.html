@@ -14,10 +14,6 @@
                     <label for="inputBrand">Email</label>
                 </p-floatLabel>
             </div>
-            <!--  <div class="mb-4">
-        <p-dropdown [options]="category" optionLabel="name" placeholder="Selecciona la categoría"
-            formControlName="category"></p-dropdown>
-    </div> -->
             <div class="mb-4">
                 <p-floatLabel>
                     <input type="password" id="inputPassword" pInputText formControlName="password">
@@ -41,17 +37,11 @@
 
                 </p-floatLabel>
             </div>
-            <!--   <div class="mb-4">
-                <p-floatLabel>
-                    <input type="text" id="inputLocation" pInputText formControlName="location">
-                    <label for="inputLocation">Location</label>
-                </p-floatLabel>
-            </div> -->
             <div class="image-button">
-                <!-- <input type="file" #filePicker (change)="onUpload($event)"> -->
-                <p-fileUpload mode="basic" chooseLabel="Elegir una imagen" chooseIcon="pi pi-upload" name="demo[]"
+                <input type="file" #filePicker (change)="onUpload($event)">
+                <!-- <p-fileUpload mode="basic" chooseLabel="Elegir una imagen" chooseIcon="pi pi-upload" name="demo[]"
                     url="https://www.primefaces.org/cdn/api/upload.php" accept="image/*" maxFileSize="1000000"
-                    (onUpload)="onUpload($event)" />
+                    (change)="onUpload($event)" /> -->
             </div>
             <custom-button type="submit" [label]="'Registrarse'" />
 

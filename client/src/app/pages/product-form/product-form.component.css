@@ -119,14 +119,34 @@ input {
     margin-bottom: 1.5rem;
 }
 
-/* Texto centrado */
+
 .text-center {
     text-align: center;
 }
 
-/* Lista de errores */
-.error-list {
-    color: red;
-    list-style-type: none;
-    padding: 0;
+.formproduct-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+    flex-direction: column;
+}
+
+.register-form {
+    background-color: var(--background-color);
+    border: 1px solid var(--secondary-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+
+    & h2 {
+        text-align: center;
+
+    }
+}
+
+.buttonup {
+    margin-top: 20px;
 }

@@ -10,6 +10,7 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
 import Swal from 'sweetalert2';
+import { ButtonComponent } from '../../components/button/button.component';
 
 interface ProductCategory {
   name: string;
@@ -19,7 +20,7 @@ interface ProductCategory {
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
+  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule, FileUploadModule, ButtonComponent],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
