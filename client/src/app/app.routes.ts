@@ -11,12 +11,9 @@ import { ProductFormComponent } from './pages/product-form/product-form.componen
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { authGuard } from './guards/auth.guard';
 import { UsersComponent } from './pages/users/users.component';
-<<<<<<< HEAD
 import { UserProfileComponent } from './pages/user-profile/user-profile.component';
 import { ReviewsComponent } from './pages/reviews/reviews.component';
-=======
 import { RoutineFormComponent } from './pages/routine-form/routine-form.component';
->>>>>>> miguel
 
 
 export const routes: Routes = [
