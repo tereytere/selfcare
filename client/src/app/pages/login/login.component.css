@@ -7,7 +7,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
+  flex-direction: column;
+}
+
+.register {
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--secondary-color)
+  }
 }
 
 .login-form {
