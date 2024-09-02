@@ -4,7 +4,7 @@
     <p-card class="card-container">
       <p><strong>Nombre:</strong> {{user?.name}}</p>
       <p><strong>Emiail:</strong> {{user?.email}}</p>
-      <p><strong>Contraseña:</strong> {{user?.password}}</p>
+      <p><strong>Contraseña:</strong> {{user?.password ? '**********' : 'No disponible'}}</p>
       <p><strong>Ubicación:</strong> {{user?.location}}</p>
       <div class="flex gap-3 mt-1">
         <p-button label="Editar" severity="secondary" class="w-full" styleClass="w-full" (click)="onClickEdit()" />
@@ -18,7 +18,13 @@
       <p>{{user?.about}}</p>
     </p-card>
     <!-- map user.routines-->
-    <card-routine-all></card-routine-all>
+    <div class="row g-4">
+      @for( rout of routines; track $index){
+      <div class="col-12 col-sm-6 col-md-4">
+        <card-routine-all [routine]="rout"></card-routine-all>
+      </div>
+      }
+    </div>
   </ng-template>
   <ng-template pTemplate="footer">
     <p><strong></strong>Tus Opiniones:</p>
