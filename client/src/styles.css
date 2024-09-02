@@ -7,8 +7,10 @@
 }
 
 * {
-  box-sizing: border-box;
   font-family: var(--text-font);
+}
+
+body {
   margin: 0;
   padding: 0;
 }
