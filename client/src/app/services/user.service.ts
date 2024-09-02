@@ -1,19 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 import { inject, Injectable } from '@angular/core';
 import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { environment } from '../../environments/environment.development';
 import { User } from '../interfaces/user.interface';
 import { tap } from 'rxjs/operators';
-
-// type RegisterBody = {
-//   name: string;
-//   email: string;
-//   about?: string;
-//   password: string;
-//   location: string;
-//   image?: string;
-
-// }
+import Swal from 'sweetalert2';
 
 type LoginBody = {
   email: string,
@@ -24,6 +16,7 @@ type LoginBody = {
   providedIn: 'root'
 })
 export class UserService {
+  private router = inject(Router);
 
   private baseUrl = environment.BASE_URL;
   private httpClient = inject(HttpClient);
@@ -31,6 +24,16 @@ export class UserService {
 
   private userSubject = new BehaviorSubject<User | null>(null);
   user$ = this.userSubject.asObservable();
+
+  async handleExpiredToken() {
+    this.setToken(null);
+    await Swal.fire({
+      title: 'Sesión expirada',
+      text: 'Tu sesión ha expirado, por favor vuelve a iniciar sesión',
+      icon: 'error'
+    });
+    this.router.navigateByUrl('/login');
+  }
 
   fetchAndSetUser() {
     const token = this.getToken();
@@ -40,7 +43,9 @@ export class UserService {
         this.userSubject.next(response.data);
       }).catch(error => {
         console.error('Failed to fetch user:', error);
-        this.setToken(null);
+        if (error.status === 401) {
+          this.handleExpiredToken();
+        }
       });
     }
   }
@@ -95,6 +100,12 @@ export class UserService {
       }
     }
     return false;
+  }
+
+  isTokenExpired(token: string): boolean {
+    const decodedToken = this.decodeToken(token);
+    const currentTime = Math.floor(Date.now() / 1000);
+    return decodedToken.exp < currentTime;
   }
 
   getById(id: string) {

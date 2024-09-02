@@ -8,6 +8,14 @@ export const authGuard: CanActivateFn = (route, state) => {
 
   // Check if the user is logged in
   if (userService.isLogged()) {
+    const token = userService.getToken();
+
+    // Check token validity before proceeding
+    if (token && userService.isTokenExpired(token)) {
+      userService.handleExpiredToken();
+      return false;
+    }
+
     const expectedRoles = route.data['role']; // Get the expected roles from route data
     const isAdmin = userService.isAdmin();  // Determine if the user is an admin
 
