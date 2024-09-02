@@ -1,7 +1,3 @@
-# selfcare
-
-Esta es una aplicación que te permite crear tus propias rutinas de auto cuidado e higiene
-
 <div align="center">
 <h1 align="center">Hola 👋 Aquí tienes SelfCare, todas las rutinas de autocuidado ✨ a tu alcance !</h1>
 </div>
