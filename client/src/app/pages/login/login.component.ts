@@ -7,18 +7,19 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 import Swal from 'sweetalert2';
 import { InputTextModule } from 'primeng/inputtext';
 import { StyleClassModule } from 'primeng/styleclass';
+import { CarouselRoutine } from '../../components/carousel-routine/carousel.component';
 
 
 @Component({
   selector: 'login',
   standalone: true,
-  imports: [ButtonComponent, ReactiveFormsModule, FloatLabelModule, InputTextModule, StyleClassModule],
+  imports: [ButtonComponent, ReactiveFormsModule, FloatLabelModule, InputTextModule, StyleClassModule,CarouselRoutine],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
   encapsulation: ViewEncapsulation.None
 
-// })
-// export class LoginComponent {
+})
+export class LoginComponent {
 
   private userService = inject(UserService);
   private router = inject(Router);
@@ -39,53 +40,5 @@ import { StyleClassModule } from 'primeng/styleclass';
   }
 
 
-// }
+}
 
-
-
-//   model: any = {};
-
-//   emailError: string | null = null;
-//   passwordError: string | null = null;
-
-
-//   onSubmit(event: Event): void {
-//     event.preventDefault();
-//     this.emailError = null;
-//     this.passwordError = null;
-
-//     if (this.formulario.valid) {
-//       const { email, password } = this.formulario.value;
-//     }}
-//   }
-  //    this.http.post(`http://localhost:5000/login `, { email, password })
-  //       .subscribe({
-  //         next: (response: any) => {
-  //           console.log('Login exitoso', response);
-  //           this.router.navigate(['/home']);
-  //         },
-  //         error: (error) => {
-  //           console.error('Error en el login', error);
-  //           if (error.status === 403) {
-  //             this.passwordError = 'Contraseña incorrecta.';
-  //           } else if (error.status === 404) {
-  //             this.emailError = 'El correo electrónico no existe.';
-  //           } else {
-  //             console.error('Error desconocido', error);
-  //           }
-  //         }
-  //       });
-  //   } else {
-  //     console.error('Formulario no válido');
-  //   }
-  // }
-
-
-  // validateEmail(email: string): boolean {
-  //   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   return emailPattern.test(email);
-  // }
-
-  // isFormValid(): boolean {
-  //   return this.formulario.valid;
-  // }

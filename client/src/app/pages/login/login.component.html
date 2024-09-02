@@ -1,14 +1,12 @@
-<!-- <div class="login-container">
+<div class="login-container">
   <div class="login-form">
     <h2>Iniciar sesión</h2>
-    <form (submit)="onSubmit($event)">
-      <div class="form-group">
-        <label for="email">Correo electrónico</label>
-        <input type="email" id="email" name="email" required class="form-control" formControlName="email"/>
-
-        <div class="error">
-          {{ emailError }}
-        </div>
+    <form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <p-floatLabel>
+          <input type="text" id="inputEmail" pInputText formControlName="email">
+          <label for="inputEmail">Email</label>
+        </p-floatLabel>
       </div>
       <div class="mb-4">
         <p-floatLabel>
@@ -17,7 +15,6 @@
         </p-floatLabel>
       </div>
       <custom-button [label]="'Inicia sesión'"></custom-button>
-      <custom-button [label]="'Inicia sesión'" ></custom-button>
     </form>
   </div>
-</div> -->
+</div>

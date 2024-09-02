@@ -5,6 +5,7 @@ import { HeaderComponent } from "./components/header/header.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { TestimoniosComponent } from './components/testimonios/testimonios.component.spec';
 import { ColaboracionesComponent } from './components/colaboraciones/colaboraciones.component';
+
 // import { LoginComponent } from "./pages/login/login.component";
 
 @Component({
