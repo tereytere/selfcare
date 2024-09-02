@@ -1,11 +1,50 @@
 .body {
-  background-image: url('/images/hombreojos.png');
+  background-image: url('/images/2-body-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.face {
+  background-image: url('/images/2-face-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.mouth {
+  background-image: url('/images/2-mounth-selfcare.jpg');
+  background-position-y: 285px;
+  background-size: cover;
+}
+
+.hair {
+  background-image: url('/images/hair-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.hands {
+  background-image: url('/images/hands-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.feet {
+  background-image: url('/images/feet-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
+}
+
+.beard {
+  background-image: url('/images/3-beard:face-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .routine {
   height: 180px;
   text-align: center;
   align-content: center;
+
 
   & h1 {
     color: white;
