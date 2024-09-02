@@ -1,15 +1,28 @@
-<!-- @if(product){
-<h1>{{product.name}} </h1>
-<h5>{{product.category}} </h5>
+@if(product) {
 
+<div class="product-container">
+    <div class="product-header">
+        <h1>{{ product.name }}</h1>
+        <h3>{{ product.brand }}</h3>
+        <h4>{{ product.category }}</h4>
+    </div>
 
-<img src="{{product.image}}" alt="{{product.name}}" width="300" height="300">
+    <div class="product-image">
+        <p-image src="{{ product.image }}" alt="{{ product.name }}"></p-image>
+    </div>
 
-<p>{{product.properties}} </p>
+    <div class="product-details">
+        <p-card>
+            <p class="m-0">
+                {{ product.properties }}
+            </p>
+        </p-card>
+    </div>
 
-<a href="{{product.shoplink}}" target="_blank">Comprar</a>
-<p>Fecha de creación: {{product.createdAt}} </p>
-<p>Fecha de actualización: {{product.updatedAt}} </p>
-
-
-} -->
+    <div class="product-actions">
+        <a [href]="product.shoplink" target="_blank" rel="noopener noreferrer">
+            <custom-button icon="pi pi-shopping-cart" label="Comprar" class="p-button-success"></custom-button>
+        </a>
+    </div>
+</div>
+}

@@ -1,25 +1,96 @@
+.body {
+    background-image: url('/images/body-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.face {
+    background-image: url('/images/face-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.mouth {
+    background-image: url('/images/mouth-selfcare.jpg');
+    background-position-y: 285px;
+    background-size: cover;
+
+}
+
+.hair {
+    background-image: url('/images/hair-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.hands {
+    background-image: url('/images/hands-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.feet {
+    background-image: url('/images/feet-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.beard {
+    background-image: url('/images/beard-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+
+
 .card-container {
     border-radius: 0.3125rem;
     overflow: hidden;
-    width: 360px;
+    width: 200px;
 }
 
 .p-card-header {
     overflow: hidden;
+    padding: 20px;
+    text-align: center;
 }
 
 img {
     /* border-radius: 8px; */
-    width: 100%;
-    height: auto;
+    /* width: 100px; */
+    height: 70px;
     border-top-left-radius: 0.3125rem;
     border-top-right-radius: 0.3125rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0.3125rem;
+    border-bottom-right-radius: 0.3125rem;
     object-fit: cover;
+    overflow: hidden;
 }
 
 .flex {
     display: flex;
     justify-content: space-between;
+}
+
+.p {
+    font-family: var(--text-font);
+    padding: 10px;
+}
+
+.p-card {
+    height: 300px;
+    width: 400px;
+}
+
+.cuerpo {
+    padding: 20px;
+}
+
+.p-card-footer {
+    margin: 10px;
+    text-align: center;
+}
+
+.p-card-subheader {
+    padding: 10px;
 }

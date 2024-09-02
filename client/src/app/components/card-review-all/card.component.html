@@ -1,12 +1,24 @@
-<p-card class="card-container" [id]="review?._id" [header]="review?.title">
-    <ng-template pTemplate="header">
-        <p-rating [formControl]="starsControl" [cancel]="false" [stars]="5" />
-    </ng-template>
+@if(isEdit === false){
+<p-card class="card-container" [id]="review?._id">
     <ng-template pTemplate="body">
+        <p-rating [(ngModel)]="stars" [readonly]="true" [cancel]="false" />
+        <h4>{{review?.title}}</h4>
         <p>{{review?.description}}</p>
     </ng-template>
-    <ng-template pTemplate="footer">
-        <p>{{review?.author}}</p>
-        <p>{{review?.date}}</p>
+    <ng-template pTemplate="footer" class="review-footer">
+        <p>{{review?.date | date:'HH:mm dd-MM-yy'}}</p>
+        <div class="flex gap-3 mt-1">
+            @if (review?.author === userId) {
+            <p-button label="Editar" severity="warning" class="w-full" styleClass="w-full" (onClick)="toggleEdit()" />
+            <p-button label="Borrar" severity="danger" class="w-full" styleClass="w-full"
+                (onClick)="onErase(review?._id)" />
+            }
+            <!-- @if(isAdmin){ -->
+            <!-- <p-button label="Ocultar" severity="secondary" class="w-full" styleClass="w-full" /> -->
+        </div>
     </ng-template>
 </p-card>
+}
+@else {
+<review-form [review]="review" (reviewUpdated)="onReviewUpdated()" />
+}

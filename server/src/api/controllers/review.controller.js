@@ -15,16 +15,14 @@ const addReview = async (req, res) => {
             return res.status(404).json({ message: "User not found" });
         }
 
-        const existingRoutines = await Routine.find().populate("reviews");
-        existingRoutines.forEach(routine => {
-            routine.reviews.forEach(review => {
-                let authorId = review.author.toString();
-                let arrayId = authorId.split('\'');
-                let simpleId = arrayId[0];
-                if (simpleId === idU) {
-                    reviewExists = true;
-                }
-            });
+        const existingRoutines = await Routine.findById(idR).populate("reviews");
+        existingRoutines.reviews.forEach(review => {
+            let authorId = review.author.toString();
+            let arrayId = authorId.split('\'');
+            let simpleId = arrayId[0];
+            if (simpleId === idU) {
+                reviewExists = true;
+            }
         });
 
         if (reviewExists) {
@@ -124,7 +122,20 @@ const deleteReview = async (req, res) => {
         const deleteRe = await Review.findByIdAndDelete(id);
 
         if (deleteRe) {
-            await Routine.findByIdAndUpdate(deleteRe.routineId, { $pull: { reviews: id } });
+            const existingRoutines = await Routine.find();
+            existingRoutines.forEach(async routine => {
+                if (routine.reviews.includes(id)) {
+                    await Routine.findByIdAndUpdate(routine._id, { $pull: { reviews: id } });
+                }
+
+                // let authorId = review.author.toString();
+                // let arrayId = authorId.split('\'');
+                // let simpleId = arrayId[0];
+                // if (simpleId === idU) {
+                //     reviewExists = true;
+                // }
+            });
+
             return res.status(200).json({ message: "Review deleted successfully", data: deleteRe });
         } else {
             return res.status(404).json({ message: "Review ID does not exist" });
@@ -134,4 +145,14 @@ const deleteReview = async (req, res) => {
     }
 };
 
-module.exports = { deleteReview, updateReview, getReview, getAllReviews, addReview }
+const getUserReview = async (req, res) => {
+    const { id } = req.params;
+    try {
+        const reviews = await Review.find({ author: id });
+        return res.status(200).json({ message: "Reviews found", data: reviews });
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching user reviews', error });
+    }
+}
+
+module.exports = { deleteReview, updateReview, getReview, getAllReviews, addReview, getUserReview }

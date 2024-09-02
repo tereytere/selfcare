@@ -1,1 +1,97 @@
-<p>routine-form works!</p>
+<form [formGroup]="formulario" (ngSubmit)="onSubmit()">
+    <div class="mb-4">
+        <p-floatLabel>
+            <input type="text" id="inputname" pInputText formControlName="name">
+            <label for="inputname">Nombre Rutina</label>
+        </p-floatLabel>
+    </div>
+
+    <!--  <div class="mb-4">
+
+        <select id="category" pInputText formControlName="category">
+            <option value="" disabled>Select a category</option>
+            <option value="face">Face</option>
+            <option value="body">Body</option>
+            <option value="mouth">Mouth</option>
+            <option value="hair">Hair</option>
+            <option value="hands">Hands</option>
+            <option value="feet">Feet</option>
+            <option value="beard">Beard</option>
+        </select>
+
+    </div> -->
+    <div class="mb-4">
+        <p-floatLabel>
+            <p-dropdown id="category" formControlName="category" [options]="[
+              { label: 'Face', value: 'face' },
+              { label: 'Body', value: 'body' },
+              { label: 'Mouth', value: 'mouth' },
+              { label: 'Hair', value: 'hair' },
+              { label: 'Hands', value: 'hands' },
+              { label: 'Feet', value: 'feet' },
+              { label: 'Beard', value: 'beard' }
+            ]" placeholder="Select a category" [showClear]="true">
+            </p-dropdown>
+            <label for="category">Categoria</label>
+        </p-floatLabel>
+    </div>
+
+    <div class="mb-4">
+        <p-floatLabel>
+            <p-dropdown id="applyschedule" formControlName="applyschedule" [options]="[
+              { label: 'Morning', value: 'morning' },
+              { label: 'Afternoon', value: 'afternoon' },
+              { label: 'Night', value: 'night' },
+              { label: 'Other', value: 'other' }
+            ]" placeholder="Select a schedule" [showClear]="true">
+            </p-dropdown>
+            <label for="applyschedule">Horario Aplicacion</label>
+        </p-floatLabel>
+    </div>
+    <!-- 
+    <div class="mb-4">
+
+        <select id="applyschedule" pInputText formControlName="applyschedule">
+            <option value="" disabled>Select a schedule</option>
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="night">Night</option>
+            <option value="other">Other</option>
+        </select>
+
+    </div> -->
+    <div class="mb-4">
+        <!--  <p-floatLabel>
+            <input id="repeat" pInputText formControlName="repeat">
+            <label for="name">Repeat</label>
+        </p-floatLabel> -->
+        <p-floatLabel>
+            <p-multiSelect id="repeat" [options]="repeatOptions" formControlName="repeat"
+                defaultLabel="Selecciona opciones" display="chip">
+            </p-multiSelect>
+            <label for="repeat">Repeat</label>
+        </p-floatLabel>
+    </div>
+    <div class="mb-4">
+
+        <p-multiSelect id="products" formControlName="products" [options]="productsAvailable" optionLabel="name"
+            placeholder="Selecione productos"></p-multiSelect>
+    </div>
+    <div class="mb-4">
+        <p-floatLabel>
+            <textarea id="usesteps" pInputTextarea formControlName="usesteps"></textarea>
+            <label for="usesteps">Pasos a seguir</label>
+        </p-floatLabel>
+    </div>
+
+
+    <div class="mb-4">
+        <p-floatLabel>
+            <textarea id="description" pInputTextarea formControlName="description"></textarea>
+            <label for="description">Descripcion</label>
+        </p-floatLabel>
+    </div>
+
+    <!-- <p-button type="submit" label="Save Routine"></p-button> -->
+    <custom-button label="Guardar" class="w-full ms-2"></custom-button>
+</form>

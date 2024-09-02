@@ -1,45 +1,46 @@
 import { Component, EventEmitter, Output, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Category, Product } from '../../interfaces/product.interface';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 import { JsonPipe } from '@angular/common';
 import { ProductService } from '../../services/product.service';
 import { Router } from '@angular/router';
-import { InputLabelComponent } from '../../components/input-label/input-label.component';
 import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { FileUploadModule } from 'primeng/fileupload';
 import Swal from 'sweetalert2';
 
-
-
+interface ProductCategory {
+  name: string;
+  code: string;
+}
 
 @Component({
   selector: 'product-form',
   standalone: true,
-  imports: [FormsModule, InputLabelComponent, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule, FileUploadModule],
+  imports: [FormsModule, InputTextModule, FloatLabelModule, DropdownModule, ButtonModule, ReactiveFormsModule],
   templateUrl: './product-form.component.html',
   styleUrl: './product-form.component.css'
 })
 export class ProductFormComponent {
 
   errores: { field: string, message: string }[] = [];
-
-  category = [
-    { name: 'face', code: 'face' },
-    { name: 'body', code: 'body' },
-    { name: 'mouth', code: 'mouth' },
-    { name: 'hair', code: 'hair' },
-    { name: 'hands', code: 'hands' },
-    { name: 'feet', code: 'feet' }
-  ];
-
+  category: ProductCategory[] | undefined;
+  ngOnInit() {
+    this.category = [
+      { name: 'face', code: 'face' },
+      { name: 'body', code: 'body' },
+      { name: 'mouth', code: 'mouth' },
+      { name: 'hair', code: 'hair' },
+      { name: 'hands', code: 'hands' },
+      { name: 'feet', code: 'feet' }
+    ];
+  }
   formulario: FormGroup = new FormGroup({
     name: new FormControl(),
     brand: new FormControl(),
-    category: new FormControl(),
+    category: new FormControl<ProductCategory | null>(null),
     properties: new FormControl(),
     shoplink: new FormControl(),
     image: new FormControl(),
@@ -54,14 +55,15 @@ export class ProductFormComponent {
       const file = input.files[0];
       this.formulario.patchValue({ image: file });
       console.log(file);
-
     }
   }
 
+
   async onSubmit() {
-    if (this.formulario.value.category) {
-      this.formulario.value.category = this.formulario.value.category.name;
-    }
+    // if (this.formulario.value.category) {
+    //   this.formulario.value.category = this.formulario.value.category.code;
+    //   console.log(this.formulario.value.category);
+    // }
 
     try {
       const formData = new FormData();
@@ -70,7 +72,10 @@ export class ProductFormComponent {
         const control = this.formulario.get(key);
         if (key === 'image' && control?.value) {
           formData.append(key, control.value);
-        } else {
+        } else if (key === 'category') {
+          formData.append(key, control?.value.code);
+        }
+        else {
           formData.append(key, control?.value);
         }
       });
@@ -89,5 +94,6 @@ export class ProductFormComponent {
     } catch ({ error }: any) {
       this.errores = error;
     }
+
   }
 }

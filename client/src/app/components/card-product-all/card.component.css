@@ -1,17 +1,29 @@
 .card-container {
     border-radius: 0.3125rem;
     overflow: hidden;
-    width: 360px;
+    width: 200px;
+}
+
+.card-container p {
+    padding: 5px;
+}
+
+.card-container a {
+    padding: 10px;
+    display: inline-block;
+    margin: 0;
 }
 
 .p-card-header {
     overflow: hidden;
+    padding: 10px;
+
 }
 
 img {
     /* border-radius: 8px; */
-    width: 100%;
-    height: auto;
+    width: 70px;
+    height: 90px;
     border-top-left-radius: 0.3125rem;
     border-top-right-radius: 0.3125rem;
     border-bottom-left-radius: 0;
@@ -22,4 +34,24 @@ img {
 .flex {
     display: flex;
     justify-content: space-between;
+}
+
+.p-card {
+    height: 350px;
+    width: 400px;
+}
+
+.p {
+    font-family: var(--text-font);
+    text-align: center;
+}
+
+.p-card-header {
+    overflow: hidden;
+    padding: 20px;
+    text-align: center;
+}
+
+.p-card-footer {
+    padding: 10px;
 }

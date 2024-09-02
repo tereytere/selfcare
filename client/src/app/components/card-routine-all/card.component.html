@@ -1,23 +1,44 @@
-<p-card class="card-container" id={{routine?._id}} [header]="routine?.name" [subheader]="routine?.category">
+<p-card class="card-container" id={{routine?._id}} [header]="routine?.name">
     <ng-template pTemplate="header">
-        <img alt={{routine?.name}} src="../../../../public/image/${routine?.category}.jpg" />
+        <img alt={{routine?.category}} [src]="'/images/' + routine?.category + '-selfcare.jpg'" />
+
     </ng-template>
-    <ng-template pTemplate="footer">
-        <p>ID: {{routine?._id}}</p>
-        <p>Nombre: {{routine?.name}}</p>
-        <p>Categoria: {{routine?.category}}</p>
-        <p>Franja: {{routine?.applyschedule}}</p>
-        <p>Repeticiones: {{routine?.repeat}}</p>
-        <p>Productos: {{routine?.products}}</p>
-        <p>Pasos a seguir: {{routine?.usesteps}}</p>
+
+    <ng-template pTemplate="subheader">
+
+        <!-- <p>ID: {{routine?._id}}</p> -->
+        <!-- <p>Nombre: {{routine?.name}}</p> -->
+        <!--  <p>Categoria: {{routine?.category}}</p> -->
+        <!-- <p>Franja: {{routine?.applyschedule}}</p>
+        <p>Repeticiones: {{routine?.repeat}}</p> -->
+        <!-- <p>Productos: {{routine?.products}}</p> -->
+
+        <!-- <p>Pasos a seguir: {{routine?.usesteps}}</p> -->
         <p>Descripción: {{routine?.description}}</p>
-        <p>Fecha: {{routine?.createdAt | date:'dd-LL-yyyy'}}</p>
-        <p>Actualización: {{routine?.updatedAt | date:'dd-LL-yyyy'}}</p>
-        <ng-template pTemplate="footer">
-            <div class="flex gap-3 mt-1">
+        <!-- <p>Fecha: {{routine?.createdAt | date:'dd-LL-yyyy'}}</p>
+        <p>Actualización: {{routine?.updatedAt | date:'dd-LL-yyyy'}}</p> -->
+        <!-- <div class="flex gap-3 mt-1">
                 <p-button label="Guardar" severity="secondary" class="w-full" styleClass="w-full" />
                 <p-button label="Ver más" class="w-full ms-2" styleClass="w-full" />
+            </div> -->
+        <!--  @if(products.length > 0){
+        <p>Productos:</p>
+        <div class="products-container">
+            
+            @for(prod of products; track prod._id){
+            <div class="product-item">
+                <img [src]="prod.image" alt="{{prod.name}}" class="product-thumbnail" />
+                <p>{{prod.name}}</p>
             </div>
-        </ng-template>
+            }
+        </div>
+        } -->
     </ng-template>
+    <ng-template pTemplate="footer">
+        <div class="flex gap-3 mt-1">
+            <custom-button label="Ver detalle" class="w-full" (onClick)="onViewMore()"></custom-button>
+        </div>
+    </ng-template>
+
+
 </p-card>
