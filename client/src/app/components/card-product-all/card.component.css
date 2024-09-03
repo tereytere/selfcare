@@ -18,7 +18,7 @@
 
 }
 
-img {
+.img-products {
   height: 100%;
   border-top-left-radius: 0.3125rem;
   border-top-right-radius: 0.3125rem;
@@ -30,6 +30,12 @@ img {
 .flex {
   display: flex;
   justify-content: space-between;
+}
+
+.header-product {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
 }
 
 .p-card {
@@ -44,6 +50,14 @@ img {
 .p {
   font-family: var(--text-font);
   text-align: center;
+}
+
+.p-card .p-card-title {
+  font-size: 1rem;
+}
+
+.p-card .p-card-subtitle {
+  font-size: 0.8rem;
 }
 
 .p-card-header {

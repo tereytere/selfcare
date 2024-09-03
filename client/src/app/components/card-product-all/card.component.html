@@ -1,7 +1,8 @@
 <p-card class="card-container" id={{product?._id}} [header]="product?.name" [subheader]="product?.brand">
-  <ng-template pTemplate="header">
-    <img alt={{product?.name}} src={{product?.image}} />
-  </ng-template>
+  <div class="header-product">
+    <img class="img-products" alt={{product?.name}} src={{product?.image}} />
+  </div>
+
   <ng-template pTemplate="footer">
     <p>Enlace de compra: <a [href]="getFormattedLink(product?.shoplink)" target="_blank"
         rel="noopener noreferrer">Compra aquí</a>

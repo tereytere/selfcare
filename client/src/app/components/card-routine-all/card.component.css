@@ -1,91 +1,92 @@
 .body {
-  background-image: url('/images/body-selfcare-small.jpg');
-  background-position: center;
-  background-size: cover;
+    background-image: url('/images/body-selfcare-small.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .face {
-  background-image: url('/images/face-selfcare-small.jpg');
-  background-position: center;
-  background-size: cover;
+    background-image: url('/images/face-selfcare-small.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .mouth {
-  background-image: url('/images/mouth-selfcare-small.jpg');
-  background-position-y: 285px;
-  background-size: cover;
+    background-image: url('/images/mouth-selfcare-small.jpg');
+    background-position-y: 285px;
+    background-size: cover;
 
 }
 
 .hair {
-  background-image: url('/images/hair-selfcare-small.jpg');
-  background-position: center;
-  background-size: cover;
+    background-image: url('/images/hair-selfcare-small.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .hands {
-  background-image: url('/images/hands-selfcare-small.jpg');
-  background-position: center;
-  background-size: cover;
+    background-image: url('/images/hands-selfcare-small.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .feet {
-  background-image: url('/images/feet-selfcare-feet.jpg');
-  background-position: center;
-  background-size: cover;
+    background-image: url('/images/feet-selfcare-feet.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .beard {
-  background-image: url('/images/beard-selfcare-small.jpg');
-  background-position: center;
-  background-size: cover;
+    background-image: url('/images/beard-selfcare-small.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
 .card-container {
-  border-radius: 0.3125rem;
-  overflow: hidden;
+    border-radius: 0.3125rem;
+    overflow: hidden;
 }
 
 .p-card-header {
-  overflow: hidden;
-  padding: 0.625rem;
-  text-align: center;
+    overflow: hidden;
+    padding: 0.625rem;
+    text-align: center;
 }
 
 .img-routine {
-  height: 4.375rem;
-  border-top-left-radius: 0.3125rem;
-  border-top-right-radius: 0.3125rem;
-  border-bottom-left-radius: 0.3125rem;
-  border-bottom-right-radius: 0.3125rem;
-  object-fit: cover;
-  overflow: hidden;
+    height: 4.375rem;
+    border-top-left-radius: 0.3125rem;
+    border-top-right-radius: 0.3125rem;
+    border-bottom-left-radius: 0.3125rem;
+    border-bottom-right-radius: 0.3125rem;
+    object-fit: cover;
+    overflow: hidden;
 }
 
 .flex {
-  display: flex;
-  justify-content: space-between;
+    display: flex;
+    justify-content: space-between;
 }
 
 .p-card {
-  max-width: 25rem;
-  min-width: 15rem;
-  border: 0.0625rem solid var(--secondary-color);
-  background-color: var(--background-color);
+
+    width: 25rem;
+    min-height: 21rem;
+    border: 0.0625rem solid var(--secondary-color);
+    background-color: var(--background-color);
 }
 
 .cuerpo {
-  padding: 1.25rem;
+    padding: 1.25rem;
 }
 
 .p-card-footer {
-  text-align: center;
+    text-align: center;
 }
 
 .p-card .p-card-body {
-  padding: 0.625rem;
+    padding: 0.625rem;
 }
 
 .p-card .p-card-content {
-  padding: 0.625rem 0;
+    padding: 0.625rem 0;
 }
