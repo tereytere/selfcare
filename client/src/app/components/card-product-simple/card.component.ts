@@ -17,7 +17,7 @@ export class CardProductSimpleComponent {
   @Input() product: Product | null = null;
 
   router = inject(Router);
-  onClickCard(): void {
+  onClickProduct(): void {
     if (this.product) {
       this.router.navigate([`/product/${this.product._id}`]);
     }

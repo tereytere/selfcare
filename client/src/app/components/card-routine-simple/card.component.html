@@ -1,4 +1,4 @@
-<p-card (click)="onClickCard()" class="card-container" id={{routine?._id}} [header]="routine?.name">
+<p-card (click)="onClickRoutine()" class="card-container" id={{routine?._id}} [header]="routine?.name">
   <ng-template pTemplate="header">
     <img class="img-routine" alt={{routine?.category}} [src]="'/images/' + routine?.category + '-selfcare.jpg'" />
   </ng-template>
