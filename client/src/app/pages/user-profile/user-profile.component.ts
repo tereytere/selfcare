@@ -16,11 +16,12 @@ import { ButtonComponent } from '../../components/button/button.component';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import Swal from 'sweetalert2';
+import { RoutineFormComponent } from "../routine-form/routine-form.component";
 
 @Component({
   selector: 'user-profile',
   standalone: true,
-  imports: [CardModule, ButtonModule, CardRoutineAllComponent, CardReviewAllComponent, FloatLabelModule, ButtonComponent, FormsModule, ReactiveFormsModule, InputTextModule],
+  imports: [CardModule, ButtonModule, CardRoutineAllComponent, CardReviewAllComponent, FloatLabelModule, ButtonComponent, FormsModule, ReactiveFormsModule, InputTextModule, RoutineFormComponent],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.css',
   encapsulation: ViewEncapsulation.None
@@ -35,6 +36,8 @@ export class UserProfileComponent {
   routines: Routine[] = [];
 
   userReviews: Review[] = [];
+  isForm: boolean = false;
+  showFormLabel: string = "Review this Routine";
 
   isEdit: boolean = false;
   cities: string[] = [];
@@ -150,6 +153,11 @@ export class UserProfileComponent {
     }
   }
 
+  toggleForm() {
+    this.isForm = !this.isForm;
+    this.showFormLabel === "Review this Routine" ? this.showFormLabel = "Cancel" : this.showFormLabel = "Review this Routine";
+  }
+
   async onReviewErased($event: string) {
     this.userReviews = [];
   }
@@ -157,4 +165,6 @@ export class UserProfileComponent {
   async onReviewEdited($event: string) {
     this.userReviews = [];
   }
+
+
 }

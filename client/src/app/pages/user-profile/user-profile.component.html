@@ -66,6 +66,14 @@
   </div>
   <div class="routines-container">
     <div>
+      <div class="routine-form">
+        <custom-button [label]="showFormLabel" (onClick)="toggleForm()"></custom-button>
+        @if (isForm === true) {
+        <div class="formroutine">
+          <routine-form />
+        </div>
+        }
+      </div>
       <p><strong>Tus Rutinas:</strong></p>
       @for( rout of routines; track $index){
       <div class="col-12 col-sm-6 col-md-4">
