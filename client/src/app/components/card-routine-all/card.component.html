@@ -1,20 +1,15 @@
 <p-card class="card-container" id={{routine?._id}} [header]="routine?.name">
-    <ng-template pTemplate="header">
-        <img class="img-routine" alt={{routine?.category}} [src]="'/images/' + routine?.category + '-selfcare.jpg'" />
+  <ng-template pTemplate="header">
+    <img class="img-routine" alt={{routine?.category}} [src]="'/images/' + routine?.category + '-selfcare.jpg'" />
+  </ng-template>
 
-    </ng-template>
+  <ng-template pTemplate="body">
+    <p>{{routine?.description}}</p>
+  </ng-template>
 
-    <ng-template pTemplate="subheader">
-
-
-        <p>Descripción: {{routine?.description}}</p>
-
-    </ng-template>
-    <ng-template pTemplate="footer">
-        <div class="flex gap-3 mt-1">
-            <custom-button label="Ver detalle" class="w-full" (onClick)="onViewMore()"></custom-button>
-        </div>
-    </ng-template>
-
-
+  <ng-template pTemplate="footer">
+    <div class="flex gap-3 mt-1">
+      <custom-button label="Ver rutina" class="w-full" (onClick)="onViewMore()"></custom-button>
+    </div>
+  </ng-template>
 </p-card>

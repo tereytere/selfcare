@@ -1,16 +1,13 @@
-<div class="card">
-    <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="false">
-        <ng-template let-product pTemplate="item">
-            <div class="border-1 surface-border border-round m-2 p-3">
-                <div class="mb-3">
-                    <div class="relative mx-auto">
-                        <img src={{ product.image }} [alt]="product.name" class="w-full border-round" />
-                    </div>
-                </div>
-                <div class="mb-3 font-medium">
-                    {{ product.name }}
-                </div>
-            </div>
-        </ng-template>
-    </p-carousel>
+<div class="cards-carousel">
+  <p-carousel [value]="products" [numVisible]="3" [numScroll]="3" [circular]="false">
+    <ng-template let-product pTemplate="item">
+      <div class="border-1 surface-border border-round m-2 p-3">
+        <div class="mb-3">
+          <div class="relative mx-auto">
+            <card-product-simple [product]="product"></card-product-simple>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+  </p-carousel>
 </div>
