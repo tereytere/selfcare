@@ -40,29 +40,7 @@ export class CardRoutineAllComponent implements OnInit {
     }
   }
 
-  /*  getCategoryImage(category: string | undefined): string {
-     if (!category) {
-       return '/images/default.jpg';
-     }
-     switch (category) {
-       case 'body':
-         return '/images/2-body-selfcare.jpg';
-       case 'face':
-         return '/images/2-face-selfcare.jpg';
-       case 'mouth':
-         return '/images/2-mounth-selfcare.jpg';
-       case 'hair':
-         return '/images/hair-selfcare.jpg';
-       case 'hands':
-         return '/images/hands-selfcare.jpg';
-       case 'feet':
-         return '/images/feet-selfcare.jpg';
-       case 'beard':
-         return '/images/3-beard:face-selfcare.jpg';
-       default:
-         return '/images/default.jpg';
-     }
-   } */
+
 
 
   onViewMore(): void {

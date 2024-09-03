@@ -1,36 +1,32 @@
-import { Component } from '@angular/core';
+import { RoutineService } from './../../services/routine.service';
+import { Routine } from './../../interfaces/routine.interface';
+import { Component, Input, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { CarouselModule } from 'primeng/carousel';
 import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
-import { ProductService } from '../../services/product.service';
-import { Product } from '../../interfaces/product.interface';
 import { CardModule } from 'primeng/card';
+import { CardRoutineAllComponent } from '../card-routine-all/card.component';
+
 
 @Component({
   selector: 'carousel-routine',
   standalone: true,
-  imports: [CarouselModule, ButtonModule, TagModule, CardModule],
-  providers: [ProductService],
+  imports: [CarouselModule, ButtonModule, TagModule, CardModule, CardRoutineAllComponent],
   templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css'
+  styleUrl: './carousel.component.css',
+  encapsulation: ViewEncapsulation.None
 })
-export class CarouselRoutine {
-  toproutines = [
+export class CarouselRoutine implements OnInit {
+  routines: Routine[] = [];
+  @Input() routine: Routine | null = null;
+  private routineService = inject(RoutineService)
 
-  ]
-
-  products: Product[] | undefined;
-
-  responsiveOptions: any[] | undefined;
-
-  constructor(private productService: ProductService) { }
-
-  ngOnInit() {
-    this.productService.getAll(1, 5).then((products) => {
-      this.products = products;
-    });
-
-
+  async ngOnInit() {
+    try {
+      this.routines = await this.routineService.getAll(1, 3);
+    } catch (error) {
+      console.error('Error loading routines:', error);
+    }
   }
 
 }
