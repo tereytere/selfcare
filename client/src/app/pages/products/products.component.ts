@@ -33,15 +33,14 @@ export class ProductsComponent implements OnInit {
     try {
       const response = await this.productService.getAll(page, this.itemsPerPage);
       this.products = response.data;
-      this.totalPages = Math.ceil(response.totalProducts / this.itemsPerPage);
     } catch (error) {
       console.error('Error fetching routines', error);
     };
   }
 
   onPageChange(event: any): void {
-    this.currentPage = event.page + 1;
-    this.loadProducts(this.currentPage);
+    // this.currentPage = event.page + 1;
+    this.loadProducts(event.page + 1);
   }
 }
 

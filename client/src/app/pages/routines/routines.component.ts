@@ -18,7 +18,7 @@ import { CardRoutineAllComponent } from '../../components/card-routine-all/card.
 export class RoutinesComponent implements OnInit {
   routines: Routine[] = [];
   currentPage: number = 1;
-  totalPages: number = 1;
+  totalPages: number = 2;
   itemsPerPage: number = 10;
 
   private routineService = inject(RoutineService);
@@ -31,15 +31,19 @@ export class RoutinesComponent implements OnInit {
     try {
       const response = await this.routineService.getAll(page, this.itemsPerPage);
       this.routines = response.data;
-      this.totalPages = Math.ceil(response.totalRecords / this.itemsPerPage);
+      //this.totalPages = Math.ceil(response.totalRecords / this.itemsPerPage);
     } catch (error) {
       console.error('Error fetching routines', error);
     }
   }
 
   onPageChange(event: any): void {
-    this.currentPage = event.page + 1;
-    this.loadRoutines(this.currentPage);
+    //this.currentPage += 1;
+    console.log(event);
+
+    // console.log(this.currentPage);
+
+    this.loadRoutines(event.page + 1);
   }
 
 

@@ -9,6 +9,10 @@
   background-color: var(--background-color);
   padding: 0.3125rem;
   border: 0.0625rem solid var(--secondary-color);
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .p-card .p-card-title {
