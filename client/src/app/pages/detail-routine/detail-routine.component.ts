@@ -45,8 +45,8 @@ export class DetailRoutineComponent {
 
   isForm: boolean = false;
 
-  showFormLabel: string = "Review this Routine";
-  isSavedLabel: string = "Save routine";
+  showFormLabel: string = "Opina sobre esta rutina";
+  isSavedLabel: string = "Guardar rutina";
 
   ngOnInit() {
     this.loadPage();
@@ -91,7 +91,7 @@ export class DetailRoutineComponent {
       text: 'Se ha creado la rutina! Puedes verla en tu perfil ahora',
       icon: 'success'
     });
-    this.isSavedLabel = "Already saved"
+    this.isSavedLabel = "Rutina ya guardada"
   }
 
   async onReviewPosted($event: string) {
@@ -114,7 +114,7 @@ export class DetailRoutineComponent {
   }
   toggleForm() {
     this.isForm = !this.isForm;
-    this.showFormLabel === "Review this Routine" ? this.showFormLabel = "Cancel" : this.showFormLabel = "Review this Routine";
+    this.showFormLabel === "Opina sobre esta rutina" ? this.showFormLabel = "Cancelar" : this.showFormLabel = "Opina sobre esta rutina";
   }
   onRowSelect(event: any) {
     this.router.navigateByUrl(`/product/${event.data._id}`);

@@ -23,13 +23,13 @@
     <div class="mb-4">
         <p-floatLabel>
             <p-dropdown id="category" formControlName="category" [options]="[
-              { label: 'Face', value: 'face' },
-              { label: 'Body', value: 'body' },
-              { label: 'Mouth', value: 'mouth' },
-              { label: 'Hair', value: 'hair' },
-              { label: 'Hands', value: 'hands' },
-              { label: 'Feet', value: 'feet' },
-              { label: 'Beard', value: 'beard' }
+              { label: 'Cara', value: 'face' },
+              { label: 'Cuerpo', value: 'body' },
+              { label: 'Bucal', value: 'mouth' },
+              { label: 'Pelo', value: 'hair' },
+              { label: 'Manos', value: 'hands' },
+              { label: 'Pies', value: 'feet' },
+              { label: 'Barba', value: 'beard' }
             ]" placeholder="Select a category" [showClear]="true">
             </p-dropdown>
             <label for="category">Categoria</label>
@@ -39,10 +39,10 @@
     <div class="mb-4">
         <p-floatLabel>
             <p-dropdown id="applyschedule" formControlName="applyschedule" [options]="[
-              { label: 'Morning', value: 'morning' },
-              { label: 'Afternoon', value: 'afternoon' },
-              { label: 'Night', value: 'night' },
-              { label: 'Other', value: 'other' }
+              { label: 'Mañana', value: 'morning' },
+              { label: 'Tarde', value: 'afternoon' },
+              { label: 'Noche', value: 'night' },
+              { label: 'Otros', value: 'other' }
             ]" placeholder="Select a schedule" [showClear]="true">
             </p-dropdown>
             <label for="applyschedule">Horario Aplicacion</label>
@@ -69,7 +69,7 @@
             <p-multiSelect id="repeat" [options]="repeatOptions" formControlName="repeat"
                 defaultLabel="Selecciona opciones" display="chip">
             </p-multiSelect>
-            <label for="repeat">Repeat</label>
+            <label for="repeat">Frecuencia</label>
         </p-floatLabel>
     </div>
     <div class="mb-4">
@@ -88,7 +88,7 @@
     <div class="mb-4">
         <p-floatLabel>
             <textarea id="description" pInputTextarea formControlName="description"></textarea>
-            <label for="description">Descripcion</label>
+            <label for="description">Descripción</label>
         </p-floatLabel>
     </div>
 

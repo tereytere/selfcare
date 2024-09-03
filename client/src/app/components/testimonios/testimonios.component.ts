@@ -13,7 +13,7 @@ export class TestimoniosComponent {
   testimonios = [
     {
       nombre: 'Ana Martínez',
-      imgUrl: 'images/img_testimonios/AnaMartinez.webp',
+      imgUrl: '/images/img_testimonios/AnaMartínez.webp',
       opinion: '"He estado utilizando la aplicación Selfcare durante los últimos seis meses y realmente he notado una gran diferencia en mi rutina de belleza. Los consejos personalizados y las recomendaciones de productos han transformado mi piel y mi confianza.'
     },
     {
@@ -65,55 +65,7 @@ export class TestimoniosComponent {
       nombre: 'Fernando González',
       imgUrl: '/images/img_testimonios/PedroRuiz.jpg',
       opinion: 'He estado usando Selfcare para mi rutina de cuidado de la piel y el impacto ha sido increíble. Los productos recomendados se ajustan perfectamente a mis necesidades y mi piel nunca se ha visto mejor.'
-    },
-
-    {
-      nombre: 'Diego López',
-      imgUrl: '/images/img_testimonios/DiegoLopez.avif',
-      opinion: 'La sección de recomendaciones de Selfcare es excelente. He encontrado productos que realmente funcionan para mi tipo de piel y los resultados son evidentes. ¡No podría estar más feliz con la app!'
-    },
-    {
-      nombre: 'Andrea Vargas',
-      imgUrl: '/images/img_testimonios/AndreaVargas.jpg',
-      opinion: 'Selfcare ha revolucionado mi rutina de autocuidado. Los planes personalizados y los consejos prácticos han mejorado mi piel y mi estado de ánimo. ¡Es una herramienta fantástica que no puedo recomendar lo suficiente!'
-    },
-    {
-      nombre: 'Gabriel Morales',
-      imgUrl: '/images/img_testimonios/GabrielMorales.avif',
-      opinion: 'La app Selfcare ha sido una gran adición a mi rutina diaria. Los recordatorios y sugerencias me mantienen en el camino correcto y he notado una mejora significativa en mi salud general. ¡Es una inversión que vale la pena!'
-    },
-    {
-      nombre: 'Claudia Martínez',
-      imgUrl: '/images/img_testimonios/ClaudiaMartinez.webp',
-      opinion: 'Selfcare ha sido una bendición para mi rutina de belleza. Los consejos y productos recomendados han mejorado mi piel de maneras que no creí posibles. ¡Estoy encantada con los resultados!'
-    },
-    {
-      nombre: 'Ricardo Silva',
-      imgUrl: '/images/img_testimonios/RicardoSilva.avif',
-      opinion: 'La función de seguimiento de hábitos de Selfcare es excelente. Me ha ayudado a establecer una rutina consistente y he visto mejoras notables en mi piel y bienestar general. ¡Una app increíble!'
-    },
-    {
-      nombre: 'Gabriela Jiménez',
-      imgUrl: '/images/img_testimonios/GabrielaJimenez.jpg',
-      opinion: 'Selfcare me ha enseñado la importancia del autocuidado y cómo implementarlo de manera efectiva. Los resultados en mi piel y mi bienestar general han sido asombrosos. ¡La recomiendo ampliamente!'
-    },
-    {
-      nombre: 'Sergio Castro',
-      imgUrl: '/images/img_testimonios/SergioCastro.jpg',
-      opinion: 'La app Selfcare ha cambiado mi perspectiva sobre el cuidado personal. Los consejos personalizados y el seguimiento detallado me han ayudado a mejorar mi salud y mi apariencia. ¡Es una herramienta invaluable!'
-    },
-    {
-      nombre: 'Camila Ríos',
-      imgUrl: '/images/img_testimonios/CamilaRios.avif',
-      opinion: 'Desde que uso Selfcare, mi rutina de cuidado de la piel ha sido mucho más efectiva. Los recordatorios y recomendaciones me han ayudado a mantenerme al tanto y mi piel se ve y se siente fantástica.'
-    },
-
-    {
-      nombre: 'Paula Delgado',
-      imgUrl: '/images/img_testimonios/PaulaDelgado.jpg',
-      opinion: 'Me encanta cómo Selfcare personaliza los consejos según mis necesidades. He visto mejoras en mi piel y mi salud general desde que comencé a usar la app. ¡Es una herramienta indispensable para mi rutina diaria!'
-    },
-
+    }
   ];
 
   responsiveOptions = [

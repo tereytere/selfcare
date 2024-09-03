@@ -37,7 +37,7 @@ export class UserProfileComponent {
 
   userReviews: Review[] = [];
   isForm: boolean = false;
-  showFormLabel: string = "Review this Routine";
+  showFormLabel: string = "Crear nueva rutina";
 
   isEdit: boolean = false;
   cities: string[] = [];
@@ -155,7 +155,7 @@ export class UserProfileComponent {
 
   toggleForm() {
     this.isForm = !this.isForm;
-    this.showFormLabel === "Review this Routine" ? this.showFormLabel = "Cancel" : this.showFormLabel = "Review this Routine";
+    this.showFormLabel === "Crear nueva rutina" ? this.showFormLabel = "Cancelar" : this.showFormLabel = "Crear nueva rutina";
   }
 
   async onReviewErased($event: string) {

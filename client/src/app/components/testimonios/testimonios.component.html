@@ -1,31 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="testimonios.component.css">
-    < </head>
+</head>
 
 <body>
     <h1>Testimonios de nuestros clientes</h1>
 
     <p-carousel [value]="testimonios" [numVisible]="3" [numScroll]="1" [circular]="true" [autoplayInterval]="3000">
         <ng-template pTemplate="item" let-testimonio>
-            <p-card class="testimonial-card">
-                <div class="testimonial-image-container">
-                    <img src="{{testimonio.imgUrl}}" alt="{{testimonio.nombre}}" class="testimonial-image">
-                </div>
-                <div class="testimonial-content">
-                    <h3>{{testimonio.nombre}}</h3>
-                    <blockquote>
-                        <p>"{{testimonio.opinion}}"</p>
-                    </blockquote>
-                </div>
-            </p-card>
+            <!--    <p-card class="testimonial-card"> -->
+            <div class="testimonial-image-container">
+                <img src="{{testimonio.imgUrl}}" alt="{{testimonio.nombre}}" class="testimonial-image">
+            </div>
+            <div class="testimonial-content">
+                <h3>{{testimonio.nombre}}</h3>
+                <blockquote>
+                    <p>"{{testimonio.opinion}}"</p>
+                </blockquote>
+            </div>
+            <!--    </p-card> -->
         </ng-template>
     </p-carousel>
 </body>
-
-</html>

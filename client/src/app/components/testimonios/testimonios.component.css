@@ -40,6 +40,7 @@ h1 {
 .testimonial-content {
     text-align: center;
     color: var(--secondary-color);
+    padding: 0 10px;
 }
 
 /* Estilo para el bloque de cita */
