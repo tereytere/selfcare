@@ -2,11 +2,12 @@ import { Component, inject } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { ProductService } from '../../services/product.service';
 import { CarouselModule } from 'primeng/carousel';
+import { CardProductSimpleComponent } from "../card-product-simple/card.component";
 
 @Component({
   selector: 'carousel-product',
   standalone: true,
-  imports: [CarouselModule],
+  imports: [CarouselModule, CardProductSimpleComponent],
   templateUrl: './carousel-product.component.html',
   styleUrl: './carousel-product.component.css'
 })

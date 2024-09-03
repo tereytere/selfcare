@@ -1,96 +1,91 @@
 .body {
-    background-image: url('/images/body-selfcare.jpg');
-    background-position: center;
-    background-size: cover;
+  background-image: url('/images/body-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .face {
-    background-image: url('/images/face-selfcare.jpg');
-    background-position: center;
-    background-size: cover;
+  background-image: url('/images/face-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .mouth {
-    background-image: url('/images/mouth-selfcare.jpg');
-    background-position-y: 285px;
-    background-size: cover;
+  background-image: url('/images/mouth-selfcare.jpg');
+  background-position-y: 17.8125rem;
+  background-size: cover;
 
 }
 
 .hair {
-    background-image: url('/images/hair-selfcare.jpg');
-    background-position: center;
-    background-size: cover;
+  background-image: url('/images/hair-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .hands {
-    background-image: url('/images/hands-selfcare.jpg');
-    background-position: center;
-    background-size: cover;
+  background-image: url('/images/hands-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .feet {
-    background-image: url('/images/feet-selfcare.jpg');
-    background-position: center;
-    background-size: cover;
+  background-image: url('/images/feet-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
 .beard {
-    background-image: url('/images/beard-selfcare.jpg');
-    background-position: center;
-    background-size: cover;
+  background-image: url('/images/beard-selfcare.jpg');
+  background-position: center;
+  background-size: cover;
 }
 
-
-
 .card-container {
-    border-radius: 0.3125rem;
-    overflow: hidden;
-    width: 200px;
+  border-radius: 0.3125rem;
+  overflow: hidden;
 }
 
 .p-card-header {
-    overflow: hidden;
-    padding: 10px;
-    text-align: center;
+  overflow: hidden;
+  padding: 0.625rem;
+  text-align: center;
 }
 
 .img-routine {
-    /* border-radius: 8px; */
-    /* width: 100px; */
-    height: 70px;
-    border-top-left-radius: 0.3125rem;
-    border-top-right-radius: 0.3125rem;
-    border-bottom-left-radius: 0.3125rem;
-    border-bottom-right-radius: 0.3125rem;
-    object-fit: cover;
-    overflow: hidden;
+  height: 4.375rem;
+  border-top-left-radius: 0.3125rem;
+  border-top-right-radius: 0.3125rem;
+  border-bottom-left-radius: 0.3125rem;
+  border-bottom-right-radius: 0.3125rem;
+  object-fit: cover;
+  overflow: hidden;
 }
 
 .flex {
-    display: flex;
-    justify-content: space-between;
-}
-
-.p {
-    font-family: var(--text-font);
-    padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .p-card {
-    height: 390px;
-    width: 400px;
+  max-width: 25rem;
+  min-width: 15rem;
+  border: 0.0625rem solid var(--secondary-color);
+  background-color: var(--background-color);
 }
 
 .cuerpo {
-    padding: 20px;
+  padding: 1.25rem;
 }
 
 .p-card-footer {
-    margin: 10px;
-    text-align: center;
+  text-align: center;
 }
 
-.p-card-subheader {
-    padding: 10px;
+.p-card .p-card-body {
+  padding: 0.625rem;
+}
+
+.p-card .p-card-content {
+  padding: 0.625rem 0;
 }

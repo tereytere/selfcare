@@ -1,25 +1,35 @@
 .card-container {
-    border-radius: 0.3125rem;
-    overflow: hidden;
-    width: 360px;
+  border-radius: 0.3125rem;
+  overflow: hidden;
+  width: 12.5rem;
 }
 
-.p-card-header {
-    overflow: hidden;
+.p-card {
+  min-height: 25rem;
+  background-color: var(--background-color);
+  padding: 0.3125rem;
+  border: 0.0625rem solid var(--secondary-color);
+}
+
+.p-card .p-card-title {
+  font-size: 1rem;
+}
+
+.p-card .p-card-subtitle {
+  font-size: 0.8rem;
+}
+
+.p-card-content {
+  display: none;
 }
 
 img {
-    /* border-radius: 8px; */
-    width: 100%;
-    height: auto;
-    border-top-left-radius: 0.3125rem;
-    border-top-right-radius: 0.3125rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    object-fit: cover;
-}
-
-.flex {
-    display: flex;
-    justify-content: space-between;
+  display: block;
+  height: 100%;
+  border-top-left-radius: 0.3125rem;
+  border-top-right-radius: 0.3125rem;
+  border-bottom-left-radius: 0.3125rem;
+  border-bottom-right-radius: 0.3125rem;
+  object-fit: contain;
+  overflow: hidden;
 }

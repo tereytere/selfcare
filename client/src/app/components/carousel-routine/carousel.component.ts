@@ -6,27 +6,39 @@ import { ButtonModule } from 'primeng/button';
 import { TagModule } from 'primeng/tag';
 import { CardModule } from 'primeng/card';
 import { CardRoutineAllComponent } from '../card-routine-all/card.component';
+import { CardRoutineSimpleComponent } from "../card-routine-simple/card.component";
 
 
 @Component({
   selector: 'carousel-routine',
   standalone: true,
-  imports: [CarouselModule, ButtonModule, TagModule, CardModule, CardRoutineAllComponent],
+  imports: [CarouselModule, ButtonModule, TagModule, CardModule, CardRoutineAllComponent, CardRoutineSimpleComponent],
   templateUrl: './carousel.component.html',
   styleUrl: './carousel.component.css',
   encapsulation: ViewEncapsulation.None
 })
 export class CarouselRoutine implements OnInit {
   routines: Routine[] = [];
-  @Input() routine: Routine | null = null;
-  private routineService = inject(RoutineService)
+  routineService = inject(RoutineService);
+  currentPage: number = 1;
+  totalPages: number = 1;
+  itemsPerPage: number = 10;
 
-  async ngOnInit() {
-    try {
-      this.routines = await this.routineService.getAll(1, 3);
-    } catch (error) {
-      console.error('Error loading routines:', error);
-    }
+
+  constructor() { }
+
+  ngOnInit(): void {
+    this.loadRoutines(this.currentPage);
+
   }
 
+  async loadRoutines(page: number): Promise<void> {
+    try {
+      const response = await this.routineService.getAll(page, this.itemsPerPage);
+      this.routines = response.data;
+      this.totalPages = Math.ceil(response.totalRoutines / this.itemsPerPage);
+    } catch (error) {
+      console.error('Error fetching routines', error);
+    };
+  }
 }

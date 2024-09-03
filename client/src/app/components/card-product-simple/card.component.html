@@ -1,5 +1,6 @@
-<p-card class="card-container" id={{product?._id}} [header]="product?.name" [subheader]="product?.brand">
-    <ng-template pTemplate="header">
-        <img alt={{product?.name}} src={{product?.image}} />
-    </ng-template>
+<p-card (click)="onClickCard()" class="card-container" id={{product?._id}} [header]="product?.name"
+  [subheader]="product?.brand">
+  <ng-template pTemplate="header">
+    <img [alt]="product?.name" [src]="product?.image" />
+  </ng-template>
 </p-card>

@@ -1,58 +1,57 @@
 .card-container {
-    border-radius: 0.3125rem;
-    overflow: hidden;
-    width: 200px;
-    border: 2px var(--secondary-color);
+  overflow: hidden;
 }
 
 .card-container p {
-    padding: 5px;
+  padding: 0.3125rem;
 }
 
 .card-container a {
-    padding: 10px;
-    display: inline-block;
-    margin: 0;
+  padding: 0.625rem;
+  display: inline-block;
+  margin: 0;
 }
 
 .p-card-header {
-    overflow: hidden;
-    padding: 10px;
+  overflow: hidden;
+  padding: 0.625rem;
 
 }
 
 img {
-    /* border-radius: 8px; */
-    width: 70px;
-    height: 90px;
-    border-top-left-radius: 0.3125rem;
-    border-top-right-radius: 0.3125rem;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    object-fit: cover;
+  height: 100%;
+  border-top-left-radius: 0.3125rem;
+  border-top-right-radius: 0.3125rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  object-fit: contain;
 }
 
 .flex {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .p-card {
-    height: 410px;
-    width: 450px;
+  min-height: 25rem;
+  max-width: 15rem;
+  width: 28.125rem;
+  background-color: var(--background-color);
+  padding: 0.3125rem;
+  border: 0.0625rem solid var(--secondary-color)
 }
 
 .p {
-    font-family: var(--text-font);
-    text-align: center;
+  font-family: var(--text-font);
+  text-align: center;
 }
 
 .p-card-header {
-    overflow: hidden;
-    padding: 10px;
-    text-align: center;
+  overflow: hidden;
+  padding: 0.625rem;
+  text-align: center;
 }
 
 .p-card-footer {
-    padding: 10px;
+  padding: 0.625rem;
 }

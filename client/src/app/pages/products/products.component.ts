@@ -1,6 +1,6 @@
 import { PaginatorModule } from 'primeng/paginator';
 import { ProductService } from './../../services/product.service';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, inject } from '@angular/core';
 import { Product } from '../../interfaces/product.interface';
 import { TableModule } from 'primeng/table'
 import { InputTextModule } from 'primeng/inputtext';
@@ -13,7 +13,8 @@ import { CardProductAllComponent } from '../../components/card-product-all/card.
   standalone: true,
   imports: [PaginatorModule, TableModule, InputTextModule, ButtonModule, CardProductAllComponent],
   templateUrl: './products.component.html',
-  styleUrl: './products.component.css'
+  styleUrl: './products.component.css',
+  encapsulation: ViewEncapsulation.None
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];

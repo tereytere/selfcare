@@ -19,9 +19,6 @@ export class CardProductAllComponent {
 
   @Input() product: Product | null = null;
 
-
-
-
   router = inject(Router);
   onViewMore(): void {
     if (this.product) {

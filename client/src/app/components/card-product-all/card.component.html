@@ -1,17 +1,14 @@
 <p-card class="card-container" id={{product?._id}} [header]="product?.name" [subheader]="product?.brand">
-    <ng-template pTemplate="header">
-        <img alt={{product?.name}} src={{product?.image}} />
-    </ng-template>
-    <ng-template pTemplate="footer">
-        <!-- <p>Categoría: {{product?.category}}</p> -->
-        <p>Enlace de compra: <a [href]="getFormattedLink(product?.shoplink)" target="_blank"
-                rel="noopener noreferrer">Compra aquí</a>
+  <ng-template pTemplate="header">
+    <img alt={{product?.name}} src={{product?.image}} />
+  </ng-template>
+  <ng-template pTemplate="footer">
+    <p>Enlace de compra: <a [href]="getFormattedLink(product?.shoplink)" target="_blank"
+        rel="noopener noreferrer">Compra aquí</a>
 
-        <div class="flex gap-3 mt-1">
-            <!-- <p-button label="Guardar" severity="secondary" class="w-full" styleClass="w-full" /> -->
-            <!-- <p-button label="Ver detalle" class="w-full ms-2" styleClass="w-full" (click)="onViewMore()" /> -->
-            <custom-button label="Ver detalle" class="w-full ms-2" (onClick)="onViewMore()"></custom-button>
-        </div>
-    </ng-template>
+    <div class="flex gap-3 mt-1">
+      <custom-button label="Ver detalle" class="w-full ms-2" (onClick)="onViewMore()"></custom-button>
+    </div>
+  </ng-template>
 
 </p-card>

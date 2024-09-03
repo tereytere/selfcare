@@ -9,8 +9,6 @@ import { Product } from '../../interfaces/product.interface';
 import { ProductService } from '../../services/product.service';
 
 
-
-//Lógica del componenete e incluyo la gestión de los datos de entrada y la navegacion al hacer el click en "Ver más"
 @Component({
   selector: 'card-routine-all',
   standalone: true,
@@ -18,8 +16,8 @@ import { ProductService } from '../../services/product.service';
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
   encapsulation: ViewEncapsulation.None
-
 })
+
 export class CardRoutineAllComponent implements OnInit {
 
   @Input() routine: Routine | null = null;
@@ -39,9 +37,6 @@ export class CardRoutineAllComponent implements OnInit {
       }
     }
   }
-
-
-
 
   onViewMore(): void {
     if (this.routine) {
