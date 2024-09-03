@@ -9,13 +9,15 @@ import { Product } from '../../interfaces/product.interface';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonComponent } from '../../components/button/button.component';
+import { InputTextModule } from 'primeng/inputtext';
+import Swal from 'sweetalert2';
 
 
 
 @Component({
   selector: 'routine-form',
   standalone: true,
-  imports: [ButtonModule, FloatLabelModule, FormsModule, ReactiveFormsModule, MultiSelectModule, DropdownModule, ButtonComponent],
+  imports: [ButtonModule, FloatLabelModule, FormsModule, ReactiveFormsModule, MultiSelectModule, DropdownModule, ButtonComponent, InputTextModule],
   templateUrl: './routine-form.component.html',
   styleUrl: './routine-form.component.css'
 })
@@ -35,7 +37,7 @@ export class RoutineFormComponent {
     applyschedule: new FormControl('', Validators.required),
     repeat: new FormControl([], Validators.required),
     products: new FormControl([], Validators.required),
-    usesteps: new FormControl([]),
+    usesteps: new FormControl(''),
     description: new FormControl('')
 
 
@@ -78,7 +80,16 @@ export class RoutineFormComponent {
 
   async onSubmit() {
     try {
+      console.log(this.formulario.value);
+
       const response = await this.routineService.create(this.formulario.value);
+      console.log(response);
+
+      await Swal.fire({
+        title: 'Registrado correctamente!',
+        text: 'Te has registrado correctamente. Disfruta de nuestros servicios!',
+        icon: 'success'
+      });
       this.router.navigate(['/routines']);
     } catch (error) {
       this.errores = [{ message: 'An error occurred' }];

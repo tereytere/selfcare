@@ -5,7 +5,7 @@ export interface Routine {
   applyschedule: "morning" | "afternoon" | "night" | "other";
   repeat: string[];
   products: string[];
-  usesteps?: string[];
+  usesteps?: string;
   description?: string;
   reviews?: string[];
   createdAt?: Date;

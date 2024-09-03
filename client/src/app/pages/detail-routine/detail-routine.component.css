@@ -40,6 +40,10 @@
   background-size: cover;
 }
 
+.steps-info {
+  width: 30%;
+
+}
 
 .routine {
   height: 180px;

@@ -27,10 +27,19 @@
         </div>
     </div>
     <div class="steps">
-        @for (step of routine.usesteps; track $index) {
-        <span>Paso {{$index + 1}}</span>
-        <p>{{step}}</p>
-        }
+        <div class="flex justify-content-around mb-4">
+            <div class="steps-info">
+                <span>Daytime</span>
+                <p>{{routine.applyschedule}}</p>
+            </div>
+            <div class="steps-info">
+                <span>Frecuencia</span>
+                <p>{{routine.repeat}}</p>
+            </div>
+        </div>
+        <span>Pasos a seguir</span>
+        <p>{{routine.usesteps}}</p>
+
     </div>
     <div class="steps">
         @if(userService.isLogged()){

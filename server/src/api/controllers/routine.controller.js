@@ -10,7 +10,7 @@ const addRoutine = async (req, res) => {
 
         const repeatDays = Array.isArray(repeat) ? repeat : [];
         const productIds = Array.isArray(products) ? products : [];
-        const steps = Array.isArray(usesteps) ? usesteps : [];
+        //const steps = Array.isArray(usesteps) ? usesteps : [];
 
         const newRoutine = new Routine({
             name,
@@ -18,7 +18,7 @@ const addRoutine = async (req, res) => {
             applyschedule,
             repeat: repeatDays,
             products: productIds,
-            usesteps: steps,
+            usesteps,
             description
         });
         const createdRoutine = await newRoutine.save();
