@@ -22,11 +22,17 @@ h1 {
     /* Espacio entre las letras para darle más estilo */
     text-transform: uppercase;
     /* Convierte el texto en mayúsculas */
+    padding-bottom: 5px;
 }
 
 p-carousel {
     width: 90%;
     margin: 0 auto;
+}
+
+.colaborations {
+    background-color: var(--background-color);
+    padding: 5px 0;
 }
 
 .colaboracion-card {

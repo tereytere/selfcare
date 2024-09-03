@@ -1,6 +1,7 @@
 footer {
     background-color: var(--corporate-color);
     font-size: 13px;
+    margin-top: 20px;
 }
 
 #selfcareLogo {
