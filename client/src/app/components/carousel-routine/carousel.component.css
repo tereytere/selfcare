@@ -1,36 +1,116 @@
-/* Estilo para la tarjeta del testimonio */
-.testimonial-card {
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.body {
+    background-image: url('/images/body-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
-/* Contenedor para centrar la imagen */
-.testimonial-image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
+.face {
+    background-image: url('/images/face-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
 }
 
-/* Estilo para la imagen del testimonio */
-.testimonial-image {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+.mouth {
+    background-image: url('/images/mouth-selfcare.jpg');
+    background-position-y: 285px;
+    background-size: cover;
+
 }
 
-/* Estilo para el contenido del testimonio */
-.testimonial-content {
+.hair {
+    background-image: url('/images/hair-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.hands {
+    background-image: url('/images/hands-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.feet {
+    background-image: url('/images/feet-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.beard {
+    background-image: url('/images/beard-selfcare.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+.card-container {
+    border-radius: 0.3125rem;
+    overflow: hidden;
+    width: 200px;
+}
+
+.p-card-header {
+    overflow: hidden;
+    padding: 10px;
     text-align: center;
 }
 
-/* Estilo para el bloque de cita */
-blockquote {
-    font-style: italic;
-    border-left: 4px solid #A3897a;
-    padding-left: 1rem;
-    margin: 0;
-    color: #CABA9F;
+.img-routine {
+    /* border-radius: 8px; */
+    /* width: 100px; */
+    height: 70px;
+    border-top-left-radius: 0.3125rem;
+    border-top-right-radius: 0.3125rem;
+    border-bottom-left-radius: 0.3125rem;
+    border-bottom-right-radius: 0.3125rem;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.p {
+    font-family: var(--text-font);
+    padding: 10px;
+}
+
+.p-card {
+    height: 390px;
+    width: 400px;
+}
+
+.cuerpo {
+    padding: 20px;
+}
+
+.p-card-footer {
+    margin: 10px;
+    text-align: center;
+}
+
+.p-card-subheader {
+    padding: 10px;
+}
+
+
+
+
+
+.p-carousel-item {
+    padding: 1rem;
+}
+
+.p-carousel .p-carousel-content .p-carousel-item {
+    display: flex;
+    justify-content: center;
+}
+
+/* Ajuste para que las tarjetas del carousel sean responsive */
+.card-container {
+    width: 100%;
+    max-width: 300px;
+    /* Ajusta según lo necesites */
 }
