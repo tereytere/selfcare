@@ -16,7 +16,7 @@ export class CardRoutineSimpleComponent {
   @Input() routine: Routine | null = null;
 
   router = inject(Router);
-  onClickCard(): void {
+  onClickRoutine(): void {
     if (this.routine) {
       this.router.navigate([`/routine/${this.routine._id}`]);
     }
