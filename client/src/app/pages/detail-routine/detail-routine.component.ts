@@ -96,17 +96,20 @@ export class DetailRoutineComponent {
 
   async onReviewPosted($event: string) {
     this.routineReviews = [];
+    this.routineProducts = [];
     this.loadPage();
     this.toggleForm();
   }
 
   async onReviewErased($event: string) {
     this.routineReviews = [];
+    this.routineProducts = [];
     this.loadPage();
   }
 
   async onReviewEdited($event: string) {
     this.routineReviews = [];
+    this.routineProducts = [];
     this.loadPage();
   }
   toggleForm() {
