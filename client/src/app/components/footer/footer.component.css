@@ -1,168 +1,35 @@
 footer {
-    background-color: var(--corporate-color);
-    font-size: 13px;
-    margin-top: 20px;
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  margin: 0;
+
+  & li {
+    list-style: none;
+  }
+
+  & a {
+    color: var(--background-color);
+    text-decoration: none;
+  }
 }
 
-#selfcareLogo {
-    width: 150px;
-    height: auto;
-    margin-top: 10px;
+.footer-container {
+  display: flex;
 }
-
-.container {
-
-    color: #fff;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-wrap: nowrap;
-    gap: 10px;
-    margin-left: 70px;
-    margin-right: 70px;
-}
-
 
 .column {
-    flex: 1;
-    margin: 0 -5px;
-    padding: 0;
-    min-width: 0;
-    margin-left: 30px;
-    margin-top: 20px;
-}
-
-.column2 {
-    flex: 1;
-    margin: 0 -5px;
-    padding: 0;
-    min-width: 0;
-    margin-left: 30px;
-    margin-top: 20px;
-}
-
-
-.column2 ul li {
-    margin-bottom: 10px;
-}
-
-ul,
-ol {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--secondary-color);
-    color: #fff;
-    padding: 10px 20px;
-    margin-top: 10px;
-}
-
-footer a,
-.legal-links a {
-    color: #fff;
-    text-decoration: none;
-}
-
-footer a:hover,
-.legal-links a:hover {
-    text-decoration: underline;
-}
-
-
-footer p {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    line-height: 1.6;
-}
-
-
-.column p:last-of-type {
-    margin-bottom: 20px;
-}
-
-.checkbox-container {
-    margin-top: 20px;
-}
-
-.legal-links {
-    margin-left: 10px;
-}
-
-.footer-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-    color: #fff;
-}
-
-footer h4 {
-    font-size: 16px;
-    margin-bottom: 20px;
-
+  & img {
+    display: inline-block;
+    height: 5rem;
+  }
 }
 
 .icons {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
-    color: #fff;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
+  display: flex;
 
-.icons ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-}
-
-.icons li {
-    margin-right: 10px;
-}
-
-.icons li:last-child {
-    margin-right: 0;
-}
-
-.icons a {
-    display: block;
-    text-decoration: none;
-}
-
-.icons img {
-    width: 24px;
-    height: auto;
-}
-
-.submit-button {
-    background-color: transparent;
-    border: none;
+  & img {
+    display: inline-block;
+    height: 2rem;
     cursor: pointer;
-    padding: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.submit-button img {
-    width: 24px;
-    height: auto;
-}
-
-.submit-button {
-    width: 30px;
-    height: 30px;
-}
-
-#flecha {
-    width: 20px;
-    height: 10px;
+  }
 }
