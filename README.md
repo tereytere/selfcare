@@ -34,13 +34,16 @@ Aquí dejamos credenciales para hacer el CRUD completo para propósitos de test
 **email:** palomita@gmail.com  
 **password:** 1234  
 
-> **Consejo**  
-> Usa Google Chrome para evitar los errores conocidos mencionados a continuación.
+## Autores
+
+| [<img src="https://avatars.githubusercontent.com/u/116809352?v=4" width=250><br><sub>Teresa Ambroa de Frutos</sub>](https://github.com/tereytere) | [<img src="https://avatars.githubusercontent.com/u/173776754?v=4" width=250><br><sub>Miguel Ángel Martínez de Goñi</sub>](https://github.com/Miguel-Up) | [<img src="https://avatars.githubusercontent.com/u/133347517?v=4" width=250><br><sub>Chiara Magnani</sub>](https://github.com/aryalith) | [<img src="https://avatars.githubusercontent.com/u/116038953?v=4" width=250><br><sub>Laura Laguna</sub>](https://github.com/Laulaguna) | [<img src="https://avatars.githubusercontent.com/u/174360003?v=4" width=250><br><sub>Ignacio Sampedro Olivera</sub>](https://github.com/Nachosam90) |
+| :---: | :---: | :---: | :---: | :---: |
+
 
 ## Errores conocidos
 
 > **Precaución**  
-> 1. Mozilla Firefox está mostrando errores muy molestos, pero las funcionalidades funcionan correctamente (aún estamos trabajando para solucionarlo). Google Chrome / Safari no muestran estos errores. > - "ResizeObserver loop completed with undelivered notifications."
+> 1. Aún quedan algunas páginas donde tenemos que mejorar el responsive para que se pueda ver correctamente en diferentes dispositivos.
 
 ## Nuevas características en la lista de tareas (wishlist para el futuro 👍)
 
