@@ -20,7 +20,7 @@
 
 
 El servidor Local (para hacer un doble checking  del código y updating del live server en Firebase): 
-URL para el Servidor de Produccion: https://selfcare.firebase.com/api/selfcare/all
+URL para el Servidor de Produccion: [https://selfcare.firebase.com/api/selfcare/all](https://selfcare2024.web.app/home)
 
 Aquí dejamos credenciales para hacer el CRUD completo para propósitos de test
 
@@ -29,7 +29,7 @@ Aquí dejamos credenciales para hacer el CRUD completo para propósitos de test
 **email:** admin@admin.com  
 **password:** admin  
 
-## Client
+## User
 
 **email:** palomita@gmail.com  
 **password:** 1234  
