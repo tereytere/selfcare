@@ -34,25 +34,25 @@
       <a href="https://github.com/tereytere">
         <img src="https://avatars.githubusercontent.com/tereytere" width="100px;" alt="Teresa Ambroa"/>
         <br />
-        <sub><b>Teresa Ambroa</b></sub>
+        <sub><b>Teresa Ambroa de Frutos</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/COLABORADOR1">
-        <img src="https://avatars.githubusercontent.com/COLABORADOR1" width="100px;" alt=""/>
+      <a href="https://github.com/aryalith">
+        <img src="https://avatars.githubusercontent.com/aryalith" width="100px;" alt=""/>
         <br />
-        <sub><b>Nombre Colaborador 1</b></sub>
+        <sub><b>Chiara Magnani Fernandez</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/COLABORADOR2">
-        <img src="https://avatars.githubusercontent.com/COLABORADOR2" width="100px;" alt=""/>
+      <a href="https://github.com/Miguel-Up">
+        <img src="https://avatars.githubusercontent.com/Miguel-Up" width="100px;" alt=""/>
         <br />
-        <sub><b>Nombre Colaborador 2</b></sub>
+        <sub><b>Miguel Angel Martinez de Goñi</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
@@ -60,19 +60,28 @@
   </tr>
   <tr>
     <td align="center">
-      <a href="https://github.com/COLABORADOR3">
-        <img src="https://avatars.githubusercontent.com/COLABORADOR3" width="100px;" alt=""/>
+      <a href="https://github.com/Laulaguna">
+        <img src="https://avatars.githubusercontent.com/Laulaguna" width="100px;" alt=""/>
         <br />
-        <sub><b>Nombre Colaborador 3</b></sub>
+        <sub><b>Laura Laguna</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/COLABORADOR4">
-        <img src="https://avatars.githubusercontent.com/COLABORADOR4" width="100px;" alt=""/>
+      <a href="https://github.com/Nachosam90">
+        <img src="https://avatars.githubusercontent.com/Nachosam90" width="100px;" alt=""/>
         <br />
-        <sub><b>Nombre Colaborador 4</b></sub>
+        <sub><b>Ignacio Sampedro Olivera</b></sub>
+      </a>
+      <br />
+      <sub>Fullstack Developer</sub>
+    </td>
+        <td align="center">
+      <a href="https://github.com/Sergiocondeportero">
+        <img src="https://avatars.githubusercontent.com/Sergiocondeportero" width="100px;" alt=""/>
+        <br />
+        <sub><b>Sergio Conde</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
@@ -325,25 +334,25 @@ Este proyecto representa las capacidades de desarrollo fullstack del equipo y mi
       <a href="https://github.com/tereytere">
         <img src="https://avatars.githubusercontent.com/tereytere" width="100px;" alt="Teresa Ambroa"/>
         <br />
-        <sub><b>Teresa Ambroa</b></sub>
+        <sub><b>Teresa Ambroa de Frutos</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/COLABORADOR1">
-        <img src="https://avatars.githubusercontent.com/COLABORADOR1" width="100px;" alt=""/>
+      <a href="https://github.com/aryalith">
+        <img src="https://avatars.githubusercontent.com/aryalith" width="100px;" alt=""/>
         <br />
-        <sub><b>Collaborator Name 1</b></sub>
+        <sub><b>Chiara Magnani Fernandez</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/COLABORADOR2">
-        <img src="https://avatars.githubusercontent.com/COLABORADOR2" width="100px;" alt=""/>
+      <a href="https://github.com/Miguel-Up">
+        <img src="https://avatars.githubusercontent.com/Miguel-Up" width="100px;" alt=""/>
         <br />
-        <sub><b>Collaborator Name 2</b></sub>
+        <sub><b>Miguel Angel Martinez de Goñi</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
@@ -351,25 +360,35 @@ Este proyecto representa las capacidades de desarrollo fullstack del equipo y mi
   </tr>
   <tr>
     <td align="center">
-      <a href="https://github.com/COLABORADOR3">
-        <img src="https://avatars.githubusercontent.com/COLABORADOR3" width="100px;" alt=""/>
+      <a href="https://github.com/Laulaguna">
+        <img src="https://avatars.githubusercontent.com/Laulaguna" width="100px;" alt=""/>
         <br />
-        <sub><b>Collaborator Name 3</b></sub>
+        <sub><b>Laura Laguna</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
     </td>
     <td align="center">
-      <a href="https://github.com/COLABORADOR4">
-        <img src="https://avatars.githubusercontent.com/COLABORADOR4" width="100px;" alt=""/>
+      <a href="https://github.com/Nachosam90">
+        <img src="https://avatars.githubusercontent.com/Nachosam90" width="100px;" alt=""/>
         <br />
-        <sub><b>Collaborator Name 4</b></sub>
+        <sub><b>Ignacio Sampedro Olivera</b></sub>
+      </a>
+      <br />
+      <sub>Fullstack Developer</sub>
+    </td>
+        <td align="center">
+      <a href="https://github.com/Sergiocondeportero">
+        <img src="https://avatars.githubusercontent.com/Sergiocondeportero" width="100px;" alt=""/>
+        <br />
+        <sub><b>Sergio Conde</b></sub>
       </a>
       <br />
       <sub>Fullstack Developer</sub>
     </td>
   </tr>
 </table>
+
 
 ## 🎯 Project Overview
 
